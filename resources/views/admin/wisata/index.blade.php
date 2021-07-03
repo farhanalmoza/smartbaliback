@@ -20,15 +20,38 @@
                     </li>
                 </ul>
             </div>
+            <div class="d-flex justify-content-between mb-3">
+                <h4 class="page-title">Daftar Tempat Wisata</h4>
+                <button class="btn btn-primary">
+                    <span class="btn-label">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    Tempat Wisata
+                </button>
+            </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Daftar Tempat Wisata</div>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="{{ asset('t_admin') }}/img/blogpost.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <div class="card-sub">									
-                                Akan segera datang.
+                            <div class="info-post ml-2">
+                                <p class="username">Kuil Bali</p>
+                                <p class="date text-muted">Denpasar, Bali</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <div class="d-flex justify-content-end">
+                                <a href="#">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                </a>
+                                <a href="#">
+                                    <button type="button" class="btn btn-icon btn-link btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>

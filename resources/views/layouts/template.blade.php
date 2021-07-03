@@ -25,7 +25,7 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="{{ asset('t_admin') }}/css/demo.css">
 </head>
-<body>
+<body data-background-color="bg3">
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
