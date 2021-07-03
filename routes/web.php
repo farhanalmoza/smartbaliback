@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// views
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('/wisata', [AdminController::class, 'wisata']);
+    Route::get('/hotel', [AdminController::class, 'hotel']);
+    Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
+    Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
 });
