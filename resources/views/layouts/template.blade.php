@@ -61,7 +61,7 @@
 			<div class="content">
 				@yield('content')
 			</div>
-
+			@yield('modal')
 			@include('components.footer')
 		</div>
 
@@ -84,5 +84,9 @@
     {{-- My script --}}
   	<script src="{{asset('t_admin/js/functions.js')}}"></script>
   	@yield('js')
+	<script>
+		const URL_DATA = '{{ url('data') }}'
+		const ASSET = '{{ asset("t_admin") }}'
+	</script>
 </body>
 </html>

@@ -22,40 +22,15 @@
             </div>
             <div class="d-flex justify-content-between mb-3">
                 <h4 class="page-title">Daftar Tempat Wisata</h4>
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addWisataModal">
                     <span class="btn-label">
                         <i class="fa fa-plus"></i>
                     </span>
                     Tempat Wisata
                 </button>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card card-post card-round">
-                        <img class="card-img-top" src="{{ asset('t_admin') }}/img/blogpost.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <div class="info-post ml-2">
-                                <p class="username">Kuil Bali</p>
-                                <p class="date text-muted">Denpasar, Bali</p>
-                            </div>
-                            <div class="separator-solid"></div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
-                            <div class="d-flex justify-content-end">
-                                <a href="#">
-                                    <button type="button" class="btn btn-icon btn-link btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                </a>
-                                <a href="#">
-                                    <button type="button" class="btn btn-icon btn-link btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="tour-cards">
+                
             </div>
         </div>
     </div>
@@ -64,6 +39,46 @@
     </div>
 @endsection
 
+@section('modal')
+  <!-- Modal -->
+  <div class="modal fade" id="addWisataModal" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+			<div class="card modal-content">
+				<div class="modal-header">
+					<h4 class="card-title">Tambah Tempat Wisata</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="card-body">
+					<form class="forms-sample" id="formAddEducation" autocomplete="off">
+						<div class="form-group form-inline">
+							<label for="nama-tempat" class="col-md-2 col-form-label">Nama Tempat</label>
+							<input type="text" class="form-control col-md-10" id="nama-tempat" name="nama-tempat" placeholder="Masukkan nama tempat">
+						</div>
+						<div class="form-group form-inline">
+							<label for="alamat" class="col-md-2 col-form-label">Alamat</label>
+							<input type="text" class="form-control col-md-10" id="alamat" name="alamat" placeholder="Masukkan alamat">
+						</div>
+						<div class="form-group form-inline align-items-start">
+							<label for="deskripsi" class="col-md-2 col-form-label">Deskripsi</label>
+							<textarea type="text" class="form-control col-md-10" id="deskripsi" name="deskripsi" rows="5"></textarea>
+						</div>
+						<div class="d-flex justify-content-end mt-2">
+							<button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Batal</button>
+							<button type="submit" class="btn btn-primary" id="add">Tambah</button>
+						</div>
+					</form>
+				</div>
+			</div>
+    </div>
+  </div>
+
+  {{-- modal update --}}
+  
+@endsection
+
 @section('js')
-    
+    <!-- My Script -->
+    <script src="{{ asset('t_admin/js/admin/place/index.js') }}"></script>
 @endsection

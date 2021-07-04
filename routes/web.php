@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Data\PlaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/hotel', [AdminController::class, 'hotel']);
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
+});
+
+// data
+Route::group(['prefix' => 'data'], function() {
+    // get all
+    Route::get('/wisata', [PlaceController::class, 'tours']);
 });
