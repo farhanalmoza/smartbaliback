@@ -15,14 +15,22 @@ class AdminController extends Controller
     {
         return view('admin.wisata.index');
     }
+
     public function hotel()
     {
         return view('admin.hotel.index');
     }
+
     public function tempatIbadah()
     {
         return view('admin.tempatIbadah.index');
     }
+
+    public function tambahTempat()
+    {
+        return view('admin.tambahTempat.index');
+    }
+
     public function daftarPengguna()
     {
         return view('admin.daftarPengguna.index');

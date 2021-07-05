@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/wisata', [AdminController::class, 'wisata']);
     Route::get('/hotel', [AdminController::class, 'hotel']);
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
+    Route::get('/tambah-tempat', [AdminController::class, 'tambahTempat']);
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
 });
 

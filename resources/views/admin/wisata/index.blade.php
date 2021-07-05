@@ -8,7 +8,7 @@
                 <h4 class="page-title">Wisata</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="{{ url('/admin/dashboard') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <div class="d-flex justify-content-between mb-3">
-                <h4 class="page-title">Daftar Tempat Wisata</h4>
+                <h4 class="page-title">Daftar Wisata</h4>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#addWisataModal">
                     <span class="btn-label">
                         <i class="fa fa-plus"></i>

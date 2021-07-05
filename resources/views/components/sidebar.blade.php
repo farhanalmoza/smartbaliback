@@ -51,7 +51,7 @@
                 </li>
                 <li class="nav-item {{ 'admin/wisata' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/wisata') }}">
-                        <i class="fas fa-pen-square"></i>
+                        <i class="fas fa-plane"></i>
                         <p>Wisata</p>
                     </a>
                 </li>
@@ -65,6 +65,12 @@
                     <a href="{{ url('/admin/tempat-ibadah') }}">
                         <i class="fas fa-pen-square"></i>
                         <p>Tempat Ibadah</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'admin/tambah-tempat' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/admin/tambah-tempat') }}">
+                        <i class="fas fa-plus-square"></i>
+                        <p>Tambah Tempat</p>
                     </a>
                 </li>
                 <li class="nav-item {{ 'admin/daftar-pengguna' == request()->path() ? 'active' : '' }}">
