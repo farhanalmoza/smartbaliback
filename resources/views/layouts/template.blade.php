@@ -24,12 +24,15 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="{{ asset('t_admin') }}/css/demo.css">
+
+	<!-- My CSS -->
+	@yield('css')
 </head>
 <body data-background-color="bg3">
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="blue">
+			<div class="logo-header bg-primary-gradient">
 				
 				<a href="index.html" class="logo">
 					<img src="{{ asset('t_admin') }}/img/logo.svg" alt="navbar brand" class="navbar-brand">
