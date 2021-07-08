@@ -33,5 +33,5 @@
 
 @section('js')
     <!-- My Script -->
-    <script src="{{ asset('t_admin/js/admin/place/index.js') }}"></script>
+    <script src="{{ asset('t_admin/js/admin/wisata/index.js') }}"></script>
 @endsection

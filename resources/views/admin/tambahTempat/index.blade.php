@@ -82,7 +82,7 @@
 												</div>
 											</div>
 											<div class="col-md-2">
-												<button class="btn btn-primary btn-sm">Tambah Tag</button>
+												<a class="btn btn-primary btn-sm text-white" data-toggle="modal" data-target="#addTagModal">Tambah Tag</a>
 											</div>
 										</div>
 									</div>
@@ -104,10 +104,41 @@
 @endsection
 
 @section('modal')
-	
+<div class="modal fade" id="addTagModal" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="card modal-content">
+			<div class="modal-header">
+				<h4 class="card-title">Tambah Tag</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="card-body">
+				<form class="forms-sample" id="formAddTag" autocomplete="off">
+					<div class="form-group form-inline align-items-start">
+						<label for="nama_tag" class="col-md-2">Nama Tag</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control input-full" id="nama_tag" name="nama_tag" placeholder="masukkan nama tag">
+						</div>
+					</div>
+					<hr>
+					<div class="d-flex justify-content-end">
+						<button type="button" class="btn btn-secondary btn-sm mr-2" data-dismiss="modal">Batal</button>
+						<button type="submit" class="btn btn-primary btn-sm" id="add">Tambah</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('js')
+	<!-- Validation -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js" integrity="sha512-6Uv+497AWTmj/6V14BsQioPrm3kgwmK9HYIyWP+vClykX52b0zrDGP7lajZoIY1nNlX4oQuh7zsGjmF7D0VZYA==" crossorigin="anonymous"></script>
+
 	<!-- My Script -->
-	<script src="{{ asset('t_admin/js/admin/wisata/tambah.js') }}"></script>
+	<script src="{{ asset('t_admin/js/admin/tempat/tambah.js') }}"></script>
+	<script src="{{ asset('t_admin/js/admin/tag/index.js') }}"></script>
 @endsection

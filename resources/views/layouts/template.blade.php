@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>@yield('title') | Admin</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="{{ asset('t_admin') }}/img/icon.ico" type="image/x-icon"/>
@@ -83,6 +84,8 @@
 
 	<!-- Atlantis JS -->
 	<script src="{{ asset('t_admin') }}/js/atlantis.min.js"></script>
+	<!-- Bootstrap Notify -->
+	<script src="{{ asset('t_admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
     {{-- My script --}}
   	<script src="{{asset('t_admin/js/functions.js')}}"></script>
