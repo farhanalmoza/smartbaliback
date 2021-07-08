@@ -1,7 +1,45 @@
-$(document).ready(function () {    
+$(document).ready(function () {  
+    // get tags
+    getTags.loadData = "/tag"
     // CRUD
     addTag()
 })
+
+const getTags = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getTags, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('tags');
+        const tags = response.data;
+        container.innerHTML = '';
+
+        for (i = tags.length-1; i >= 0; i--) {
+            container.innerHTML += `
+            <label class="selectgroup-item mb-2">
+                <input type="checkbox" name="value" value="${tags[i].name}" class="selectgroup-input tag" id="${tags[i].id}">
+                <span class="selectgroup-button">${tags[i].name}</span>
+            </label>
+            `;
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
 
 function addTag() {
     $('#formAddTag').validate({

@@ -5,6 +5,12 @@ use App\Models\Tag;
 
 class TagService
 {
+    public function getAll()
+    {
+        $results = Tag::get();
+        return datatables()->of($results)->make(true);
+    }
+
     public function add($data)
     {
         $create = Tag::create($data);

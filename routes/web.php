@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'data'], function() {
     // get all
     Route::get('/wisata', [PlaceController::class, 'tours']);
+    Route::get('/tag', [TagController::class, 'index']);
     // add data
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tag', [TagController::class, 'store']);

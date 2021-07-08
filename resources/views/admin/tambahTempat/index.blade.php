@@ -74,11 +74,8 @@
 										<div class="form-group form-inline align-items-start">
 											<label for="tag" class="col-md-2 form-label justify-content-start">Tag</label>
 											<div class="col-md-8 p-0">
-												<div class="selectgroup selectgroup-pills">
-													<label class="selectgroup-item mb-2">
-														<input type="checkbox" name="value" value="HTML" class="selectgroup-input">
-														<span class="selectgroup-button">HTML</span>
-													</label>
+												<div class="selectgroup selectgroup-pills" id="tags">
+													
 												</div>
 											</div>
 											<div class="col-md-2">
