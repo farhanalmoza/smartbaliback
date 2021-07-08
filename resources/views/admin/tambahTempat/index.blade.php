@@ -27,22 +27,20 @@
 							<div class="card-title">Form Tambah Tempat</div>
 						</div>
 						<div class="card-body">
-							<form id="formTambahTempat">
+							<form id="formAddPlace">
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="form-group form-inline">
-											<label for="nama-tempat" class="col-md-2 form-label justify-content-start">Nama Tempat</label>
+											<label for="title" class="col-md-2 form-label justify-content-start">Nama Tempat</label>
 											<div class="col-md-10 p-0">
-												<input id="nama-tempat" name="nama-tempat" type="text" class="form-control input-full" placeholder="masukkan nama tempat">
+												<input id="title" name="title" type="text" class="form-control input-full" placeholder="masukkan nama tempat">
 											</div>
 										</div>
 										<div class="form-group form-inline align-items-start">
 											<label for="gambar" class="col-md-2 form-label justify-content-start">Gambar</label>
 											<div class="col-md-10 p-0">
-												<input id="gambar" name="gambar" type="file" class="form-control input-full mb-2">
-												<figure class="figure">
-													<img src="{{ asset("t_admin") }}/img/producting/product1.jpeg" class="figure-img img-fluid rounded" alt="thumbnail" id="prevThumb">
-												</figure>
+												<input id="gambar" name="gambar" type="file" class="form-control input-full">
+												<img src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png" alt="avatar" class="img-fluid img-thumbnail mt-2" id="prevThumb" hidden style="max-width: 300px">
 											</div>
 										</div>
 										<div class="form-group form-inline">
@@ -56,20 +54,20 @@
 											</div>
 										</div>
 										<div class="form-group form-inline">
-												<label for="alamat" class="col-md-2 form-label justify-content-start">Alamat</label>
+												<label for="address" class="col-md-2 form-label justify-content-start">Alamat</label>
 												<div class="col-md-10 p-0">
-														<input id="alamat" name="alamat" type="text" class="form-control input-full" placeholder="masukkan alamat">
+														<input id="address" name="address" type="text" class="form-control input-full" placeholder="masukkan alamat">
 												</div>
 										</div>
 										<div class="form-group form-inline">
-											<label for="kordinat" class="col-md-2 form-label justify-content-start">Kordinat Lokasi</label>
+											<label for="coordinate" class="col-md-2 form-label justify-content-start">Kordinat Lokasi</label>
 											<div class="col-md-10 p-0">
-												<input id="kordinat" name="kordinat" type="text" class="form-control input-full" placeholder="masukkan kordinat lokasi">
+												<input id="coordinate" name="coordinate" type="text" class="form-control input-full" placeholder="masukkan kordinat lokasi">
 											</div>
 										</div>
 										<div class="form-group form-inline align-items-start">
-											<label for="deskripsi" class="col-md-2 form-label justify-content-start">Deskripsi</label>
-											<textarea class="form-control input-full col-md-10" name="deskripsi" id="deskripsi" rows="10" placeholder="masukkan deskripsi tempat"></textarea>
+											<label for="desc" class="col-md-2 form-label justify-content-start">Deskripsi</label>
+											<textarea class="form-control input-full col-md-10" name="desc" id="desc" rows="10" placeholder="masukkan deskripsi tempat"></textarea>
 										</div>
 										<div class="form-group form-inline align-items-start">
 											<label for="tag" class="col-md-2 form-label justify-content-start">Tag</label>
@@ -94,9 +92,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="page-inner mt--5">
-			
 	</div>
 @endsection
 
@@ -134,8 +129,9 @@
 	<!-- Validation -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js" integrity="sha512-6Uv+497AWTmj/6V14BsQioPrm3kgwmK9HYIyWP+vClykX52b0zrDGP7lajZoIY1nNlX4oQuh7zsGjmF7D0VZYA==" crossorigin="anonymous"></script>
-
+	<!-- Sweet Alert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<!-- My Script -->
-	<script src="{{ asset('t_admin/js/admin/tempat/tambah.js') }}"></script>
+	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
 	<script src="{{ asset('t_admin/js/admin/tag/index.js') }}"></script>
 @endsection
