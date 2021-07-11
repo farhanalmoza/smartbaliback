@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Data;
 use App\Http\Controllers\Controller;
 use App\Services\PlaceService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PlaceController extends Controller
 {
@@ -43,7 +44,19 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // variabel
+        $files = $request->file('files');
+        
+        $data = [
+            'title' => $request->input('title'),
+            'slug' => Str::slug($request->input('title'), '-'),
+            'desc' => $request->input('desc'),
+            'address' => $request->input('alamat'),
+            'location' => $request->input('koordinat'),
+            'type' => $request->input('tipe'),
+        ];
+        // dd($data['slug']);
+        return $this->place->add($data, $files);
     }
 
     /**

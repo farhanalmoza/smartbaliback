@@ -54,15 +54,15 @@
 											</div>
 										</div>
 										<div class="form-group form-inline">
-												<label for="address" class="col-md-2 form-label justify-content-start">Alamat</label>
-												<div class="col-md-10 p-0">
-														<input id="address" name="address" type="text" class="form-control input-full" placeholder="masukkan alamat">
-												</div>
+											<label for="alamat" class="col-md-2 form-label justify-content-start">Alamat</label>
+											<div class="col-md-10 p-0">
+												<input id="alamat" name="alamat" type="text" class="form-control input-full" placeholder="masukkan alamat">
+											</div>
 										</div>
 										<div class="form-group form-inline">
-											<label for="coordinate" class="col-md-2 form-label justify-content-start">Kordinat Lokasi</label>
+											<label for="koordinat" class="col-md-2 form-label justify-content-start">Kordinat Lokasi</label>
 											<div class="col-md-10 p-0">
-												<input id="coordinate" name="coordinate" type="text" class="form-control input-full" placeholder="masukkan kordinat lokasi">
+												<input id="koordinat" name="koordinat" type="text" class="form-control input-full" placeholder="masukkan kordinat lokasi">
 											</div>
 										</div>
 										<div class="form-group form-inline align-items-start">
@@ -84,7 +84,7 @@
 								</div>
 								<hr>
 								<div class="d-flex justify-content-end">
-										<button class="btn btn-primary" id="tambah">Tambah</button>
+									<button type="submit" class="btn btn-primary" id="addPlace">Tambah</button>
 								</div>
 							</form>
 						</div>
@@ -116,7 +116,7 @@
 					<hr>
 					<div class="d-flex justify-content-end">
 						<button type="button" class="btn btn-secondary btn-sm mr-2" data-dismiss="modal">Batal</button>
-						<button type="submit" class="btn btn-primary btn-sm" id="add">Tambah</button>
+						<button type="submit" class="btn btn-primary btn-sm" id="addTag">Tambah</button>
 					</div>
 				</form>
 			</div>

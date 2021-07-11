@@ -41,10 +41,10 @@ function addPlace() {
             title: {
                 required: true
             },
-            address: {
+            alamat: {
                 required: true
             },
-            coordinate: {
+            koordinat: {
                 required: true
             },
             desc: {
@@ -68,31 +68,33 @@ function addPlace() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPost = URL_DATA + "/add/tag"
+            const urlPost = URL_DATA + "/add/place"
+            const formData = new FormData()
             const data = {
-                nama_tag: $('#nama_tag').val(),
+                title: $('#title').val(),
+                tipe: $('#tipe').val(),
+                alamat: $('#alamat').val(),
+                koordinat: $('#koordinat').val(),
+                desc: $('#desc').val(),
             }
-            Functions.prototype.postRequest(postTag, urlPost, data)
+            const files = $("#gambar")[0].files
+            formData.append('title', data.title)
+            formData.append('tipe', data.tipe)
+            formData.append('alamat', data.alamat)
+            formData.append('koordinat', data.koordinat)
+            formData.append('desc', data.desc)
+            
+            for (let i = 0; i < files.length; i++) {
+                const element = files[i];
+                formData.append('files[]', element)
+            }
+            Functions.prototype.uploadFile(urlPost, formData, 'post', postPlace)
         }
     })
 
-    const postTag = {
+    const postPlace = {
         set successData(response) {
-			var content = {};
-
-            content.title = 'Success'
-            content.message = response.message;
-            content.icon = 'fa fa-check';
-
-			$.notify(content,{
-				type: 'success',
-				placement: {
-					from: 'top',
-					align: 'right'
-				},
-				time: 1000,
-				delay: 3000,
-			});
+            
             if(window.location.search != "") {
                 const urlParams = new URLSearchParams(window.location.search)
                 if(urlParams.get('redirect') != "") {
@@ -101,9 +103,13 @@ function addPlace() {
                     }, 1500);
                 }
             } else {
-                $('#formAddTag')[0].reset()
-                $('#addTagModal').modal('hide')
-                $('#nama_tag').removeClass('is-valid')
+                $('#formAddPlace')[0].reset()
+                $('#title').removeClass('is-valid')
+                $('#gambar').removeClass('is-valid')
+                $('#tipe').removeClass('is-valid')
+                $('#alamat').removeClass('is-valid')
+                $('#koordinat').removeClass('is-valid')
+                $('#desc').removeClass('is-valid')
             }
         },
         set errorData(err) {

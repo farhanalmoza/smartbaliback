@@ -38,5 +38,6 @@ Route::group(['prefix' => 'data'], function() {
     // add data
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tag', [TagController::class, 'store']);
+        Route::post('/place', [PlaceController::class, 'store']);
     });
 });
