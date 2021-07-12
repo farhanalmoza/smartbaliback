@@ -16,14 +16,19 @@ class PlaceController extends Controller
         $this->place = app()->make(PlaceService::class);   
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function tours()
     {
         return $this->place->getTours();
+    }
+
+    public function hotels()
+    {
+        return $this->place->getHotels();
+    }
+
+    public function worships()
+    {
+        return $this->place->getWorships();
     }
 
     /**

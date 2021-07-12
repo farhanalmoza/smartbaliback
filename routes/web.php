@@ -34,6 +34,8 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'data'], function() {
     // get all
     Route::get('/wisata', [PlaceController::class, 'tours']);
+    Route::get('/hotel', [PlaceController::class, 'hotels']);
+    Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
     Route::get('/tag', [TagController::class, 'index']);
     // add data
     Route::group(['prefix' => 'add'], function() {

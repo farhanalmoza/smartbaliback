@@ -15,6 +15,18 @@ class PlaceService
         return datatables()->of($results)->make(true);
     }
 
+    public function getHotels()
+    {
+        $results = Place::where('type', 'hotel')->get();
+        return datatables()->of($results)->make(true);
+    }
+
+    public function getWorships()
+    {
+        $results = Place::where('type', 'worship')->get();
+        return datatables()->of($results)->make(true);
+    }
+
     public function add($data, $files)
     {
         $optimizerChain = OptimizerChainFactory::create();

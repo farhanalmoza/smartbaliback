@@ -20,19 +20,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Daftar Hotel</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-sub">									
-                                Akan segera datang.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h4 class="page-title">Daftar Hotel</h4>
+            <div class="row" id="hotel-cards">
+                
             </div>
         </div>
     </div>
@@ -42,5 +32,6 @@
 @endsection
 
 @section('js')
-    
+    <!-- My Script -->
+    <script src="{{ asset('t_admin/js/admin/hotel/index.js') }}"></script>
 @endsection
