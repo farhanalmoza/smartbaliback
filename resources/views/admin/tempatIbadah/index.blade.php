@@ -20,19 +20,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Daftar Tempat Ibadah</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-sub">									
-                                Akan segera datang.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h4 class="page-title">Daftar Tempat Ibadah</h4>
+            <div class="row" id="worship-cards">
+                
             </div>
         </div>
     </div>
@@ -42,5 +32,6 @@
 @endsection
 
 @section('js')
-    
+    <!-- My Script -->
+    <script src="{{ asset('t_admin/js/admin/tempatIbadah/index.js') }}"></script>
 @endsection
