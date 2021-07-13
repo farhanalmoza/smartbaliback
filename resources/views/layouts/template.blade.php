@@ -78,6 +78,11 @@
 	<!-- jQuery UI -->
 	<script src="{{ asset('t_admin') }}/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="{{ asset('t_admin') }}/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<!-- Validation -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js" integrity="sha512-6Uv+497AWTmj/6V14BsQioPrm3kgwmK9HYIyWP+vClykX52b0zrDGP7lajZoIY1nNlX4oQuh7zsGjmF7D0VZYA==" crossorigin="anonymous"></script>
+	<!-- Sweet Alert -->
+	<script src="{{ asset('t_admin') }}/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 	<!-- jQuery Scrollbar -->
 	<script src="{{ asset('t_admin') }}/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
@@ -87,7 +92,7 @@
 	<!-- Bootstrap Notify -->
 	<script src="{{ asset('t_admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
-    {{-- My script --}}
+    <!-- My script -->
   	<script src="{{asset('t_admin/js/functions.js')}}"></script>
   	@yield('js')
 	<script>

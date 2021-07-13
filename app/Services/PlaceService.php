@@ -53,4 +53,19 @@ class PlaceService
             return response(['message' => 'Gagal menambahkan tempat!'], 500);
         }
     }
+
+    public function delete($id)
+    {
+        $result = Place::where('id', $id);
+        if(!$result) return response(['message' => 'Opps!. Ada kesahalan'], 406);
+        
+        // delete picture
+        $path = "public/pictures/thumbnail/";
+        $results = Place::where('id', $id)->get();
+        foreach ($results as $res) {
+            Storage::disk('local')->delete($path.$res->picture);
+        }
+        $result->delete();
+        return response(['message' => 'Tempat berhasil dihapus!']);
+    }
 }

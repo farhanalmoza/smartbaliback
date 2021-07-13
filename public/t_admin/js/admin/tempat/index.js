@@ -1,7 +1,168 @@
 $(document).ready(function () {
+    // get all places
+    getTours.loadData = "/wisata"
+    getHotels.loadData = "/hotel"
+    getWorships.loadData = "/tempat-ibadah"
     // CRUD
     addPlace()
+    deletePlace()
 })
+
+const getTours = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getTours, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('tour-cards');
+        const tours = response.data;
+        if (container) {
+            container.innerHTML = '';
+    
+            for (i = tours.length-1; i >= 0; i--) {
+                container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="${ASSET}/img/blogpost.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="info-post ml-2">
+                                <p class="username">${tours[i].title}</p>
+                                <p class="date text-muted">${tours[i].address}</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <p class="card-text">${tours[i].desc}</p>
+                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+const getHotels = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getHotels, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('hotel-cards');
+        const hotels = response.data;
+        if (container) {
+            container.innerHTML = '';
+    
+            for (i = hotels.length-1; i >= 0; i--) {
+                container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="${ASSET}/img/blogpost.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="info-post ml-2">
+                                <p class="username">${hotels[i].title}</p>
+                                <p class="date text-muted">${hotels[i].address}</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <p class="card-text">${hotels[i].desc}</p>
+                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${hotels[i].id}"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+const getWorships = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getWorships, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('worship-cards');
+        const worships = response.data;
+        if (container) {
+            container.innerHTML = '';
+    
+            for (i = worships.length-1; i >= 0; i--) {
+                container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="${ASSET}/img/blogpost.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="info-post ml-2">
+                                <p class="username">${worships[i].title}</p>
+                                <p class="date text-muted">${worships[i].address}</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <p class="card-text">${worships[i].desc}</p>
+                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${worships[i].id}"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
 
 function addPlace() {
     $("#gambar").on("change", function (e) {
@@ -130,4 +291,35 @@ function addPlace() {
 			});
         }
     }
+}
+
+function deletePlace() {
+    $('.place').on('click', 'div div div div .delete', function(e) {
+        const id = $(this).data('id')
+        const urlDelete = URL_DATA + "/delete/place/" + id
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            buttons:{
+                confirm: {
+                    text : 'Yes, delete it!',
+                    className : 'btn btn-success'
+                },
+                cancel: {
+                    visible: true,
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then((Delete) => {
+            if (Delete) {
+                Functions.prototype.deleteData(urlDelete);
+            } else {
+                swal.close();
+            }
+            getTours.loadData = "/wisata"
+            getHotels.loadData = "/hotel"
+            getWorships.loadData = "/tempat-ibadah"
+        })
+    })
 }

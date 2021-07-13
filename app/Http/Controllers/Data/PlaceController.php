@@ -106,6 +106,6 @@ class PlaceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->place->delete($id);
     }
 }

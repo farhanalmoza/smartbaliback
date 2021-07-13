@@ -42,4 +42,8 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/tag', [TagController::class, 'store']);
         Route::post('/place', [PlaceController::class, 'store']);
     });
+    // delete data
+    Route::group(['prefix' => 'delete'], function() {
+        Route::delete('/place/{id}', [PlaceController::class, 'destroy']);
+    });
 });

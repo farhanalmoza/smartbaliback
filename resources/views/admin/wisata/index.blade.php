@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <h4 class="page-title">Daftar Wisata</h4>
-            <div class="row" id="tour-cards">
+            <div class="row place" id="tour-cards">
                 
             </div>
         </div>
@@ -33,5 +33,5 @@
 
 @section('js')
     <!-- My Script -->
-    <script src="{{ asset('t_admin/js/admin/wisata/index.js') }}"></script>
+    <script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
 @endsection
