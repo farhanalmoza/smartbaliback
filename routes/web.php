@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\TagController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,3 +48,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::delete('/place/{id}', [PlaceController::class, 'destroy']);
     });
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
