@@ -17,7 +17,7 @@ class Functions
             }
         });
     }
-    uploadFile(url = null, data = null, method = null, process) {
+    uploadFile(url = null, data = null, method = null, process = null) {
         $.ajax({
             type: method,
             url: url,

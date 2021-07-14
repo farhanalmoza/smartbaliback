@@ -1,0 +1,16 @@
+#picture {
+    display: none;
+}
+
+#picture + label {
+    background-color: #00002c67;
+    padding: 15px 15px;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+    color: #fff !important;
+    font-weight: bold;
+}

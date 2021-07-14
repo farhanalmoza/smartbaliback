@@ -19,6 +19,9 @@
 		});
 	</script>
 
+	<!-- Main styles for this application-->
+    <link href="{{ asset('t_admin/css/style.css') }}" rel="stylesheet">
+
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{ asset('t_admin') }}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ asset('t_admin') }}/css/atlantis.min.css">
@@ -83,6 +86,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js" integrity="sha512-6Uv+497AWTmj/6V14BsQioPrm3kgwmK9HYIyWP+vClykX52b0zrDGP7lajZoIY1nNlX4oQuh7zsGjmF7D0VZYA==" crossorigin="anonymous"></script>
 	<!-- Sweet Alert -->
 	<script src="{{ asset('t_admin') }}/js/plugin/sweetalert/sweetalert.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 	<!-- jQuery Scrollbar -->
 	<script src="{{ asset('t_admin') }}/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>

@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Data\PlaceController;
+use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,13 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
     // delete data
     Route::group(['prefix' => 'delete'], function() {
         Route::delete('/place/{id}', [PlaceController::class, 'destroy']);
+    });
+
+    // settings
+    Route::group(['prefix' => 'pengaturan'], function() {
+        Route::group(['prefix' => 'update'], function() {
+            Route::post('/ganti-foto/{email}', [ProfileController::class, 'updateFoto']);
+        });
     });
 });
 

@@ -26,10 +26,18 @@
                         <div class="card-header">
                             <div class="card-title">Edit Profil</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
                         <div class="card-body">
-                            <div class="card-sub">									
-                                Akan segera datang.
-                            </div>
+                            <form action="#" class="position-relative" enctype="multipart/form-data">
+                                <img src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png" alt="avatar" class="img-fluid img-thumbnail" id="prevPict">
+                                <input type="file" name="picture" id="picture">
+                                <label for="picture" class="picture">Ganti foto</label>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -42,5 +50,9 @@
 @endsection
 
 @section('js')
-    
+    <!-- My Script -->
+    <script>
+        const email = '{{ auth()->user()->email }}'
+    </script>
+    <script src="{{ asset('t_admin/js/settings/edit-profil.js') }}"></script>
 @endsection
