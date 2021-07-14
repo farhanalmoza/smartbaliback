@@ -47,7 +47,7 @@
               </label>
             </div>
             <div class="row">
-              <button type="submit" class="btn btn-default mx-auto">Sign in</button>
+              <button type="submit" class="btn btn-primary mx-auto">Sign in</button>
             </div>
             <div class="row mt-3">
               <h5 class="col-sm-12">Don't have an account? <a href="{{ route('register') }}" class="text-primary"> Signup now</a></h5>
