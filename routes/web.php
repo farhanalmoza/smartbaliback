@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\TagController;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +33,7 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 // data
-Route::group(['prefix' => 'data'], function() {
+Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], function() {
     // get all
     Route::get('/wisata', [PlaceController::class, 'tours']);
     Route::get('/hotel', [PlaceController::class, 'hotels']);
@@ -49,6 +50,6 @@ Route::group(['prefix' => 'data'], function() {
     });
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
