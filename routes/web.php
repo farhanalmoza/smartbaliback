@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
     Route::get('/tambah-tempat', [AdminController::class, 'tambahTempat']);
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
+    Route::get('/edit-profil', [AdminController::class, 'editProfil']);
+    Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
 });
 
 // data

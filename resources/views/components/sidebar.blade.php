@@ -79,6 +79,24 @@
                         <p>Daftar Pengguna</p>
                     </a>
                 </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Pengaturan</h4>
+                </li>
+                <li class="nav-item {{ 'admin/edit-profil' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/admin/edit-profil') }}">
+                        <i class="fas fa-user-cog"></i>
+                        <p>Edit Profil</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'admin/ganti-password' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/admin/ganti-password') }}">
+                        <i class="fas fa-user-lock"></i>
+                        <p>Ganti Password</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

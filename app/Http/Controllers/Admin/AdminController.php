@@ -40,4 +40,13 @@ class AdminController extends Controller
     {
         return view('admin.daftarPengguna.index');
     }
+    
+    public function editProfil()
+    {
+        return view('admin.editProfil.index');
+    }
+    public function gantiPassword()
+    {
+        return view('admin.gantiPassword.index');
+    }
 }
