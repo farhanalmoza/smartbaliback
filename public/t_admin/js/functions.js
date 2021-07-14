@@ -10,10 +10,35 @@ class Functions
             beforeSend: function() {
             },
             success: function (response) {
-                toastr.success(response.message, "success")
+                var content = {}
+                content.title = 'Success'
+                content.message = response.message
+                content.icon = 'fa fa-check'
+                $.notify(content,{
+                    type: 'success',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    time: 1000,
+                    delay: 3000,
+                })
             },
             error: function(err) {
-                toastr.error(err.responseJSON.message, "error")
+                var content = {}
+                content.title = 'Error'
+                console.log(err.responseJSON)
+                content.message = err.responseJSON.message
+                content.icon = 'fa fa-times'
+                $.notify(content,{
+                    type: 'danger',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    time: 1000,
+                    delay: 10000,
+                })
             }
         });
     }

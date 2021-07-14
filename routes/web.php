@@ -55,7 +55,12 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
 
     // settings
     Route::group(['prefix' => 'pengaturan'], function() {
+        // get detail
+        Route::get('/profile/{email}', [ProfileController::class, 'show']);
+
+        // update
         Route::group(['prefix' => 'update'], function() {
+            Route::put('/edit-profile/{email}', [ProfileController::class, 'update']);
             Route::post('/ganti-foto/{email}', [ProfileController::class, 'updateFoto']);
         });
     });

@@ -9,6 +9,22 @@ use Intervention\Image\Facades\Image;
 
 class SettingService
 {
+    public function getProfile($email)
+    {
+        $profile_id = Profile::where('email', $email)->first()->id;
+        $profile = Profile::find($profile_id);
+        if(!$profile) return response(['message' => 'Oops, something wrong!'], 406);
+        return response($profile);
+    }
+
+    public function update($data, $email)
+    {
+        $result = Profile::where('email', $email);
+        if(!$result) return response(['message' => 'Profile gagal diubah!'], 406);
+        $result->update($data);
+        return response(['message' => 'Profile berhasil diubah!']);
+    }
+
     public function updateFoto($file, $email)
     {
         $optimizerChain = OptimizerChainFactory::create();
@@ -22,15 +38,15 @@ class SettingService
         $profile = Profile::where('email', $email);
         if($profile) {
             foreach ($profile->get() as $pro) {
-                Storage::disk('local')->delete($pro->picture);
+                Storage::disk('local')->delete($path.$pro->picture);
             }
 
             $profile->update([
-                'picture' => $path . $filename
+                'picture' => $filename
             ]);
         } else {
             $create = Profile::create([
-                'picture' => $path . $filename
+                'picture' => $filename
             ]);
         }
         return response(['message' => 'Foto berhasil diupdate']);

@@ -52,9 +52,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($email)
     {
-        //
+        return $this->setting->getProfile($email);
     }
 
     /**
@@ -75,9 +75,14 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $email)
     {
-        //
+        $data = [
+            'name'    => $request->input('nama'),
+            'phone'   => $request->input('phone'),
+            'address' => $request->input('alamat'),
+        ];
+        return $this->setting->update($data, $email);
     }
 
     public function updateFoto(Request $request, $email)

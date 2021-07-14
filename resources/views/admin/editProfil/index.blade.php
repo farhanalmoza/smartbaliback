@@ -41,6 +41,55 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="updateProfile" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="basic-url">Email</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text email" id="basic-addon3" style="border-radius: .25rem;"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nama">Nama</label>
+                                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone">No. HP</label>
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Masukkan nomor handphone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="alamat">Alamat</label>
+                                            <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group d-flex justify-content-end">
+                                            <button class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -53,6 +102,9 @@
     <!-- My Script -->
     <script>
         const email = '{{ auth()->user()->email }}'
+        const PICT = '{{ asset("storage/pictures/") }}'
     </script>
     <script src="{{ asset('t_admin/js/settings/edit-profil.js') }}"></script>
+    <!-- Mask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
 @endsection
