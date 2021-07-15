@@ -23,7 +23,7 @@ const getTours = {
                 container.innerHTML += `
                 <div class="col-md-4">
                     <div class="card card-post card-round">
-                        <img class="card-img-top" src="${ASSET}/img/blogpost.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + tours[i].thumbnail}" alt="Card image cap">
                         <div class="card-body">
                             <div class="info-post ml-2">
                                 <p class="username">${tours[i].title}</p>
@@ -75,7 +75,7 @@ const getHotels = {
                 container.innerHTML += `
                 <div class="col-md-4">
                     <div class="card card-post card-round">
-                        <img class="card-img-top" src="${ASSET}/img/blogpost.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + hotels[i].thumbnail}" alt="Card image cap">
                         <div class="card-body">
                             <div class="info-post ml-2">
                                 <p class="username">${hotels[i].title}</p>
@@ -127,7 +127,7 @@ const getWorships = {
                 container.innerHTML += `
                 <div class="col-md-4">
                     <div class="card card-post card-round">
-                        <img class="card-img-top" src="${ASSET}/img/blogpost.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + worships[i].thumbnail}" alt="Card image cap">
                         <div class="card-body">
                             <div class="info-post ml-2">
                                 <p class="username">${worships[i].title}</p>
