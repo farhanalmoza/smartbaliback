@@ -255,7 +255,7 @@ class Functions
         });
     }
 
-    updateData(url, data, method, process) {
+    updateData(url, data, method) {
         $.ajax({
             url: url,
             method: method,
@@ -266,10 +266,38 @@ class Functions
             beforeSend: function() {
             },
             success: function(response) {
-                process.successData = response
+                var content = {};
+
+                content.title = 'Success';
+                content.message = response.message;
+                content.icon = 'fa fa-check';
+
+                $.notify(content,{
+                    type: 'success',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    time: 1000,
+                    delay: 5000,
+                });
             },
             error: function(err) {
-                process.errorData = err
+                var content = {};
+
+                content.title = 'Error';
+                content.message = err.responseJSON.message;
+                content.icon = 'fa fa-times';
+
+                $.notify(content,{
+                    type: 'danger',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    time: 1000,
+                    delay: 10000,
+                });
             }
         })
     }

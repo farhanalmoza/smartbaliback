@@ -61,6 +61,7 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
         // update
         Route::group(['prefix' => 'update'], function() {
             Route::put('/edit-profile/{email}', [ProfileController::class, 'update']);
+            Route::put('/ganti-password', [ProfileController::class, 'gantiPass']);
             Route::post('/ganti-foto/{email}', [ProfileController::class, 'updateFoto']);
         });
     });

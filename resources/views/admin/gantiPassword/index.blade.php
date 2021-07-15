@@ -27,9 +27,37 @@
                             <div class="card-title">Ganti Password</div>
                         </div>
                         <div class="card-body">
-                            <div class="card-sub">									
-                                Akan segera datang.
-                            </div>
+                            <form id="gantiPass" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="password_lama">Password Lama</label>
+                                            <input type="password" class="form-control" id="password_lama" name="password_lama">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password_baru">Password Baru</label>
+                                            <input type="password" type="text" class="form-control" id="password_baru" name="password_baru" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password_konfirm">Konfirmasi Password</label>
+                                            <input type="password" type="text" class="form-control" id="password_konfirm" name="password_konfirm">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -42,5 +70,6 @@
 @endsection
 
 @section('js')
-    
+    <!-- My Script -->
+    <script src="{{ asset('t_admin/js/settings/edit-profil.js') }}"></script>
 @endsection

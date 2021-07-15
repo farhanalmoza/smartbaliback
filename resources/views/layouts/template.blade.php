@@ -87,6 +87,8 @@
 	<!-- Sweet Alert -->
 	<script src="{{ asset('t_admin') }}/js/plugin/sweetalert/sweetalert.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<!-- Mask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
 
 	<!-- jQuery Scrollbar -->
 	<script src="{{ asset('t_admin') }}/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
@@ -102,6 +104,8 @@
 	<script>
 		const URL_DATA = '{{ url('data') }}'
 		const ASSET = '{{ asset("t_admin") }}'
+        const email = '{{ auth()->user()->email }}'
+		const PICT = '{{ asset("storage/pictures/") }}'
 	</script>
 </body>
 </html>

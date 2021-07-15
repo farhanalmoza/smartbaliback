@@ -2,6 +2,7 @@ $(document).ready(function () {
     getDetail.loadData = email
     updatePicture()
     updateProfile()
+    gantiPass()
 });
 
 const getDetail = {
@@ -110,6 +111,57 @@ function updateProfile() {
             $('#nama').removeClass('is-valid')
             $('#phone').removeClass('is-valid')
             $('#alamat').removeClass('is-valid')
+        }
+    })
+}
+
+function gantiPass() {
+    $('#gantiPass').validate({
+        rules: {
+            password_lama: {
+                required: true,
+                minlength: 8
+            },
+            password_baru: {
+                required: true,
+                minlength: 8
+            },
+            password_konfirm: {
+                required: true,
+                equalTo: "#password_baru"
+            }
+        },
+        errorClass: "is-invalid",
+        validClass: "is-valid",
+        errorElement: "small",
+        errorPlacement: function errorPlacement(error, element) {
+            error.addClass('invalid-feedback');
+        
+            if (element.prop('type') === 'checkbox') {
+              error.insertAfter(element.parent('label'));
+            } else {
+              error.insertAfter(element);
+            }
+        },
+        // eslint-disable-next-line object-shorthand
+        highlight: function highlight(element) {
+            $(element).addClass('is-invalid').removeClass('is-valid');
+        },
+        // eslint-disable-next-line object-shorthand
+        unhighlight: function unhighlight(element) {
+            $(element).addClass('is-valid').removeClass('is-invalid');
+        },
+        submitHandler: function(form, e) {
+            const url = URL_DATA + "/pengaturan/update/ganti-password"
+            const data = {
+                old_pass: $('#password_lama').val(),
+                new_pass: $('#password_baru').val(),
+                confirm_pass: $('#password_konfirm').val(),
+            }
+            Functions.prototype.updateData(url, data, 'put')
+            $('#password_lama').removeClass('is-valid')
+            $('#password_baru').removeClass('is-valid')
+            $('#password_konfirm').removeClass('is-valid')
         }
     })
 }

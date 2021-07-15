@@ -99,12 +99,5 @@
 @endsection
 
 @section('js')
-    <!-- My Script -->
-    <script>
-        const email = '{{ auth()->user()->email }}'
-        const PICT = '{{ asset("storage/pictures/") }}'
-    </script>
     <script src="{{ asset('t_admin/js/settings/edit-profil.js') }}"></script>
-    <!-- Mask -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
 @endsection

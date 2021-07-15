@@ -2,6 +2,8 @@
 namespace App\Services;
 
 use App\Models\Profile;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Illuminate\Support\Str;
@@ -50,5 +52,22 @@ class SettingService
             ]);
         }
         return response(['message' => 'Foto berhasil diupdate']);
+    }
+
+    public function gantiPass($data)
+    {
+        $idUser = auth()->user()->id;
+        $user = User::find($idUser);
+        if(!$user) return response(['message' => 'user tidak ditemukan'], 404);
+        if($data['new_pass'] != $data['confirm_pass']) return response(['message' => 'Konfirmasi password tidak sama'], 422);
+        if(Hash::check($data['old_pass'], $user->password)) {
+            $update = $user->update([
+                'password' => Hash::make($data['new_pass'])
+            ]);
+            if(!$update) return response(['message' => 'terjadi kesalahan'], 500);
+            return response(['message' => 'Password berhasil dirubah']); 
+        } else {
+            return response(['message' => 'Password Lama tidak sesuai'], 422);
+        }
     }
 }

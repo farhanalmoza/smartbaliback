@@ -94,6 +94,16 @@ class ProfileController extends Controller
         return $this->setting->updateFoto($file, $email);
     }
 
+    public function gantiPass(Request $request)
+    {
+        $data = [
+            'old_pass' => $request->input('old_pass'),
+            'new_pass' => $request->input('new_pass'),
+            'confirm_pass' => $request->input('confirm_pass'),
+        ];
+        return $this->setting->gantiPass($data);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
