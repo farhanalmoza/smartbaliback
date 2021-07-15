@@ -106,6 +106,42 @@
 		const ASSET = '{{ asset("t_admin") }}'
         const email = '{{ auth()->user()->email }}'
 		const PICT = '{{ asset("storage/pictures/") }}'
+
+		$(document).ready(function () {
+			getPict.loadData = email
+		})
+
+		const getPict = {
+			set loadData(data) {
+				const URL = URL_DATA + "/pengaturan/profile/" + data
+				Functions.prototype.requestDetail(getPict, URL)
+			},
+			set successData(response) {
+				response.picture ? $('#ava-side').attr('src', PICT + '/profile/' + response.picture) : $('#ava-side').attr('src', 'https://demo.getstisla.com/assets/img/avatar/avatar-1.png')
+				response.picture ? $('.ava-top').attr('src', PICT + '/profile/' + response.picture) : $('.ava-top').attr('src', 'https://demo.getstisla.com/assets/img/avatar/avatar-1.png')
+
+				// template
+				// const profession = response.profession ? response.profession : ''
+				// $('#name-sidebar').text(response.name).append('<span class="user-level">'+profession+'</span>')
+				// $('#name-topbar').text(response.name)
+				// $('#email-topbar').text(response.email)
+			},
+			set errorData(err) {
+				var content = {};
+				content.title = 'Error';
+				content.message = err.responseJSON.message;
+				content.icon = 'fa fa-times';
+				$.notify(content,{
+					type: 'danger',
+					placement: {
+						from: 'top',
+						align: 'right'
+					},
+					time: 1000,
+					delay: 10000,
+				})
+			}
+		}
 	</script>
 </body>
 </html>
