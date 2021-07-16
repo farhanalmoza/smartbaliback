@@ -27,12 +27,20 @@ Route::get('/', function () {
 // views
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    // daftar tempat
     Route::get('/wisata', [AdminController::class, 'wisata']);
     Route::get('/hotel', [AdminController::class, 'hotel']);
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
+
+    // CRUD Tempat
     Route::get('/tambah-tempat', [AdminController::class, 'tambahTempat']);
     Route::get('/tempat/{slug}/{id}', [AdminController::class, 'detailTempat']);
+    Route::get('/edit-tempat/{id}', [AdminController::class, 'editTempat']);
+
+    // pengguna
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
+
+    // pengaturan
     Route::get('/edit-profil', [AdminController::class, 'editProfil']);
     Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
 });
@@ -53,6 +61,11 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
 
     // get detail
     Route::get('/place/{id}', [PlaceController::class, 'show']);
+
+    // update
+    Route::group(['prefix' => 'update'], function() {
+        Route::post('/place/{id}', [PlaceController::class, 'update']);
+    });
 
     // delete data
     Route::group(['prefix' => 'delete'], function() {

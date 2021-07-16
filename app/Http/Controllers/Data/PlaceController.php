@@ -53,14 +53,14 @@ class PlaceController extends Controller
         $files = $request->file('files');
         
         $data = [
-            'title' => $request->input('title'),
-            'slug' => Str::slug($request->input('title'), '-'),
-            'desc' => $request->input('desc'),
-            'address' => $request->input('alamat'),
-            'location' => $request->input('koordinat'),
-            'type' => $request->input('tipe'),
+            'title'     => $request->input('title'),
+            'slug'      => Str::slug($request->input('title'), '-'),
+            'desc'      => $request->input('desc'),
+            'address'   => $request->input('alamat'),
+            'location'  => $request->input('koordinat'),
+            'type'      => $request->input('tipe'),
         ];
-        // dd($data['slug']);
+        
         return $this->place->add($data, $files);
     }
 
@@ -95,7 +95,20 @@ class PlaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // variabel
+        $files = $request->file('files');
+        $data = [
+            'title'     => $request->input('title'),
+            'slug'      => Str::slug($request->input('title'), '-'),
+            'desc'      => $request->input('desc'),
+            'address'   => $request->input('alamat'),
+            'location'  => $request->input('koordinat'),
+            'type'      => $request->input('tipe'),
+        ];
+        if (!$files) {
+            $data['thumbnail'] = $request->input('files');
+        }
+        return $this->place->update($data, $files, $id);
     }
 
     /**

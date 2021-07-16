@@ -43,6 +43,12 @@ class AdminController extends Controller
         return view('admin.tempat.detail', $data);
     }
 
+    public function editTempat($id)
+    {
+        $data['id'] = $id;
+        return view('admin.tempat.edit', $data);
+    }
+
     public function daftarPengguna()
     {
         return view('admin.daftarPengguna.index');
@@ -52,6 +58,7 @@ class AdminController extends Controller
     {
         return view('admin.editProfil.index');
     }
+
     public function gantiPassword()
     {
         return view('admin.gantiPassword.index');

@@ -7,6 +7,7 @@ $(document).ready(function () {
     addPlace()
     deletePlace()
     getDetail.loadData = id
+    updatePortfolio()
 })
 
 const getTours = {
@@ -34,8 +35,10 @@ const getTours = {
                             <p class="card-text">${tours[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
-                            <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
+                                <a href="${BASE_URL}/admin/edit-tempat/${tours[i].id}">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
+                                </a>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -84,9 +87,11 @@ const getHotels = {
                             </div>
                             <div class="separator-solid"></div>
                             <p class="card-text">${hotels[i].desc.slice(0,100)} ...</p>
-                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
+                                <a href="${BASE_URL}/admin/edit-tempat/${hotels[i].id}">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
+                                </a>
                                 <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${hotels[i].id}"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
@@ -136,10 +141,12 @@ const getWorships = {
                             </div>
                             <div class="separator-solid"></div>
                             <p class="card-text">${worships[i].desc.slice(0,100)} ...</p>
-                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
-                            <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${worships[i].id}"><i class="fa fa-trash"></i></button>
+                                <a href="${BASE_URL}/admin/edit-tempat/${worships[i].id}">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
+                                </a>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${worships[i].id}"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -191,7 +198,6 @@ function addPlace() {
                     } else {
                         $('#prevThumb').attr('hidden', true)
                         $("#gambar").val(null)
-                        console.log($("#gambar").val())
                     }
                 })
             }, 100);
@@ -201,6 +207,9 @@ function addPlace() {
     $('#formAddPlace').validate({
         rules: {
             title: {
+                required: true
+            },
+            gambar: {
                 required: true
             },
             alamat: {
@@ -300,13 +309,104 @@ const getDetail = {
         Functions.prototype.requestDetail(getDetail, urlDetail)
     },
     set successData(response) {
+        // for preview detail
         $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.thumbnail)
         $('#title').text(response.title)
         $('#address').text(response.address)
         $('#desc').text(response.desc)
+
+        // for update
+        $('#id').val(response.id)
+        $('#title').val(response.title)
+        $('#prevThumb').attr('src', PICT + '/thumbnail/' + response.thumbnail)
+        $('#old_thumb').val(response.thumbnail)
+        $('#tipe option[value=' + response.type + ']').prop('selected', true)
+        $('#alamat').val(response.address)
+        $('#koordinat').val(response.location)
     },
     set errorData(err) {
         console.log(err);
+    }
+}
+
+function updatePortfolio() {
+    $("#gambar").on("change", function (e) {
+        e.preventDefault();
+
+        if (Functions.prototype.validateFile($(this))) {
+            const file = $(this)[0].files;
+            Functions.prototype.prevImage(file[0], $("#prevThumb"));
+        }
+    });
+    $('#formEditPlace').validate({
+        rules: {
+            title: {
+                required: true
+            },
+            alamat: {
+                required: true
+            },
+            koordinat: {
+                required: true
+            },
+            desc: {
+                required: true
+            },
+        },
+        errorClass: "is-invalid",
+        validClass: "is-valid",
+        errorElement: "small",
+        errorPlacement: function errorPlacement(error, element) {
+            error.addClass('invalid-feedback');
+            error.insertAfter(element);
+        },
+        // eslint-disable-next-line object-shorthand
+        highlight: function highlight(element) {
+            $(element).addClass('is-invalid').removeClass('is-valid');
+        },
+        // eslint-disable-next-line object-shorthand
+        unhighlight: function unhighlight(element) {
+            $(element).addClass('is-valid').removeClass('is-invalid');
+        },
+        submitHandler: function(form, e) {
+            e.preventDefault()
+            const urlPut = URL_DATA + "/update/place/" + $('#id').val()
+            const formData = new FormData()
+            const data = {
+                title:      $('#title').val(),
+                tipe:       $('#tipe').val(),
+                alamat:     $('#alamat').val(),
+                koordinat:  $('#koordinat').val(),
+                desc:       $('#desc').val(),
+            }
+            const files = $("#gambar")[0].files
+            formData.append('title', data.title)
+            formData.append('tipe', data.tipe)
+            formData.append('alamat', data.alamat)
+            formData.append('koordinat', data.koordinat)
+            formData.append('desc', data.desc)
+
+            if (files.length > 0) {
+                for (let i = 0; i < files.length; i++) {
+                    const element = files[i];
+                    formData.append('files[]', element)
+                }
+            } else {
+                formData.append('files', $('#old_pict').val())
+            }
+            
+            Functions.prototype.uploadFile(urlPut, formData, 'post', putDataPlace)
+        }
+    })
+    const putDataPlace = {
+        set successData(response) {
+            $('#title').removeClass('is-valid')
+            $('#gambar').removeClass('is-valid')
+            $('#tipe').removeClass('is-valid')
+            $('#alamat').removeClass('is-valid')
+            $('#koordinat').removeClass('is-valid')
+            $('#desc').removeClass('is-valid')
+        },
     }
 }
 

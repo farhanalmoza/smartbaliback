@@ -61,6 +61,40 @@ class PlaceService
         return response($result);
     }
 
+    public function update($data, $files, $id)
+    {
+        if ($files) {
+            $path = "public/pictures/thumbnail/";
+
+            // delete old picture
+            $places = Place::where('id', $id)->get();
+            foreach ($places as $place) {
+                Storage::disk('local')->delete($path.$place->thumbnail);
+            }
+            
+            $optimizerChain = OptimizerChainFactory::create();
+            $pathOfFile = [];
+            foreach ($files as $file) {
+                $filename = Str::random(20).'.'.$file->getClientOriginalExtension();
+                $img = Image::make($file->getRealPath());
+                $img->encode('jpg', 60);
+                Storage::disk('local')->put($path . $filename, $img, 'public');
+                $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix().$path.$filename;
+                $optimizerChain->optimize($storagePath);
+                array_push($pathOfFile, $filename);
+            }
+
+            foreach ($pathOfFile as $val) {
+                $data["thumbnail"] = $val;
+            }
+        }
+
+        $result = Place::find($id);
+        if(!$result) return response(['message' => 'Opps, Terjadi kesalahan!'], 406);
+        $result->update($data);
+        return response(['message' => 'Tempat berhasil diubah!']);
+    }
+
     public function delete($id)
     {
         $result = Place::where('id', $id);
