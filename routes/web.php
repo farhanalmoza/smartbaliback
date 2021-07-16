@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/hotel', [AdminController::class, 'hotel']);
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
     Route::get('/tambah-tempat', [AdminController::class, 'tambahTempat']);
+    Route::get('/tempat/{slug}/{id}', [AdminController::class, 'detailTempat']);
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
     Route::get('/edit-profil', [AdminController::class, 'editProfil']);
     Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
@@ -43,11 +44,16 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
     Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
     Route::get('/tag', [TagController::class, 'index']);
+
     // add data
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tag', [TagController::class, 'store']);
         Route::post('/place', [PlaceController::class, 'store']);
     });
+
+    // get detail
+    Route::get('/place/{id}', [PlaceController::class, 'show']);
+
     // delete data
     Route::group(['prefix' => 'delete'], function() {
         Route::delete('/place/{id}', [PlaceController::class, 'destroy']);

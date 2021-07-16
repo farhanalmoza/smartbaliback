@@ -54,6 +54,13 @@ class PlaceService
         }
     }
 
+    public function get($id)
+    {
+        $result = Place::find($id);
+        if(!$result) return response(['message' => 'Oops, terjadi kesalahan!'], 406);
+        return response($result);
+    }
+
     public function delete($id)
     {
         $result = Place::where('id', $id);

@@ -6,6 +6,7 @@ $(document).ready(function () {
     // CRUD
     addPlace()
     deletePlace()
+    getDetail.loadData = id
 })
 
 const getTours = {
@@ -30,8 +31,8 @@ const getTours = {
                                 <p class="date text-muted">${tours[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${tours[i].desc}</p>
-                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <p class="card-text">${tours[i].desc.slice(0,100)} ...</p>
+                            <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
                             <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
@@ -82,7 +83,7 @@ const getHotels = {
                                 <p class="date text-muted">${hotels[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${hotels[i].desc}</p>
+                            <p class="card-text">${hotels[i].desc.slice(0,100)} ...</p>
                             <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
@@ -134,7 +135,7 @@ const getWorships = {
                                 <p class="date text-muted">${worships[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${worships[i].desc}</p>
+                            <p class="card-text">${worships[i].desc.slice(0,100)} ...</p>
                             <a href="#" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-icon btn-link btn-primary update"><i class="fa fa-edit"></i></button>
@@ -290,6 +291,22 @@ function addPlace() {
                 delay: 10000,
 			});
         }
+    }
+}
+
+const getDetail = {
+    set loadData(data) {
+        const urlDetail = URL_DATA + "/place/" + data
+        Functions.prototype.requestDetail(getDetail, urlDetail)
+    },
+    set successData(response) {
+        $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.thumbnail)
+        $('#title').text(response.title)
+        $('#address').text(response.address)
+        $('#desc').text(response.desc)
+    },
+    set errorData(err) {
+        console.log(err);
     }
 }
 

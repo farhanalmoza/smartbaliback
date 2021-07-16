@@ -72,7 +72,7 @@ class PlaceController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->place->get($id);
     }
 
     /**

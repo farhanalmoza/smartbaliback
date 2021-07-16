@@ -33,7 +33,14 @@ class AdminController extends Controller
 
     public function tambahTempat()
     {
-        return view('admin.tambahTempat.index');
+        return view('admin.tempat.tambah');
+    }
+
+    public function detailTempat($slug, $id)
+    {
+        $data['slug'] = $slug;
+        $data['id'] = $id;
+        return view('admin.tempat.detail', $data);
     }
 
     public function daftarPengguna()

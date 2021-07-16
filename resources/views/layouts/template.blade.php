@@ -106,6 +106,7 @@
 		const ASSET = '{{ asset("t_admin") }}'
         const email = '{{ auth()->user()->email }}'
 		const PICT = '{{ asset("storage/pictures/") }}'
+		const BASE_URL = '{{ url("/") }}'
 
 		$(document).ready(function () {
 			getPict.loadData = email
