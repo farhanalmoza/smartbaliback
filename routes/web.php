@@ -37,8 +37,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/tempat/{slug}/{id}', [AdminController::class, 'detailTempat']);
     Route::get('/edit-tempat/{id}', [AdminController::class, 'editTempat']);
 
-    // pengguna
+    // list
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
+    Route::get('/daftar-tag', [AdminController::class, 'daftarTag']);
 
     // pengaturan
     Route::get('/edit-profil', [AdminController::class, 'editProfil']);
@@ -70,6 +71,7 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
     // delete data
     Route::group(['prefix' => 'delete'], function() {
         Route::delete('/place/{id}', [PlaceController::class, 'destroy']);
+        Route::delete('/tag/{id}', [TagController::class, 'destroy']);
     });
 
     // settings

@@ -79,6 +79,12 @@
                         <p>Daftar Pengguna</p>
                     </a>
                 </li>
+                <li class="nav-item {{ 'admin/daftar-tag' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/admin/daftar-tag') }}">
+                        <i class="fas fa-users"></i>
+                        <p>Daftar Tag</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

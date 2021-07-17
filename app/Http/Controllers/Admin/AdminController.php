@@ -53,6 +53,11 @@ class AdminController extends Controller
     {
         return view('admin.daftarPengguna.index');
     }
+
+    public function daftarTag()
+    {
+        return view('admin.daftarTag.index');
+    }
     
     public function editProfil()
     {

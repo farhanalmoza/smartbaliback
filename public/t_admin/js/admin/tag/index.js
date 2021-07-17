@@ -3,6 +3,7 @@ $(document).ready(function () {
     getTags.loadData = "/tag"
     // CRUD
     addTag()
+    deleteTags()
 })
 
 const getTags = {
@@ -19,7 +20,12 @@ const getTags = {
             container.innerHTML += `
             <label class="selectgroup-item mb-2">
                 <input type="checkbox" name="value" value="${tags[i].name}" class="selectgroup-input tag" id="${tags[i].id}">
-                <span class="selectgroup-button">${tags[i].name}</span>
+                <span class="selectgroup-button d-flex">
+                    ${tags[i].name}
+                    <button type="button" class="btn btn-link btn-danger pl-1 py-0 pr-0 delete" data-id="${tags[i].id}">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </span>
             </label>
             `;
         }
@@ -98,6 +104,7 @@ function addTag() {
                     }, 1500);
                 }
             } else {
+                getTags.loadData = "/tag"
                 $('#formAddTag')[0].reset()
                 $('#addTagModal').modal('hide')
                 $('#nama_tag').removeClass('is-valid')
@@ -121,4 +128,33 @@ function addTag() {
 			});
         }
     }
+}
+
+function deleteTags() {
+    $('#tags').on('click', 'label span .delete', function(e) {
+        const id = $(this).data('id')
+        const urlDelete = URL_DATA + "/delete/tag/" + id
+        swal({
+            title: 'Apa Anda yakin?',
+            text: "Data yang sudah dihapus tidak dapat dikembalikan!",
+            type: 'warning',
+            buttons:{
+                confirm: {
+                    text : 'Ya, hapus!',
+                    className : 'btn btn-success'
+                },
+                cancel: {
+                    visible: true,
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then((Delete) => {
+            if (Delete) {
+                Functions.prototype.deleteData(urlDelete);
+            } else {
+                swal.close();
+            }
+            getTags.loadData = "/tag";
+        });
+    })
 }
