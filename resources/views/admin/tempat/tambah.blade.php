@@ -127,6 +127,7 @@
 
 @section('js')
 	<!-- My Script -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
 	<script src="{{ asset('t_admin/js/admin/tag/index.js') }}"></script>
 @endsection

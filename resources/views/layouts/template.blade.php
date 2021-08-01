@@ -121,10 +121,9 @@
 				response.picture ? $('.ava-top').attr('src', PICT + '/profile/' + response.picture) : $('.ava-top').attr('src', 'https://demo.getstisla.com/assets/img/avatar/avatar-1.png')
 
 				// template
-				// const profession = response.profession ? response.profession : ''
-				// $('#name-sidebar').text(response.name).append('<span class="user-level">'+profession+'</span>')
-				// $('#name-topbar').text(response.name)
-				// $('#email-topbar').text(response.email)
+				$('#name-sidebar').text(response.name).append('<span class="user-level">Administrator</span>')
+				$('#name-topbar').text(response.name)
+				$('#email-topbar').text(response.email)
 			},
 			set errorData(err) {
 				var content = {};

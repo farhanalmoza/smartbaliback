@@ -26,18 +26,12 @@
                             <div class="user-box">
                                 <div class="avatar-lg"><img src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png" alt="image profile" class="avatar-img rounded ava-top"></div>
                                 <div class="u-text">
-                                    <h4>Hizrian</h4>
-                                    <p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                    <h4 id="name-topbar">Hizrian</h4>
+                                    <p class="text-muted" id="email-topbar">hello@example.com</p>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Profilku</a>
-                            <a class="dropdown-item" href="#">My Balance</a>
-                            <a class="dropdown-item" href="#">Inbox</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Pengaturan</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
