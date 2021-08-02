@@ -53,6 +53,7 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
     Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
     Route::get('/tag', [TagController::class, 'index']);
+    Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
 
     // add data
     Route::group(['prefix' => 'add'], function() {

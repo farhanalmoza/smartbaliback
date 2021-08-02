@@ -12,4 +12,9 @@ class Tag extends Model
     protected $fillable = ['name'];
 
     protected $table = 'tags';
+
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('name', 'LIKE', "%{$name}%");
+    }
 }
