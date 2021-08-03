@@ -51,7 +51,8 @@ class PlaceController extends Controller
     {
         // variabel
         $files = $request->file('files');
-        
+        $tags = $request->input('tags');
+
         $data = [
             'title'     => $request->input('title'),
             'slug'      => Str::slug($request->input('title'), '-'),
@@ -61,7 +62,7 @@ class PlaceController extends Controller
             'type'      => $request->input('tipe'),
         ];
         
-        return $this->place->add($data, $files);
+        return $this->place->add($data, $files, $tags);
     }
 
     /**

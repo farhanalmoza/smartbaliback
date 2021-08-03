@@ -12,4 +12,9 @@ class Place extends Model
     protected $fillable = ['title', 'slug', 'thumbnail', 'desc', 'address', 'location', 'type'];
 
     protected $table = 'places';
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
 }

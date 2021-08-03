@@ -78,7 +78,7 @@
 										<div class="form-group form-inline align-items-start">
 											<label for="select_place_tag" class="col-md-2 form-label justify-content-start">Tag</label>
 											<div class="col-md-8 p-0">
-												<select id="select_place_tag" name="tag[]" class="custom-select w-100" multiple>
+												<select id="select_place_tag" name="tag[]" class="form-control custom-select w-100" multiple>
 
 												</select>
 											</div>
@@ -155,7 +155,7 @@
 							results: $.map(data, function(item) {
 								return {
 									text: item.name,
-									id: 2
+									id: item.id
 								}
 							})
 						}

@@ -247,14 +247,20 @@ function addPlace() {
                 alamat: $('#alamat').val(),
                 koordinat: $('#koordinat').val(),
                 desc: $('#desc').val(),
+                tag: $('#select_place_tag').val(),
             }
             const files = $("#gambar")[0].files
+            const tags = $('#select_place_tag').val()
             formData.append('title', data.title)
             formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
             formData.append('koordinat', data.koordinat)
             formData.append('desc', data.desc)
             
+            for (let i = 0; i < tags.length; i++) {
+                const element = tags[i];
+                formData.append('tags[]', element);
+            }
             for (let i = 0; i < files.length; i++) {
                 const element = files[i];
                 formData.append('files[]', element)
@@ -275,8 +281,10 @@ function addPlace() {
                 }
             } else {
                 $('#formAddPlace')[0].reset()
+                $('#select_place_tag').val(null).trigger('change');
                 $('#title').removeClass('is-valid')
                 $('#gambar').removeClass('is-valid')
+                $('#prevThumb').attr('hidden', true)
                 $('#tipe').removeClass('is-valid')
                 $('#alamat').removeClass('is-valid')
                 $('#koordinat').removeClass('is-valid')

@@ -27,7 +27,7 @@ class PlaceService
         return datatables()->of($results)->make(true);
     }
 
-    public function add($data, $files)
+    public function add($data, $files, $tags)
     {
         $optimizerChain = OptimizerChainFactory::create();
         $path = "public/pictures/thumbnail/";
@@ -47,6 +47,10 @@ class PlaceService
         }
 
         $create = Place::create($data);
+        foreach ($tags as $tag) {
+            $create->tags()->attach($tag);
+        }
+        
         if($create) {
             return response(['message' => 'Tempat berhasil ditambahkan!']);
         } else {
