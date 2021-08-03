@@ -36,7 +36,7 @@
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header bg-primary-gradient">
+			<div class="logo-header bg-primary">
 				
 				<a href="index.html" class="logo">
 					<img src="{{ asset('t_admin') }}/img/logo.svg" alt="navbar brand" class="navbar-brand">

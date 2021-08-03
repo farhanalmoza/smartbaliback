@@ -1,4 +1,4 @@
-<nav class="navbar navbar-header navbar-expand-lg bg-primary-gradient">
+<nav class="navbar navbar-header navbar-expand-lg bg-primary">
 				
     <div class="container-fluid">
         @if ( request()->path() == 'admin/wisata' ||
