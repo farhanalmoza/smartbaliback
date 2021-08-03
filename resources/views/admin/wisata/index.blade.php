@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <h4 class="page-title">Daftar Wisata</h4>
-            <div class="row place" id="tour-cards">
+            <div class="row place" id="place-cards">
                 
             </div>
         </div>
@@ -33,5 +33,10 @@
 
 @section('js')
     <!-- My Script -->
+    <script>
+        $(document).ready(function() {
+            getTours.loadData = "/wisata"
+        })
+    </script>
     <script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
 @endsection

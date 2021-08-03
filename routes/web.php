@@ -55,6 +55,11 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
 
+    // search
+    Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
+    Route::get('/hotel/{search}', [PlaceController::class, 'searchHotels']);
+    Route::get('/tempat-ibadah/{search}', [PlaceController::class, 'searchWorships']);
+
     // add data
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tag', [TagController::class, 'store']);

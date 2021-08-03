@@ -16,6 +16,7 @@ class PlaceController extends Controller
         $this->place = app()->make(PlaceService::class);   
     }
 
+    // get all
     public function tours()
     {
         return $this->place->getTours();
@@ -29,6 +30,22 @@ class PlaceController extends Controller
     public function worships()
     {
         return $this->place->getWorships();
+    }
+
+    // search
+    public function searchTours($search)
+    {
+        return $this->place->searchTours($search);
+    }
+    
+    public function searchHotels($search)
+    {
+        return $this->place->searchHotels($search);
+    }
+
+    public function searchWorships($search)
+    {
+        return $this->place->searchWorships($search);
     }
 
     /**

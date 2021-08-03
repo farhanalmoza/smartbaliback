@@ -1,18 +1,24 @@
 <nav class="navbar navbar-header navbar-expand-lg bg-primary-gradient">
 				
     <div class="container-fluid">
-        <div class="collapse" id="search-nav">
-            <form class="navbar-left navbar-form nav-search mr-md-3">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button type="submit" class="btn btn-search pr-1">
-                            <i class="fa fa-search search-icon"></i>
-                        </button>
+        @if ( request()->path() == 'admin/wisata' ||
+              request()->path() == 'admin/hotel' ||
+              request()->path() == 'admin/tempat-ibadah')
+            <div class="collapse" id="search-nav">
+                <form class="navbar-left navbar-form nav-search mr-md-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="submit" class="btn btn-search pr-1">
+                                <i class="fa fa-search search-icon"></i>
+                            </button>
+                        </div>
+                        <input type="text" placeholder="Search ..." class="form-control" id="keyword">
                     </div>
-                    <input type="text" placeholder="Search ..." class="form-control">
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        @else
+            
+        @endif
         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
             <li class="nav-item dropdown hidden-caret">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">

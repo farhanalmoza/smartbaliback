@@ -9,6 +9,7 @@ use Intervention\Image\Facades\Image;
 
 class PlaceService
 {
+    // get all
     public function getTours()
     {
         $results = Place::where('type', 'tour')->get();
@@ -24,6 +25,34 @@ class PlaceService
     public function getWorships()
     {
         $results = Place::where('type', 'worship')->get();
+        return datatables()->of($results)->make(true);
+    }
+
+    // search
+    public function searchTours($search)
+    {
+        $results = Place::where([
+            ['type', '=', 'tour'],
+            ['title', 'like', '%'.$search.'%']
+        ])->get();
+        return datatables()->of($results)->make(true);
+    }
+
+    public function searchHotels($search)
+    {
+        $results = Place::where([
+            ['type', '=', 'hotel'],
+            ['title', 'like', '%'.$search.'%']
+        ])->get();
+        return datatables()->of($results)->make(true);
+    }
+
+    public function searchWorships($search)
+    {
+        $results = Place::where([
+            ['type', '=', 'worship'],
+            ['title', 'like', '%'.$search.'%']
+        ])->get();
         return datatables()->of($results)->make(true);
     }
 
