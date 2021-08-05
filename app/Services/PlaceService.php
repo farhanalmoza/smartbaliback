@@ -60,6 +60,20 @@ class PlaceService
         })->where('type', 'tour');
         return datatables()->of($results)->make(true);
     }
+    public function tagHotels($idTag)
+    {
+        $results = Place::whereHas('tags', function($query) use($idTag) {
+            return $query->where('tag_id', $idTag);
+        })->where('type', 'hotel');
+        return datatables()->of($results)->make(true);
+    }
+    public function tagWorships($idTag)
+    {
+        $results = Place::whereHas('tags', function($query) use($idTag) {
+            return $query->where('tag_id', $idTag);
+        })->where('type', 'worship');
+        return datatables()->of($results)->make(true);
+    }
 
     public function add($data, $files, $tags)
     {
