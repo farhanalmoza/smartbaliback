@@ -17,36 +17,19 @@ class PlaceController extends Controller
     }
 
     // get all
-    public function tours()
-    {
-        return $this->place->getTours();
-    }
+    public function tours() { return $this->place->getTours(); }
+    public function hotels() { return $this->place->getHotels(); }
+    public function worships() { return $this->place->getWorships(); }
 
-    public function hotels()
-    {
-        return $this->place->getHotels();
-    }
+    // get by search
+    public function searchTours($search) { return $this->place->searchTours($search); }
+    public function searchHotels($search) { return $this->place->searchHotels($search); }
+    public function searchWorships($search) { return $this->place->searchWorships($search); }
 
-    public function worships()
-    {
-        return $this->place->getWorships();
-    }
-
-    // search
-    public function searchTours($search)
-    {
-        return $this->place->searchTours($search);
-    }
-    
-    public function searchHotels($search)
-    {
-        return $this->place->searchHotels($search);
-    }
-
-    public function searchWorships($search)
-    {
-        return $this->place->searchWorships($search);
-    }
+    // get place by Tag
+    public function tagTours($idTag) { return $this->place->tagTours($idTag); }
+    public function tagHotels($idTag) { return $this->place->tagHotels($idTag); }
+    public function tagWorships($idTag) { return $this->place->tagWorships($idTag); }
 
     /**
      * Show the form for creating a new resource.

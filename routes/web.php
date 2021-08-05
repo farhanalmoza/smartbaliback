@@ -60,6 +60,11 @@ Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], functio
     Route::get('/hotel/{search}', [PlaceController::class, 'searchHotels']);
     Route::get('/tempat-ibadah/{search}', [PlaceController::class, 'searchWorships']);
 
+    // get place by tag
+    Route::get('/wisata-tag/{idTag}', [PlaceController::class, 'tagTours']);
+    Route::get('/hotel-tag/{idTag}', [PlaceController::class, 'tagHotels']);
+    Route::get('/tempat-ibadah-tag/{idTag}', [PlaceController::class, 'tagWorships']);
+
     // add data
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tag', [TagController::class, 'store']);

@@ -15,13 +15,11 @@ class PlaceService
         $results = Place::where('type', 'tour')->get();
         return datatables()->of($results)->make(true);
     }
-
     public function getHotels()
     {
         $results = Place::where('type', 'hotel')->get();
         return datatables()->of($results)->make(true);
     }
-
     public function getWorships()
     {
         $results = Place::where('type', 'worship')->get();
@@ -37,7 +35,6 @@ class PlaceService
         ])->get();
         return datatables()->of($results)->make(true);
     }
-
     public function searchHotels($search)
     {
         $results = Place::where([
@@ -46,13 +43,21 @@ class PlaceService
         ])->get();
         return datatables()->of($results)->make(true);
     }
-
     public function searchWorships($search)
     {
         $results = Place::where([
             ['type', '=', 'worship'],
             ['title', 'like', '%'.$search.'%']
         ])->get();
+        return datatables()->of($results)->make(true);
+    }
+
+    // get place by tag
+    public function tagTours($idTag)
+    {
+        $results = Place::whereHas('tags', function($query) use($idTag) {
+            return $query->where('tag_id', $idTag);
+        })->where('type', 'tour');
         return datatables()->of($results)->make(true);
     }
 

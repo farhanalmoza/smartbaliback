@@ -202,6 +202,7 @@ const getWorships = {
     },
 }
 
+// search place
 const search = {
     set loadData(data) {
         const URL = URL_DATA + data
@@ -256,6 +257,97 @@ const search = {
     },
 }
 
+// get tag for tag button
+const getTags = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getTags, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('btn-tag');
+        const tags = response.data;
+
+        for (i = tags.length-1; i >= 0; i--) {
+            container.innerHTML += `
+            <button class="btn btn-primary btn-border btn-round btn-sm ml-2 tag-item" onclick="getDataPlaceByTag(${tags[i].id})">${tags[i].name}</button>
+            `;
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+// get place by tag
+const getPlaceByTag = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(search, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('place-cards')
+        const places = response.data
+        
+        if (container) {
+            container.innerHTML = '';
+            
+            for (i = places.length-1; i >= 0; i--) {
+                container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + places[i].thumbnail}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="info-post ml-2">
+                                <p class="username">${places[i].title}</p>
+                                <p class="date text-muted">${places[i].address}</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <p class="card-text">${places[i].desc.slice(0,100)} ...</p>
+                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <div class="d-flex justify-content-end">
+                                <a href="${BASE_URL}/admin/edit-tempat/${places[i].id}">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
+                                </a>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${places[i].id}"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+
+// CRUD
 function addPlace() {
     $("#gambar").on("change", function (e) {
         e.preventDefault();
