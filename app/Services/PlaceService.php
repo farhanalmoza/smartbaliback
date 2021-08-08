@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Place;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Illuminate\Support\Str;
@@ -108,7 +109,10 @@ class PlaceService
 
     public function get($id)
     {
-        $result = Place::find($id);
+        $result = [
+            'place' => Place::find($id),
+            'tags'  => Place::find($id)->tags
+        ];
         if(!$result) return response(['message' => 'Oops, terjadi kesalahan!'], 406);
         return response($result);
     }

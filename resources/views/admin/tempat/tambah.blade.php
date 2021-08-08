@@ -75,14 +75,14 @@
 											<label for="desc" class="col-md-2 form-label justify-content-start">Deskripsi</label>
 											<textarea class="form-control input-full col-md-10" name="desc" id="desc" rows="10" placeholder="masukkan deskripsi tempat"></textarea>
 										</div>
-										<div class="form-group form-inline align-items-start">
+										<div class="form-group form-inline">
 											<label for="select_place_tag" class="col-md-2 form-label justify-content-start">Tag</label>
 											<div class="col-md-8 p-0">
 												<select id="select_place_tag" name="tag[]" class="form-control custom-select w-100" multiple>
 
 												</select>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 d-flex justify-content-end p-0">
 												<a class="btn btn-primary btn-sm text-white" data-toggle="modal" data-target="#addTagModal">Tambah Tag</a>
 											</div>
 										</div>
@@ -135,7 +135,6 @@
 	<!-- My Script -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
-	{{-- <script src="{{ asset('t_admin/js/admin/tag/index.js') }}"></script> --}}
 	{{-- Select2 --}}
 	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
 	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>

@@ -1,6 +1,12 @@
 @extends('layouts.template')
 @section('title', 'Edit Tempat')
 
+@section('css')
+	<!-- Select2 -->
+	<link rel="stylesheet" href="{{ asset('t_admin') }}/css/select2.min.css">
+	<link rel="stylesheet" href="{{ asset('t_admin') }}/css/select2-bootstrap4.min.css">
+@endsection
+
 @section('content')
 	<div class="panel-header">
 		<div class="page-inner">
@@ -71,14 +77,14 @@
 											<label for="desc" class="col-md-2 form-label justify-content-start">Deskripsi</label>
 											<textarea class="form-control input-full col-md-10" name="desc" id="desc" rows="10"></textarea>
 										</div>
-										<div class="form-group form-inline align-items-start">
-											<label for="tag" class="col-md-2 form-label justify-content-start">Tag</label>
+										<div class="form-group form-inline">
+											<label for="select_place_tag" class="col-md-2 form-label justify-content-start">Tag</label>
 											<div class="col-md-8 p-0">
-												<div class="selectgroup selectgroup-pills" id="tags">
+												<select id="select_place_tag" name="tag[]" class="form-control custom-select w-100" multiple>
 													
-												</div>
+												</select>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-2 d-flex justify-content-end p-0">
 												<a class="btn btn-primary btn-sm text-white" data-toggle="modal" data-target="#addTagModal">Tambah Tag</a>
 											</div>
 										</div>
@@ -133,5 +139,32 @@
 		const id = '{{ $id }}'
 	</script>
 	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
-	<script src="{{ asset('t_admin/js/admin/tag/index.js') }}"></script>
+	{{-- Select2 --}}
+	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
+	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>
+	<script>
+		$(document).ready(function() {
+			// Select2 : tag place
+			$('#select_place_tag').select2({
+				theme: 'bootstrap4',
+				language: "{{ app()->getLocale() }}",
+				allowClear: true,
+				ajax: {
+					url: "{{ route('tags.select') }}",
+					dataType: 'json',
+					delay: 250,
+					processResults: function(data) {
+						return {
+							results: $.map(data, function(item) {
+								return {
+									text: item.name,
+									id: item.id
+								}
+							})
+						}
+					}
+				}
+			})
+		})
+	</script>
 @endsection

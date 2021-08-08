@@ -494,19 +494,21 @@ const getDetail = {
     },
     set successData(response) {
         // for preview detail
-        $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.thumbnail)
-        $('#title').text(response.title)
-        $('#address').text(response.address)
-        $('#desc').text(response.desc)
+        $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
+        $('#title').text(response.place.title)
+        $('#address').text(response.place.address)
+        $('#desc').text(response.place.desc)
 
-        // for update
-        $('#id').val(response.id)
-        $('#title').val(response.title)
-        $('#prevThumb').attr('src', PICT + '/thumbnail/' + response.thumbnail)
-        $('#old_thumb').val(response.thumbnail)
-        $('#tipe option[value=' + response.type + ']').prop('selected', true)
-        $('#alamat').val(response.address)
-        $('#koordinat').val(response.location)
+        // // for update
+        $('#id').val(response.place.id)
+        $('#title').val(response.place.title)
+        $('#prevThumb').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
+        $('#old_thumb').val(response.place.thumbnail)
+        $('#tipe option[value=' + response.place.type + ']').prop('selected', true)
+        $('#alamat').val(response.place.address)
+        $('#koordinat').val(response.place.location)
+        for (let i = 0; i < response.tags.length; i++) {
+        }
     },
     set errorData(err) {
         console.log(err);
