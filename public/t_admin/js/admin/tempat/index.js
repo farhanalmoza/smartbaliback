@@ -507,6 +507,27 @@ const getDetail = {
         $('#tipe option[value=' + response.place.type + ']').prop('selected', true)
         $('#alamat').val(response.place.address)
         $('#koordinat').val(response.place.location)
+        // $('#select_place_tag').select2('val', ["2"])
+        var tagSelect = $('#select_place_tag');
+        $.ajax({
+            type: 'GET',
+            url: URL_DATA + "/place/" + id
+        }).then(function (data) {
+            // create the option and append to Select2
+            const selected = []
+            for (let i = 0; i < data.tags.length; i++) {
+                selected[i] = new Option(data.tags[i].name, data.tags[i].id, true, true)
+            }
+            tagSelect.append(selected).trigger('change');
+
+            // manually trigger the `select2:select` event
+            tagSelect.trigger({
+                type: 'select2:select',
+                params: {
+                    data: data
+                }
+            });
+        });
     },
     set errorData(err) {
         console.log(err);

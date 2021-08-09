@@ -159,6 +159,7 @@
 					}
 				}
 			})
+			$('#select_place_tag').select2('val', ["2"])
 		})
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
