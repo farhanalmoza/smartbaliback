@@ -507,7 +507,7 @@ const getDetail = {
         $('#tipe option[value=' + response.place.type + ']').prop('selected', true)
         $('#alamat').val(response.place.address)
         $('#koordinat').val(response.place.location)
-        // $('#select_place_tag').select2('val', ["2"])
+        // selected tags
         var tagSelect = $('#select_place_tag');
         $.ajax({
             type: 'GET',
@@ -535,12 +535,34 @@ const getDetail = {
 }
 
 function updatePlace() {
-    $("#gambar").on("change", function (e) {
+    $("#gambar_update").on("change", function (e) {
         e.preventDefault();
 
         if (Functions.prototype.validateFile($(this))) {
-            const file = $(this)[0].files;
-            Functions.prototype.prevImage(file[0], $("#prevThumb"));
+            const data = new FormData()
+            const file = $(this)[0].files
+            Functions.prototype.prevImage(file[0], $('#prevThumb'))
+            data.append('logo', file[0])
+            setTimeout(() => {
+                const dataImg = $('#prevThumb').attr('src')
+                Swal.fire({
+                    html: `
+                        <img src="${dataImg}" alt="avatar" class="img-fluid img-thumbnail">
+                    `,
+                    title: 'Apakah gambar yang dipilih sudah benar?',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#prevThumb').removeAttr('hidden')
+                    } else {
+                        $('#prevThumb').attr('hidden', true)
+                        $("#gambar").val(null)
+                    }
+                })
+            }, 100);
         }
     });
     $('#formEditPlace').validate({
@@ -584,8 +606,10 @@ function updatePlace() {
                 koordinat:  $('#koordinat').val(),
                 desc:       $('#desc').val(),
                 gambar:     $('#old_thumb').val(),
+                tag:        $('#select_place_tag').val(),
             }
-            const files = $("#gambar")[0].files
+            const files = $("#gambar_update")[0].files
+            const tags = $('#select_place_tag').val()
             formData.append('title', data.title)
             formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
@@ -599,6 +623,10 @@ function updatePlace() {
                 }
             } else {
                 formData.append('files', data.gambar)
+            }
+            for (let i = 0; i < tags.length; i++) {
+                const element = tags[i];
+                formData.append('tags[]', element);
             }
             // console.log($('#old_thumb').val())
             Functions.prototype.uploadFile(urlPut, formData, 'post', putDataPlace)

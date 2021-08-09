@@ -117,7 +117,7 @@ class PlaceService
         return response($result);
     }
 
-    public function update($data, $files, $id)
+    public function update($data, $files, $id, $tags)
     {
         if ($files) {
             $path = "public/pictures/thumbnail/";
@@ -148,6 +148,7 @@ class PlaceService
         $result = Place::find($id);
         if(!$result) return response(['message' => 'Opps, Terjadi kesalahan!'], 406);
         $result->update($data);
+        $result->tags()->sync($tags);
         return response(['message' => 'Tempat berhasil diubah!']);
     }
 

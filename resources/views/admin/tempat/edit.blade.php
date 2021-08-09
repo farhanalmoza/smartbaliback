@@ -44,9 +44,9 @@
 											</div>
 										</div>
 										<div class="form-group form-inline align-items-start">
-											<label for="gambar" class="col-md-2 form-label justify-content-start">Gambar</label>
+											<label for="gambar_update" class="col-md-2 form-label justify-content-start">Gambar</label>
 											<div class="col-md-10 p-0">
-												<input id="gambar" name="gambar" type="file" class="form-control input-full">
+												<input id="gambar_update" name="gambar_update" type="file" class="form-control input-full">
 												<input type="hidden" name="old_thumb" id="old_thumb">
 												<img src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png" alt="avatar" class="img-fluid img-thumbnail mt-2" id="prevThumb" style="max-width: 300px">
 											</div>
@@ -92,7 +92,7 @@
 								</div>
 								<hr>
 								<div class="d-flex justify-content-end">
-									<button type="submit" class="btn btn-primary" id="editPlace">Tambah</button>
+									<button type="submit" class="btn btn-primary" id="editPlace">Ubah</button>
 								</div>
 							</form>
 						</div>

@@ -98,6 +98,7 @@ class PlaceController extends Controller
     {
         // variabel
         $files = $request->file('files');
+        $tags = $request->input('tags');
         $data = [
             'title'     => $request->input('title'),
             'slug'      => Str::slug($request->input('title'), '-'),
@@ -109,7 +110,7 @@ class PlaceController extends Controller
         if (!$files) {
             $data['thumbnail'] = $request->input('files');
         }
-        return $this->place->update($data, $files, $id);
+        return $this->place->update($data, $files, $id, $tags);
     }
 
     /**
