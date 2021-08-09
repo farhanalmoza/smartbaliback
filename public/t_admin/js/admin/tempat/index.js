@@ -3,7 +3,7 @@ $(document).ready(function () {
     addPlace()
     deletePlace()
     getDetail.loadData = id
-    updatePortfolio()
+    updatePlace()
 })
 
 const getTours = {
@@ -499,7 +499,7 @@ const getDetail = {
         $('#address').text(response.place.address)
         $('#desc').text(response.place.desc)
 
-        // // for update
+        // for update
         $('#id').val(response.place.id)
         $('#title').val(response.place.title)
         $('#prevThumb').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
@@ -507,15 +507,13 @@ const getDetail = {
         $('#tipe option[value=' + response.place.type + ']').prop('selected', true)
         $('#alamat').val(response.place.address)
         $('#koordinat').val(response.place.location)
-        for (let i = 0; i < response.tags.length; i++) {
-        }
     },
     set errorData(err) {
         console.log(err);
     }
 }
 
-function updatePortfolio() {
+function updatePlace() {
     $("#gambar").on("change", function (e) {
         e.preventDefault();
 
@@ -564,6 +562,7 @@ function updatePortfolio() {
                 alamat:     $('#alamat').val(),
                 koordinat:  $('#koordinat').val(),
                 desc:       $('#desc').val(),
+                gambar:     $('#old_thumb').val(),
             }
             const files = $("#gambar")[0].files
             formData.append('title', data.title)
@@ -578,9 +577,9 @@ function updatePortfolio() {
                     formData.append('files[]', element)
                 }
             } else {
-                formData.append('files', $('#old_pict').val())
+                formData.append('files', data.gambar)
             }
-            
+            // console.log($('#old_thumb').val())
             Functions.prototype.uploadFile(urlPut, formData, 'post', putDataPlace)
         }
     })

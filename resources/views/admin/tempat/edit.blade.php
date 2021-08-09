@@ -137,12 +137,6 @@
 	<!-- My Script -->
 	<script>
 		const id = '{{ $id }}'
-	</script>
-	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
-	{{-- Select2 --}}
-	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
-	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>
-	<script>
 		$(document).ready(function() {
 			// Select2 : tag place
 			$('#select_place_tag').select2({
@@ -167,4 +161,9 @@
 			})
 		})
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
+	{{-- Select2 --}}
+	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
+	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>
 @endsection
