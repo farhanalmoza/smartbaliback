@@ -668,9 +668,14 @@ function deletePlace() {
             } else {
                 swal.close();
             }
-            getTours.loadData = "/wisata"
-            getHotels.loadData = "/hotel"
-            getWorships.loadData = "/tempat-ibadah"
+            var pathname = window.location.pathname;
+            if (pathname == '/admin/wisata') {
+                getTours.loadData = "/wisata"
+            } else if (pathname == '/admin/hotel') {
+                getHotels.loadData = "/hotel"
+            } else if (pathname == '/admin/tempat-ibadah') {
+                getWorships.loadData = "/tempat-ibadah"
+            }
         })
     })
 }
