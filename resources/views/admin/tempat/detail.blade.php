@@ -43,13 +43,56 @@
 			box-shadow: 2px 2px 7px rgba(0, 0, 0, .8);
 		}
 		.overlay:target img {
-			animation: zoomDanFade 1s;
+			animation: zoomDanFade .5s;
+		}
+		.overlay:target .next,
+		.overlay:target .prev {
+			animation: fadeAjah .5s .5s forwards;
+		}
+
+		/* navigasi */
+		.prev,
+		.next {
+			cursor: pointer;
+			position: absolute;
+			top: 40%;
+			width: auto;
+			padding: 16px;
+			margin-top: -50px;
+			color: white;
+			font-weight: bold;
+			font-size: 20px;
+			transition: 0.6s ease;
+			border-radius: 0 3px 3px 0;
+			user-select: none;
+			-webkit-user-select: none;
+			opacity: 0;
+		}
+
+		/* Position the "next button" to the right */
+		.next {
+			right: 0;
+			border-radius: 3px 0 0 3px;
+		}
+
+		.prev {
+			left: 0;
+		}
+
+		/* On hover, add a black background color with a little bit see-through */
+		.prev:hover,
+		.next:hover {
+			background-color: rgba(0, 0, 0, 0.8);
 		}
 
 		/* animasi */
+		@keyframes fadeAjah {
+			0% {opacity: 0;}
+			100% {opacity: 1;}
+		}
 		@keyframes zoomDanFade {
 			0% {
-				transform: scale(0);
+				transform: scale(.4);
 				opacity: 0;
 			}
 			100% {
@@ -127,7 +170,10 @@
 									</a>
 									<div class="overlay" id="gambar-1">
 										<a href="#" class="close">&times;</a>
+
+										<a href="#gambar-3" class="prev">&#10094;</a>
 										<img class="" src="{{ asset('t_admin') }}/img/blogpost.jpg">
+										<a href="#gambar-2" class="next">&#10095;</a>
 									</div>
 								</li>
 								<li class="mb-2">
@@ -136,7 +182,10 @@
 									</a>
 									<div class="overlay" id="gambar-2">
 										<a href="#" class="close">&times;</a>
+
+										<a href="#gambar-1" class="prev">&#10094;</a>
 										<img class="" src="{{ asset('t_admin') }}/img/blogpost.jpg">
+										<a href="#gambar-3" class="next">&#10095;</a>
 									</div>
 								</li>
 								<li class="mb-2">
@@ -145,7 +194,9 @@
 									</a>
 									<div class="overlay" id="gambar-3">
 										<a href="#" class="close">&times;</a>
+										<a href="#gambar-2" class="prev">&#10094;</a>
 										<img class="" src="{{ asset('t_admin') }}/img/blogpost.jpg">
+										<a href="#gambar-1" class="next">&#10095;</a>
 									</div>
 								</li>
 							</ul>
