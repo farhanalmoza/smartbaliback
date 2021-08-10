@@ -497,7 +497,7 @@ const getDetail = {
         $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
         $('#title').text(response.place.title)
         $('#address').text(response.place.address)
-        $('#desc').text(response.place.desc)
+        $('#desc').append(response.place.desc)
 
         // for update
         $('#id').val(response.place.id)

@@ -175,12 +175,6 @@
 				],
 				toolbar1: "fullscreen preview",
 				toolbar2: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media",
-				// setup: function (editor) {
-				// 	editor.on('init', function () {
-				// 		var content = "<p>Hello World </p>";
-				// 		editor.setContent(content);
-				// 	});
-				// } 
 			})
 		})
 	</script>
