@@ -507,6 +507,9 @@ const getDetail = {
         $('#tipe option[value=' + response.place.type + ']').prop('selected', true)
         $('#alamat').val(response.place.address)
         $('#koordinat').val(response.place.location)
+        setTimeout(function() {
+            tinyMCE.get("desc").setContent(response.place.desc);
+        }, 5000);
         // selected tags
         var tagSelect = $('#select_place_tag');
         $.ajax({

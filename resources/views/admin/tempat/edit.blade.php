@@ -75,7 +75,7 @@
 										</div>
 										<div class="form-group form-inline align-items-start">
 											<label for="desc" class="col-md-2 form-label justify-content-start">Deskripsi</label>
-											<textarea class="form-control input-full col-md-10" name="desc" id="desc" rows="10"></textarea>
+											<textarea class="form-control input-full col-md-10" name="desc" id="desc" rows="20"></textarea>
 										</div>
 										<div class="form-group form-inline">
 											<label for="select_place_tag" class="col-md-2 form-label justify-content-start">Tag</label>
@@ -134,6 +134,9 @@
 @endsection
 
 @section('js')
+	{{-- Tiny MCE 5 --}}
+	<script src="{{ asset('t_admin') }}/js/tinymce/jquery.tinymce.min.js" referrerpolicy="origin"></script>
+	<script src="{{ asset('t_admin') }}/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
 	<!-- My Script -->
 	<script>
 		const id = '{{ $id }}'
@@ -159,7 +162,26 @@
 					}
 				}
 			})
-			$('#select_place_tag').select2('val', ["2"])
+
+			// text editor deskripsi (TinyMCE5)
+			$('#desc').tinymce({
+				relative_urls: false,
+				language: 'en',
+				plugins: [
+					"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+					"searchreplace wordcount visualblocks visualchars code fullscreen",
+					"insertdatetime media nonbreaking save table directionality",
+					"emoticons template paste textpattern",
+				],
+				toolbar1: "fullscreen preview",
+				toolbar2: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media",
+				// setup: function (editor) {
+				// 	editor.on('init', function () {
+				// 		var content = "<p>Hello World </p>";
+				// 		editor.setContent(content);
+				// 	});
+				// } 
+			})
 		})
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
