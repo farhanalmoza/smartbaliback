@@ -16,6 +16,9 @@
 		.gallery li img {
 			border-radius: 4px !important;
 		}
+		.gallery a {
+			text-decoration: none;
+		}
 
 		/* overlay */
 		.overlay {
@@ -143,7 +146,7 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="card card-post card-round">
-						<img class="card-img-top" src="{{ asset('t_admin') }}/img/blogpost.jpg" alt="Card image cap" id="thumbnail">
+						<img class="card-img-top" src="" alt="Card image cap" id="thumbnail">
 						<div class="card-body">
 							<div class="d-flex">
 								<div class="info-post ml-2">
@@ -164,41 +167,7 @@
 						<div class="card-body">
 							<div class="card-title mb-3 fw-bold">Gambar</div>
 							<ul class="gallery">
-								<li class="mb-2">
-									<a href="#gambar-1">
-										<img class="card-img-top pict-thumb" src="{{ asset('t_admin') }}/img/blogpost.jpg">
-									</a>
-									<div class="overlay" id="gambar-1">
-										<a href="#" class="close">&times;</a>
-
-										<a href="#gambar-3" class="prev">&#10094;</a>
-										<img class="" src="{{ asset('t_admin') }}/img/blogpost.jpg">
-										<a href="#gambar-2" class="next">&#10095;</a>
-									</div>
-								</li>
-								<li class="mb-2">
-									<a href="#gambar-2">
-										<img class="card-img-top pict-thumb" src="{{ asset('t_admin') }}/img/blogpost.jpg">
-									</a>
-									<div class="overlay" id="gambar-2">
-										<a href="#" class="close">&times;</a>
-
-										<a href="#gambar-1" class="prev">&#10094;</a>
-										<img class="" src="{{ asset('t_admin') }}/img/blogpost.jpg">
-										<a href="#gambar-3" class="next">&#10095;</a>
-									</div>
-								</li>
-								<li class="mb-2">
-									<a href="#gambar-3">
-										<img class="card-img-top pict-thumb" src="{{ asset('t_admin') }}/img/blogpost.jpg">
-									</a>
-									<div class="overlay" id="gambar-3">
-										<a href="#" class="close">&times;</a>
-										<a href="#gambar-2" class="prev">&#10094;</a>
-										<img class="" src="{{ asset('t_admin') }}/img/blogpost.jpg">
-										<a href="#gambar-1" class="next">&#10095;</a>
-									</div>
-								</li>
+								
 							</ul>
 						</div>
 					</div>
@@ -210,9 +179,99 @@
 
 @section('js')
 	<!-- My Script -->
+	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
 	<script>
 		const slug = '{{ $slug }}'
 		const id = '{{ $id }}'
+
+		$(document).ready(function () {
+			getDetail.loadData = id
+		})
+
+		const getDetail = {
+			set loadData(data) {
+				const urlDetail = URL_DATA + "/place/" + data
+				Functions.prototype.requestDetail(getDetail, urlDetail)
+			},
+			set successData(response) {
+				// for preview detail
+				$('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
+				$('#title').text(response.place.title)
+				$('#address').text(response.place.address)
+				$('#desc').append(response.place.desc)
+				// gallery
+				var picts = response.place.pictures
+				var pictLength = picts.length
+				if (pictLength > 0) {
+					var listPict = ""
+					if (pictLength == 1) {
+						listPict += `
+						<li class="mb-2">
+							<a href="#gambar-${picts[0].id}">
+								<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[0].picture}">
+							</a>
+							<div class="overlay" id="gambar-${picts[0].id}">
+								<a href="#" class="close">&times;</a>
+
+								<a href="#gambar-${picts[0].id}" class="prev">&#10094;</a>
+								<img class="" src="${PICT + '/galleries/' + picts[0].picture}">
+								<a href="#gambar-${picts[0].id}" class="next">&#10095;</a>
+							</div>
+						</li>`
+					} else {
+						for (let i = 0; i < pictLength; i++) {
+							if (i == 0) {
+								listPict += `
+								<li class="mb-2">
+									<a href="#gambar-${picts[i].id}">
+										<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
+									</a>
+									<div class="overlay" id="gambar-${picts[i].id}">
+										<a href="#" class="close">&times;</a>
+
+										<a href="#gambar-${picts[pictLength-1].id}" class="prev">&#10094;</a>
+										<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
+										<a href="#gambar-${picts[i+1].id}" class="next">&#10095;</a>
+									</div>
+								</li>`
+							} else if (i+1 == pictLength) {
+								listPict += `
+								<li class="mb-2">
+									<a href="#gambar-${picts[i].id}">
+										<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
+									</a>
+									<div class="overlay" id="gambar-${picts[i].id}">
+										<a href="#" class="close">&times;</a>
+
+										<a href="#gambar-${picts[i-1].id}" class="prev">&#10094;</a>
+										<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
+										<a href="#gambar-${picts[0].id}" class="next">&#10095;</a>
+									</div>
+								</li>`
+							} else {
+								listPict += `
+								<li class="mb-2">
+									<a href="#gambar-${picts[i].id}">
+										<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
+									</a>
+									<div class="overlay" id="gambar-${picts[i].id}">
+										<a href="#" class="close">&times;</a>
+
+										<a href="#gambar-${picts[i-1].id}" class="prev">&#10094;</a>
+										<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
+										<a href="#gambar-${picts[i+1].id}" class="next">&#10095;</a>
+									</div>
+								</li>`
+							}
+						}
+
+					}
+					$('.gallery').append(listPict)
+				}
+			},
+			set errorData(err) {
+				console.log(err);
+			}
+		}
 	</script>
-	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
 @endsection

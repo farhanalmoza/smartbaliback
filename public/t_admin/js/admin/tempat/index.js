@@ -2,7 +2,6 @@ $(document).ready(function () {
     // CRUD
     addPlace()
     deletePlace()
-    getDetail.loadData = id
     updatePlace()
 })
 
@@ -484,72 +483,6 @@ function addPlace() {
                 delay: 10000,
 			});
         }
-    }
-}
-
-const getDetail = {
-    set loadData(data) {
-        const urlDetail = URL_DATA + "/place/" + data
-        Functions.prototype.requestDetail(getDetail, urlDetail)
-    },
-    set successData(response) {
-        // for preview detail
-        $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
-        $('#title').text(response.place.title)
-        $('#address').text(response.place.address)
-        $('#desc').append(response.place.desc)
-
-        // for update
-        $('#id').val(response.place.id)
-        $('#title').val(response.place.title)
-        $('#prevThumb').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
-        $('#old_thumb').val(response.place.thumbnail)
-        $('#tipe option[value=' + response.place.type + ']').prop('selected', true)
-        $('#alamat').val(response.place.address)
-        $('#koordinat').val(response.place.location)
-        setTimeout(function() {
-            tinyMCE.get("desc").setContent(response.place.desc);
-        }, 5000);
-        // selected tags
-        var tagSelect = $('#select_place_tag');
-        $.ajax({
-            type: 'GET',
-            url: URL_DATA + "/place/" + id
-        }).then(function (data) {
-            // create the option and append to Select2
-            const selected = []
-            for (let i = 0; i < data.tags.length; i++) {
-                selected[i] = new Option(data.tags[i].name, data.tags[i].id, true, true)
-            }
-            tagSelect.append(selected).trigger('change');
-
-            // manually trigger the `select2:select` event
-            tagSelect.trigger({
-                type: 'select2:select',
-                params: {
-                    data: data
-                }
-            });
-        });
-
-        // pictures form gallery
-        var picts = response.place.pictures
-        if(picts.length > 0) {
-            var listImage = ""
-            picts.map(picture => {
-                listImage += `
-                    <div class="col-md-3 col-sm-4 col-6 mb-2">
-                        <img src="${PICT + '/galleries/' + picture.picture}" alt="${PICT + '/galleries/' + picture.picture}" class="img-responsive img-fluid img-thumbnail">
-                        <button class="btn btn-sm btn-danger delImage" data-image-id="${picture.id}">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>`
-            })
-            $('#fieldUpload').before(listImage)
-        }
-    },
-    set errorData(err) {
-        console.log(err);
     }
 }
 
