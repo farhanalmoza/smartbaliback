@@ -17,4 +17,9 @@ class Place extends Model
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
+
+    function pictures()
+    {
+        return $this->hasMany(Gallery::class, 'place_id', 'id');
+    }
 }

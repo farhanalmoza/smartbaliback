@@ -531,6 +531,22 @@ const getDetail = {
                 }
             });
         });
+
+        // pictures form gallery
+        var picts = response.place.pictures
+        if(picts.length > 0) {
+            var listImage = ""
+            picts.map(picture => {
+                listImage += `
+                    <div class="col-md-3 col-sm-4 col-6 mb-2">
+                        <img src="${PICT + '/galleries/' + picture.picture}" alt="${PICT + '/galleries/' + picture.picture}" class="img-responsive img-fluid img-thumbnail">
+                        <button class="btn btn-sm btn-danger delImage" data-image-id="${picture.id}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>`
+            })
+            $('#fieldUpload').before(listImage)
+        }
     },
     set errorData(err) {
         console.log(err);

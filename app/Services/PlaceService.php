@@ -110,7 +110,7 @@ class PlaceService
     public function get($id)
     {
         $result = [
-            'place' => Place::find($id),
+            'place' => Place::with('pictures:id,place_id,picture')->where('id', $id)->first(),
             'tags'  => Place::find($id)->tags
         ];
         if(!$result) return response(['message' => 'Oops, terjadi kesalahan!'], 406);

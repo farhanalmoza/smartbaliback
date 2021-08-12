@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
@@ -48,6 +49,9 @@ Route::group(['prefix' => 'admin'], function() {
 
 // data
 Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], function() {
+    // upload image to gallery
+    Route::post('/upload-picture', [GalleryController::class, 'uploadPicture']);
+
     // get all
     Route::get('/wisata', [PlaceController::class, 'tours']);
     Route::get('/hotel', [PlaceController::class, 'hotels']);

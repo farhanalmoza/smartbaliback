@@ -144,10 +144,26 @@ class Functions
             },
             success: function(response) {
                 $('.progress').hide()
-                toastr.success(response.message, "success")
+                // notify success
+                var content = {};
+
+                content.title = 'Success'
+                content.message = response.message;
+                content.icon = 'fa fa-check';
+
+                $.notify(content,{
+                    type: 'success',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    time: 1000,
+                    delay: 5000,
+                });
+
                 $('#uploadFile').parent().before(`
                     <div class="col-md-3 col-sm-4 col-6 mb-2">
-                        <img src="${URL_IMAGE + "/" + response.create.image}" alt="${URL_IMAGE + "/" + response.create.image}" class="img-responsive img-fluid img-thumbnail">
+                        <img src="${PICT + '/galleries/' + response.create.picture}" alt="${PICT + '/galleries/' + response.create.picture}" class="img-responsive img-fluid img-thumbnail">
                         <button class="btn btn-sm btn-danger delImage" data-image-id="${response.create.id}">
                             <i class="fas fa-times"></i>
                         </button>
@@ -156,7 +172,22 @@ class Functions
             },
             error: function(err) {
                 $('.progress').hide()
-                toastr.error(err.responseJSON.message, "error")
+                // notify error
+                var content = {};
+
+                content.title = 'Error';
+                content.message = err.responseJSON.message;
+                content.icon = 'fa fa-times';
+
+                $.notify(content,{
+                    type: 'danger',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    time: 1000,
+                    delay: 10000,
+                });
             }
         })
     }

@@ -29,72 +29,102 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<div class="card-header">
+						<div class="card-header d-flex justify-content-between align-items-center">
 							<div class="card-title">Form Edit Tempat</div>
+							<a href="{{ url()->previous() }}" class="btn btn-danger btn-sm" id="kembali">Kembali</a>
 						</div>
 						<div class="card-body">
-							<form id="formEditPlace">
-								<input type="hidden" name="id" id="id">
-								<div class="row">
-									<div class="col-sm-12">
-										<div class="form-group form-inline">
-											<label for="title" class="col-md-2 form-label justify-content-start">Nama Tempat</label>
-											<div class="col-md-10 p-0">
-												<input id="title" name="title" type="text" class="form-control input-full">
+							<div class="nav-tabs-boxed">
+								<ul class="nav nav-tabs" role="tablist">
+								  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">Data</a></li>
+								  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#images" role="tab" aria-controls="profile">Gambar</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="home" role="tabpanel">
+										<form id="formEditPlace">
+											<input type="hidden" name="id" id="id">
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group form-inline">
+														<label for="title" class="col-md-2 form-label justify-content-start">Nama Tempat</label>
+														<div class="col-md-10 p-0">
+															<input id="title" name="title" type="text" class="form-control input-full">
+														</div>
+													</div>
+													<div class="form-group form-inline align-items-start">
+														<label for="gambar_update" class="col-md-2 form-label justify-content-start">Gambar</label>
+														<div class="col-md-10 p-0">
+															<input id="gambar_update" name="gambar_update" type="file" class="form-control input-full">
+															<input type="hidden" name="old_thumb" id="old_thumb">
+															<img src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png" alt="avatar" class="img-fluid img-thumbnail mt-2" id="prevThumb" style="max-width: 300px">
+														</div>
+													</div>
+													<div class="form-group form-inline">
+														<label for="tipe" class="col-md-2 form-label justify-content-start">Tipe Tempat</label>
+														<div class="col-md-10 p-0">
+															<select class="form-control input-full" id="tipe" name="tipe">
+																<option value="tour">Tempat Wisata</option>
+																<option value="hotel">Hotel</option>
+																<option value="worship">Tempat Ibadah</option>
+															</select>
+														</div>
+													</div>
+													<div class="form-group form-inline">
+														<label for="alamat" class="col-md-2 form-label justify-content-start">Alamat</label>
+														<div class="col-md-10 p-0">
+															<input id="alamat" name="alamat" type="text" class="form-control input-full">
+														</div>
+													</div>
+													<div class="form-group form-inline">
+														<label for="koordinat" class="col-md-2 form-label justify-content-start">Kordinat Lokasi</label>
+														<div class="col-md-10 p-0">
+															<input id="koordinat" name="koordinat" type="text" class="form-control input-full">
+														</div>
+													</div>
+													<div class="form-group form-inline align-items-start">
+														<label for="desc" class="col-md-2 form-label justify-content-start">Deskripsi</label>
+														<textarea class="form-control input-full col-md-10" name="desc" id="desc" rows="20"></textarea>
+													</div>
+													<div class="form-group form-inline">
+														<label for="select_place_tag" class="col-md-2 form-label justify-content-start">Tag</label>
+														<div class="col-md-8 p-0">
+															<select id="select_place_tag" name="tag[]" class="form-control custom-select w-100" multiple>
+																
+															</select>
+														</div>
+														<div class="col-md-2 d-flex justify-content-end p-0">
+															<a class="btn btn-primary btn-sm text-white" data-toggle="modal" data-target="#addTagModal">Tambah Tag</a>
+														</div>
+													</div>
+												</div>
 											</div>
-										</div>
-										<div class="form-group form-inline align-items-start">
-											<label for="gambar_update" class="col-md-2 form-label justify-content-start">Gambar</label>
-											<div class="col-md-10 p-0">
-												<input id="gambar_update" name="gambar_update" type="file" class="form-control input-full">
-												<input type="hidden" name="old_thumb" id="old_thumb">
-												<img src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png" alt="avatar" class="img-fluid img-thumbnail mt-2" id="prevThumb" style="max-width: 300px">
+											<hr>
+											<div class="d-flex justify-content-end">
+												<button type="submit" class="btn btn-primary" id="editPlace">Ubah</button>
 											</div>
-										</div>
-										<div class="form-group form-inline">
-											<label for="tipe" class="col-md-2 form-label justify-content-start">Tipe Tempat</label>
-											<div class="col-md-10 p-0">
-												<select class="form-control input-full" id="tipe" name="tipe">
-													<option value="tour">Tempat Wisata</option>
-													<option value="hotel">Hotel</option>
-													<option value="worship">Tempat Ibadah</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group form-inline">
-											<label for="alamat" class="col-md-2 form-label justify-content-start">Alamat</label>
-											<div class="col-md-10 p-0">
-												<input id="alamat" name="alamat" type="text" class="form-control input-full">
-											</div>
-										</div>
-										<div class="form-group form-inline">
-											<label for="koordinat" class="col-md-2 form-label justify-content-start">Kordinat Lokasi</label>
-											<div class="col-md-10 p-0">
-												<input id="koordinat" name="koordinat" type="text" class="form-control input-full">
-											</div>
-										</div>
-										<div class="form-group form-inline align-items-start">
-											<label for="desc" class="col-md-2 form-label justify-content-start">Deskripsi</label>
-											<textarea class="form-control input-full col-md-10" name="desc" id="desc" rows="20"></textarea>
-										</div>
-										<div class="form-group form-inline">
-											<label for="select_place_tag" class="col-md-2 form-label justify-content-start">Tag</label>
-											<div class="col-md-8 p-0">
-												<select id="select_place_tag" name="tag[]" class="form-control custom-select w-100" multiple>
-													
-												</select>
-											</div>
-											<div class="col-md-2 d-flex justify-content-end p-0">
-												<a class="btn btn-primary btn-sm text-white" data-toggle="modal" data-target="#addTagModal">Tambah Tag</a>
+										</form>
+									</div>
+									<div class="tab-pane" id="images" role="tabpanel">
+										<div class="row" id="fieldImage">
+											<div class="col-md-3 col-sm-4 col-6 mb-2" id="fieldUpload">
+												<form id="uploadFile" enctype="multipart/form-data">
+													<div class="form-group">
+														<div class="input-group mb-3">
+															<div class="custom-file">
+																<input type="file" name="files" class="update-file" id="updateFile" aria-describedby="inputGroupFileAddon01">
+																<label class="custom-file-label" for="updateFile">Choose file</label>
+															</div>
+														</div>
+													</div>
+													<div class="progress" style="display: none">
+														<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+													</div>
+												</form>
 											</div>
 										</div>
 									</div>
 								</div>
-								<hr>
-								<div class="d-flex justify-content-end">
-									<button type="submit" class="btn btn-primary" id="editPlace">Ubah</button>
-								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -180,6 +210,7 @@
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
+	<script src="{{ asset('t_admin/js/admin/tempat/image.js') }}"></script>
 	{{-- Select2 --}}
 	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
 	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>
