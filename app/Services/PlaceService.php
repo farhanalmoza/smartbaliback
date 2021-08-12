@@ -154,8 +154,12 @@ class PlaceService
 
     public function delete($id)
     {
-        $result = Place::where('id', $id);
+        $pathGal = "public/pictures/galleries/";
+        $result = Place::with('pictures:id,place_id,picture')->where('id', $id)->first();
         if(!$result) return response(['message' => 'Opps!. Ada kesahalan'], 406);
+        foreach ($result->pictures as $picture) {
+            Storage::disk('local')->delete($pathGal.$picture->picture);
+        }
         
         // delete picture
         $path = "public/pictures/thumbnail/";
