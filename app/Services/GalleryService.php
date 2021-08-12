@@ -28,4 +28,14 @@ class GalleryService
         	'create'  => $create
         ]);
 	}
+
+    public function delPicture($id)
+	{
+		$result = Gallery::find($id);
+        $path = "public/pictures/galleries/";
+		if(!$result) return response(['message' => 'Gambar tidak ada!'], 404);
+		Storage::disk('local')->delete($path.$result->image);
+		$result->delete();
+		return response(['message' => 'Gambar berhasil dihapus!']);
+	}
 }

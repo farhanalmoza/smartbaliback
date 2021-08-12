@@ -21,4 +21,9 @@ class GalleryController extends Controller
     	$id = $request->input('id');
     	return $this->gallery->uploadPicture($file, $id, 'public/pictures/galleries/');
     }
+
+    public function delPicture($id)
+    {
+    	return $this->gallery->delPicture($id);
+    }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
+use App\Models\Gallery;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,7 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], function() {
     // upload image to gallery
     Route::post('/upload-picture', [GalleryController::class, 'uploadPicture']);
+    Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
     Route::get('/wisata', [PlaceController::class, 'tours']);
