@@ -13,10 +13,87 @@
         </div>
     </div>
     <div class="page-inner mt--5">
-        
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-plane text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-stats">
+                                <div class="tours">
+                                    <h4 class="card-title" id="total-tours"></h4>
+                                    <p class="card-category">Tempat Wisata</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-hotel text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-stats">
+                                <div class="tours">
+                                    <h4 class="card-title" id="total-hotels"></h4>
+                                    <p class="card-category">Hotel</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-pen-square text-success"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-stats">
+                                <div class="tours">
+                                    <h4 class="card-title" id="total-worships"></h4>
+                                    <p class="card-category">Tempat Ibadah</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-users text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-stats">
+                                <div class="tours">
+                                    <h4 class="card-title">0</h4>
+                                    <p class="card-category">Backpacker</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 @section('js')
-    
+    <script src="{{ asset('t_admin/js/admin/dashboard/index.js') }}"></script>
 @endsection

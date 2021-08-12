@@ -157,6 +157,7 @@ class PlaceService
         $pathGal = "public/pictures/galleries/";
         $result = Place::with('pictures:id,place_id,picture')->where('id', $id)->first();
         if(!$result) return response(['message' => 'Opps!. Ada kesahalan'], 406);
+        // delete pict from gallery
         foreach ($result->pictures as $picture) {
             Storage::disk('local')->delete($pathGal.$picture->picture);
         }
