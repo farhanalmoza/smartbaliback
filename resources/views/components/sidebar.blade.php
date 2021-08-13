@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item {{ 'admin/tempat-ibadah' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/tempat-ibadah') }}">
-                        <i class="fas fa-pen-square"></i>
+                        <i class="fas fa-church"></i>
                         <p>Tempat Ibadah</p>
                     </a>
                 </li>

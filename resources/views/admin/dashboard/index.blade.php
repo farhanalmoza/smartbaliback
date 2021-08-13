@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col-5">
                                 <div class="icon-big text-center">
-                                    <i class="fas fa-pen-square text-success"></i>
+                                    <i class="fas fa-church text-success"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-stats">
