@@ -390,7 +390,10 @@ function addPlace() {
             alamat: {
                 required: true
             },
-            koordinat: {
+            latitude: {
+                required: true
+            },
+            longtitude: {
                 required: true
             },
             desc: {
@@ -420,7 +423,8 @@ function addPlace() {
                 title: $('#title').val(),
                 tipe: $('#tipe').val(),
                 alamat: $('#alamat').val(),
-                koordinat: $('#koordinat').val(),
+                latitude: $('#latitude').val(),
+                longtitude: $('#longtitude').val(),
                 desc: $('#desc').val(),
                 tag: $('#select_place_tag').val(),
             }
@@ -429,7 +433,9 @@ function addPlace() {
             formData.append('title', data.title)
             formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
-            formData.append('koordinat', data.koordinat)
+            formData.append('latitude', data.latitude)
+            formData.append('latitude', data.latitude)
+            formData.append('longtitude', data.longtitude)
             formData.append('desc', data.desc)
             
             for (let i = 0; i < tags.length; i++) {
@@ -462,7 +468,8 @@ function addPlace() {
                 $('#prevThumb').attr('hidden', true)
                 $('#tipe').removeClass('is-valid')
                 $('#alamat').removeClass('is-valid')
-                $('#koordinat').removeClass('is-valid')
+                $('#latitude').removeClass('is-valid')
+                $('#longtitude').removeClass('is-valid')
                 $('#desc').removeClass('is-valid')
             }
         },
@@ -525,7 +532,10 @@ function updatePlace() {
             alamat: {
                 required: true
             },
-            koordinat: {
+            latitude: {
+                required: true
+            },
+            longtitude: {
                 required: true
             },
             desc: {
@@ -555,7 +565,8 @@ function updatePlace() {
                 title:      $('#title').val(),
                 tipe:       $('#tipe').val(),
                 alamat:     $('#alamat').val(),
-                koordinat:  $('#koordinat').val(),
+                latitude:   $('#latitude').val(),
+                longtitude: $('#longtitude').val(),
                 desc:       $('#desc').val(),
                 gambar:     $('#old_thumb').val(),
                 tag:        $('#select_place_tag').val(),
@@ -565,7 +576,9 @@ function updatePlace() {
             formData.append('title', data.title)
             formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
-            formData.append('koordinat', data.koordinat)
+            formData.append('latitude', data.latitude)
+            formData.append('latitude', data.latitude)
+            formData.append('longtitude', data.longtitude)
             formData.append('desc', data.desc)
 
             if (files.length > 0) {
@@ -590,7 +603,8 @@ function updatePlace() {
             $('#gambar').removeClass('is-valid')
             $('#tipe').removeClass('is-valid')
             $('#alamat').removeClass('is-valid')
-            $('#koordinat').removeClass('is-valid')
+            $('#latitude').removeClass('is-valid')
+            $('#longtitude').removeClass('is-valid')
             $('#desc').removeClass('is-valid')
         },
     }

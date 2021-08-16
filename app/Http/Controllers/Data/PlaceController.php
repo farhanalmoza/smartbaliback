@@ -54,12 +54,13 @@ class PlaceController extends Controller
         $tags = $request->input('tags');
 
         $data = [
-            'title'     => $request->input('title'),
-            'slug'      => Str::slug($request->input('title'), '-'),
-            'desc'      => $request->input('desc'),
-            'address'   => $request->input('alamat'),
-            'location'  => $request->input('koordinat'),
-            'type'      => $request->input('tipe'),
+            'title'       => $request->input('title'),
+            'slug'        => Str::slug($request->input('title'), '-'),
+            'desc'        => $request->input('desc'),
+            'address'     => $request->input('alamat'),
+            'latitude'    => $request->input('latitude'),
+            'longtitude'  => $request->input('longtitude'),
+            'type'        => $request->input('tipe'),
         ];
         
         return $this->place->add($data, $files, $tags);
@@ -100,12 +101,13 @@ class PlaceController extends Controller
         $files = $request->file('files');
         $tags = $request->input('tags');
         $data = [
-            'title'     => $request->input('title'),
-            'slug'      => Str::slug($request->input('title'), '-'),
-            'desc'      => $request->input('desc'),
-            'address'   => $request->input('alamat'),
-            'location'  => $request->input('koordinat'),
-            'type'      => $request->input('tipe'),
+            'title'       => $request->input('title'),
+            'slug'        => Str::slug($request->input('title'), '-'),
+            'desc'        => $request->input('desc'),
+            'address'     => $request->input('alamat'),
+            'latitude'    => $request->input('latitude'),
+            'longtitude'  => $request->input('longtitude'),
+            'type'        => $request->input('tipe'),
         ];
         if (!$files) {
             $data['thumbnail'] = $request->input('files');

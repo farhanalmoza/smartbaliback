@@ -66,9 +66,15 @@
 											</div>
 										</div>
 										<div class="form-group form-inline">
-											<label for="koordinat" class="col-md-2 form-label justify-content-start">Kordinat Lokasi</label>
+											<label for="latitude" class="col-md-2 form-label justify-content-start">Latitude</label>
 											<div class="col-md-10 p-0">
-												<input id="koordinat" name="koordinat" type="text" class="form-control input-full" placeholder="masukkan kordinat lokasi">
+												<input id="latitude" name="latitude" type="text" class="form-control input-full" placeholder="masukkan latitude">
+											</div>
+										</div>
+										<div class="form-group form-inline">
+											<label for="longtitude" class="col-md-2 form-label justify-content-start">Longtitude</label>
+											<div class="col-md-10 p-0">
+												<input id="longtitude" name="longtitude" type="text" class="form-control input-full" placeholder="masukkan longtitude">
 											</div>
 										</div>
 										<div class="form-group form-inline align-items-start">

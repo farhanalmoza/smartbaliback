@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 
 // views
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
     // daftar tempat
     Route::get('/wisata', [AdminController::class, 'wisata']);
@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 // data
-Route::group(['prefix' => 'data', 'middleware' => ['auth', 'verified']], function() {
+Route::group(['prefix' => 'data'], function() {
     // upload image to gallery
     Route::post('/upload-picture', [GalleryController::class, 'uploadPicture']);
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
