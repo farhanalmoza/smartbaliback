@@ -166,7 +166,7 @@ class PlaceService
         $path = "public/pictures/thumbnail/";
         $results = Place::where('id', $id)->get();
         foreach ($results as $res) {
-            Storage::disk('local')->delete($path.$res->picture);
+            Storage::disk('local')->delete($path.$res->thumbnail);
         }
         $result->delete();
         return response(['message' => 'Tempat berhasil dihapus!']);
