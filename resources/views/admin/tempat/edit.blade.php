@@ -224,7 +224,7 @@
 			set successData(response) {
 				$('#id').val(response.place.id)
 				$('#title').val(response.place.title)
-				$('#prevThumb').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
+				$('#prevThumb').attr('src', response.place.thumbnail)
 				$('#old_thumb').val(response.place.thumbnail)
 				$('#tipe option[value=' + response.place.type + ']').prop('selected', true)
 				$('#alamat').val(response.place.address)

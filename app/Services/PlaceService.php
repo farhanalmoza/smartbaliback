@@ -80,6 +80,7 @@ class PlaceService
     {
         $optimizerChain = OptimizerChainFactory::create();
         $path = "public/pictures/thumbnail/";
+        $pathInDb = asset("storage/pictures/thumbnail/")."/";
         $pathOfFile = [];
         foreach ($files as $file) {
             $filename = Str::random(20).'.'.$file->getClientOriginalExtension();
@@ -92,7 +93,7 @@ class PlaceService
         }
 
         foreach ($pathOfFile as $val) {
-            $data["thumbnail"] = $val;
+            $data["thumbnail"] = $pathInDb.$val;
         }
 
         $create = Place::create($data);
@@ -163,7 +164,7 @@ class PlaceService
         }
         
         // delete picture
-        $path = "public/pictures/thumbnail/";
+        $path = asset("storage/pictures/thumbnail/")."/";
         $results = Place::where('id', $id)->get();
         foreach ($results as $res) {
             Storage::disk('local')->delete($path.$res->picture);
