@@ -195,7 +195,7 @@
 			},
 			set successData(response) {
 				// for preview detail
-				$('#thumbnail').attr('src', response.place.thumbnail)
+				$('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
 				$('#title').text(response.place.title)
 				$('#address').text(response.place.address)
 				$('#desc').append(response.place.desc)
