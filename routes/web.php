@@ -5,7 +5,9 @@ use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
+use App\Http\Controllers\Owner\OwnerController;
 use App\Models\Gallery;
+use GuzzleHttp\Middleware;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,10 +29,10 @@ Route::get('/', function () {
 });
 
 // views
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admin']], function() {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
     // daftar tempat
-    Route::get('/wisata', [AdminController::class, 'wisata'])->middleware('is_admin');
+    Route::get('/wisata', [AdminController::class, 'wisata']);
     Route::get('/hotel', [AdminController::class, 'hotel']);
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
 
@@ -42,6 +44,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     // list
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
     Route::get('/daftar-tag', [AdminController::class, 'daftarTag']);
+
+    // pengaturan
+    Route::get('/edit-profil', [AdminController::class, 'editProfil']);
+    Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
+});
+
+Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
     // pengaturan
     Route::get('/edit-profil', [AdminController::class, 'editProfil']);
