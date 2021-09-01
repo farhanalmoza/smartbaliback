@@ -43,12 +43,12 @@
                         <p>Tempat Ibadah</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'admin/tambah-tempat' == request()->path() ? 'active' : '' }}">
+                {{-- <li class="nav-item {{ 'admin/tambah-tempat' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/tambah-tempat') }}">
                         <i class="fas fa-plus-square"></i>
                         <p>Tambah Tempat</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item {{ 'admin/daftar-pengguna' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/daftar-pengguna') }}">
                         <i class="fas fa-users"></i>

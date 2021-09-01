@@ -30,7 +30,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
     // daftar tempat
-    Route::get('/wisata', [AdminController::class, 'wisata']);
+    Route::get('/wisata', [AdminController::class, 'wisata'])->middleware('is_admin');
     Route::get('/hotel', [AdminController::class, 'hotel']);
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
 
