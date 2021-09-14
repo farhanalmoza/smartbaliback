@@ -54,8 +54,8 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
     Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
     // pengaturan
-    Route::get('/edit-profil', [AdminController::class, 'editProfil']);
-    Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
+    Route::get('/edit-profil', [OwnerController::class, 'editProfil']);
+    Route::get('/ganti-password', [OwnerController::class, 'gantiPassword']);
 });
 
 // data

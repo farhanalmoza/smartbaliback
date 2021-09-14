@@ -16,4 +16,15 @@ class OwnerController extends Controller
     {
         return view('owner.dashboard.index');
     }
+
+    // pengaturan
+    public function editProfil()
+    {
+        return view('owner.editProfil.index');
+    }
+
+    public function gantiPassword()
+    {
+        return view('owner.gantiPassword.index');
+    }
 }
