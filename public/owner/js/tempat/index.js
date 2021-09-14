@@ -97,7 +97,7 @@ const getHotels = {
                             <p class="card-text">${hotels[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/admin/edit-tempat/${hotels[i].id}">
+                                <a href="${BASE_URL}/owner/edit-tempat/${hotels[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
                                 </a>
                                 <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${hotels[i].id}"><i class="fa fa-trash"></i></button>
@@ -162,7 +162,7 @@ const getWorships = {
                             <p class="card-text">${worships[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/admin/edit-tempat/${worships[i].id}">
+                                <a href="${BASE_URL}/owner/edit-tempat/${worships[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
                                 </a>
                                 <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${worships[i].id}"><i class="fa fa-trash"></i></button>
