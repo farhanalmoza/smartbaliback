@@ -78,9 +78,12 @@ class ProfileController extends Controller
     public function update(Request $request, $email)
     {
         $data = [
-            'name'    => $request->input('nama'),
-            'phone'   => $request->input('phone'),
-            'address' => $request->input('alamat'),
+            'name'          => $request->input('nama'),
+            'phone'         => $request->input('phone'),
+            'bank'          => $request->input('bank'),
+            'acc_bank'      => $request->input('acc_bank'),
+            'holder_name'   => $request->input('holder_name'),
+            'address'       => $request->input('alamat'),
         ];
         return $this->setting->update($data, $email);
     }

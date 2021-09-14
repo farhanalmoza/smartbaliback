@@ -15,6 +15,9 @@ const getDetail = {
         $('.email').text(response.email)
         $('#nama').val(response.name)
         $('#phone').val(response.phone)
+        $('#bank').val(response.bank)
+        $('#acc_bank').val(response.acc_bank)
+        $('#holder_name').val(response.holder_name)
         $('#alamat').val(response.address)
     },
     set errorData(err) {
@@ -110,6 +113,9 @@ function updateProfile() {
             getDetail.loadData = email
             $('#nama').removeClass('is-valid')
             $('#phone').removeClass('is-valid')
+            $('#bank').removeClass('is-valid')
+            $('#acc_bank').removeClass('is-valid')
+            $('#holder_name').removeClass('is-valid')
             $('#alamat').removeClass('is-valid')
         }
     })
