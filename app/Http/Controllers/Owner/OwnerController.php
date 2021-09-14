@@ -17,6 +17,11 @@ class OwnerController extends Controller
         return view('owner.dashboard.index');
     }
 
+    public function tambahTempat()
+    {
+        return view('owner.tempat.tambah');
+    }
+
     // pengaturan
     public function editProfil()
     {

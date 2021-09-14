@@ -25,7 +25,12 @@
                     </span>
                     <h4 class="text-section">Main</h4>
                 </li>
-                
+                <li class="nav-item {{ 'owner/tambah-tempat' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner/tambah-tempat') }}">
+                        <i class="fas fa-plus-square"></i>
+                        <p>Tambah Tempat</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

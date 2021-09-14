@@ -54,6 +54,7 @@ class PlaceController extends Controller
         $tags = $request->input('tags');
 
         $data = [
+            'user_id'     => $request->input('user_id'),
             'title'       => $request->input('title'),
             'slug'        => Str::slug($request->input('title'), '-'),
             'desc'        => $request->input('desc'),
@@ -101,6 +102,7 @@ class PlaceController extends Controller
         $files = $request->file('files');
         $tags = $request->input('tags');
         $data = [
+            'user_id'     => $request->input('user_id'),
             'title'       => $request->input('title'),
             'slug'        => Str::slug($request->input('title'), '-'),
             'desc'        => $request->input('desc'),

@@ -53,6 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
 Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
+    // CRUD Tempat
+    Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
+
     // pengaturan
     Route::get('/edit-profil', [OwnerController::class, 'editProfil']);
     Route::get('/ganti-password', [OwnerController::class, 'gantiPassword']);

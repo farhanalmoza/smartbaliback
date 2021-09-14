@@ -104,6 +104,7 @@
 		const URL_DATA = '{{ url('data') }}'
 		const ASSET = '{{ asset("t_admin") }}'
         const email = '{{ auth()->user()->email }}'
+        const user_id = '{{ auth()->user()->id }}'
 		const PICT = '{{ asset("storage/pictures/") }}'
 		const BASE_URL = '{{ url("/") }}'
 
