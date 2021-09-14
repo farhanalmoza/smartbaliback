@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.owner.template')
 @section('title', 'Edit Tempat')
 
 @section('css')
@@ -277,7 +277,7 @@
 		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
+	<script src="{{ asset('owner/js/tempat/index.js') }}"></script>
 	<script src="{{ asset('t_admin/js/admin/tempat/image.js') }}"></script>
 	{{-- Select2 --}}
 	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>

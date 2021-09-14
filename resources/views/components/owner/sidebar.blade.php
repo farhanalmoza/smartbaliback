@@ -25,6 +25,24 @@
                     </span>
                     <h4 class="text-section">Main</h4>
                 </li>
+                <li class="nav-item {{ 'owner/wisata' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner/wisata') }}">
+                        <i class="fas fa-plane"></i>
+                        <p>Wisata</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner/hotel' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner/hotel') }}">
+                        <i class="fas fa-hotel"></i>
+                        <p>Hotel</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner/tempat-ibadah' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner/tempat-ibadah') }}">
+                        <i class="fas fa-church"></i>
+                        <p>Tempat Ibadah</p>
+                    </a>
+                </li>
                 <li class="nav-item {{ 'owner/tambah-tempat' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/owner/tambah-tempat') }}">
                         <i class="fas fa-plus-square"></i>

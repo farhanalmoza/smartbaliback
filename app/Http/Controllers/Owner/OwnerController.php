@@ -17,9 +17,30 @@ class OwnerController extends Controller
         return view('owner.dashboard.index');
     }
 
+    public function wisata()
+    {
+        return view('owner.wisata.index');
+    }
+
+    public function hotel()
+    {
+        return view('owner.hotel.index');
+    }
+
+    public function tempatIbadah()
+    {
+        return view('owner.tempatIbadah.index');
+    }
+
     public function tambahTempat()
     {
         return view('owner.tempat.tambah');
+    }
+
+    public function editTempat($id)
+    {
+        $data['id'] = $id;
+        return view('owner.tempat.edit', $data);
     }
 
     // pengaturan

@@ -32,7 +32,7 @@ const getTours = {
                             <p class="card-text">${tours[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/admin/edit-tempat/${tours[i].id}">
+                                <a href="${BASE_URL}/owner/edit-tempat/${tours[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
                                 </a>
                                 <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>

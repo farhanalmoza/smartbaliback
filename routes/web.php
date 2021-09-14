@@ -37,9 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
 
     // CRUD Tempat
-    Route::get('/tambah-tempat', [AdminController::class, 'tambahTempat']);
     Route::get('/tempat/{slug}/{id}', [AdminController::class, 'detailTempat']);
-    Route::get('/edit-tempat/{id}', [AdminController::class, 'editTempat']);
 
     // list
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
@@ -53,8 +51,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
 Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerController::class, 'dashboard']);
 
+    // daftar tempat
+    Route::get('/wisata', [OwnerController::class, 'wisata']);
+    Route::get('/hotel', [OwnerController::class, 'hotel']);
+    Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
+
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
+    Route::get('/edit-tempat/{id}', [OwnerController::class, 'editTempat']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerController::class, 'editProfil']);
