@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.owner.template')
 @section('title', 'Ganti Password')
 
 @section('content')
@@ -71,5 +71,5 @@
 
 @section('js')
     <!-- My Script -->
-    <script src="{{ asset('t_admin/js/settings/edit-profil.js') }}"></script>
+    <script src="{{ asset('owner/js/settings/edit-profil.js') }}"></script>
 @endsection

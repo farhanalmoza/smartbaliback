@@ -159,6 +159,7 @@ function gantiPass() {
                 confirm_pass: $('#password_konfirm').val(),
             }
             Functions.prototype.updateData(url, data, 'put')
+            $('#gantiPass')[0].reset()
             $('#password_lama').removeClass('is-valid')
             $('#password_baru').removeClass('is-valid')
             $('#password_konfirm').removeClass('is-valid')
