@@ -54,7 +54,7 @@ function updatePicture() {
                     html: `
                         <img src="${dataImg}" alt="avatar" class="img-fluid img-thumbnail">
                     `,
-                    title: 'Apakah logo yang dipilih sudah benar?',
+                    title: 'Apakah foto yang dipilih sudah benar?',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',

@@ -29,7 +29,6 @@ const getTours = {
                                 <p class="date text-muted">${tours[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${tours[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/owner/edit-tempat/${tours[i].id}">
@@ -94,7 +93,6 @@ const getHotels = {
                                 <p class="date text-muted">${hotels[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${hotels[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/owner/edit-tempat/${hotels[i].id}">
@@ -159,7 +157,6 @@ const getWorships = {
                                 <p class="date text-muted">${worships[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${worships[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/owner/edit-tempat/${worships[i].id}">
@@ -619,15 +616,16 @@ function deletePlace() {
         const id = $(this).data('id')
         const urlDelete = URL_DATA + "/delete/place/" + id
         swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Apa kamu yakin?',
+            text: "Data yang sudah dihapus tidak dapat dikembalikan!",
             type: 'warning',
             buttons:{
                 confirm: {
-                    text : 'Yes, delete it!',
+                    text : 'Ya, hapus!',
                     className : 'btn btn-success'
                 },
                 cancel: {
+                    text: 'Batal',
                     visible: true,
                     className: 'btn btn-danger'
                 }

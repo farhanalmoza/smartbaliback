@@ -29,14 +29,7 @@ const getTours = {
                                 <p class="date text-muted">${tours[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${tours[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
-                            <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/admin/edit-tempat/${tours[i].id}">
-                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
-                                </a>
-                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,14 +87,7 @@ const getHotels = {
                                 <p class="date text-muted">${hotels[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${hotels[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
-                            <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/admin/edit-tempat/${hotels[i].id}">
-                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
-                                </a>
-                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${hotels[i].id}"><i class="fa fa-trash"></i></button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,14 +145,7 @@ const getWorships = {
                                 <p class="date text-muted">${worships[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <p class="card-text">${worships[i].desc.slice(0,100)} ...</p>
                             <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
-                            <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/admin/edit-tempat/${worships[i].id}">
-                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
-                                </a>
-                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${worships[i].id}"><i class="fa fa-trash"></i></button>
-                            </div>
                         </div>
                     </div>
                 </div>
