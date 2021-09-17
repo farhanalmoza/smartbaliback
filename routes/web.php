@@ -55,6 +55,7 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
     Route::get('/wisata', [OwnerController::class, 'wisata']);
     Route::get('/hotel', [OwnerController::class, 'hotel']);
     Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
+    Route::get('/souvenir', [OwnerController::class, 'souvenir']);
 
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
@@ -75,6 +76,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/wisata', [PlaceController::class, 'tours']);
     Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
+    Route::get('/souvenir', [PlaceController::class, 'souvenirs']);
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
 
@@ -87,6 +89,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/wisata-tag/{idTag}', [PlaceController::class, 'tagTours']);
     Route::get('/hotel-tag/{idTag}', [PlaceController::class, 'tagHotels']);
     Route::get('/tempat-ibadah-tag/{idTag}', [PlaceController::class, 'tagWorships']);
+    Route::get('/souvenir-tag/{idTag}', [PlaceController::class, 'tagSouvenirs']);
 
     // add data
     Route::group(['prefix' => 'add'], function() {

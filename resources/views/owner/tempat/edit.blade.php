@@ -66,6 +66,7 @@
 																<option value="tour">Tempat Wisata</option>
 																<option value="hotel">Hotel</option>
 																<option value="worship">Tempat Ibadah</option>
+																<option value="souvenir">Oleh-oleh</option>
 															</select>
 														</div>
 													</div>

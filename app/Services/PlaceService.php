@@ -26,6 +26,11 @@ class PlaceService
         $results = Place::where('type', 'worship')->get();
         return datatables()->of($results)->make(true);
     }
+    public function getSouvenirs()
+    {
+        $results = Place::where('type', 'souvenir')->get();
+        return datatables()->of($results)->make(true);
+    }
 
     // search
     public function searchTours($search)
@@ -73,6 +78,13 @@ class PlaceService
         $results = Place::whereHas('tags', function($query) use($idTag) {
             return $query->where('tag_id', $idTag);
         })->where('type', 'worship');
+        return datatables()->of($results)->make(true);
+    }
+    public function tagSouvenirs($idTag)
+    {
+        $results = Place::whereHas('tags', function($query) use($idTag) {
+            return $query->where('tag_id', $idTag);
+        })->where('type', 'souvenir');
         return datatables()->of($results)->make(true);
     }
 

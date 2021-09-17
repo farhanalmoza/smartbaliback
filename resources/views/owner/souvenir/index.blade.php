@@ -1,14 +1,30 @@
 @extends('layouts.owner.template')
-@section('title', 'Tempat Ibadah')
+@section('title', 'Wisata')
+
+@section('css')
+    <style>
+        #btn-tag {
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        #btn-tag::-webkit-scrollbar {
+            display: none;
+        }
+        #btn-tag > btn {
+            display: inline-block;
+            float: none;
+        }
+    </style>
+@endsection
 
 @section('content')
     <div class="panel-header">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Tempat Ibadah</h4>
+                <h4 class="page-title">Oleh-oleh</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="{{ url('/admin/dashboard') }}">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -16,11 +32,11 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Tempat Ibadah</a>
+                        <a href="#">Oleh-oleh</a>
                     </li>
                 </ul>
             </div>
-            <h4 class="page-title">Daftar Tempat Ibadah</h4>
+            <h4 class="page-title">Daftar Tempat Oleh-oleh</h4>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -46,9 +62,9 @@
     <!-- My Script -->
     <script>
         $(document).ready(function() {
-            getWorships.loadData = "/tempat-ibadah"
+            getSouvenirs.loadData = "/souvenir"
             getTags.loadData = "/tag"
-        })
+        })        
 
         function getDataPlaceByTag(id) {
             // toggle class tag button
@@ -57,14 +73,14 @@
             // buat objek ajax
             var xhr = new XMLHttpRequest();
             // eksekusi ajax
-            xhr.open('GET', getPlaceByTag.loadData = "/tempat-ibadah-tag/" + id, true)
+            xhr.open('GET', getPlaceByTag.loadData = "/souvenir-tag/" + id, true)
         }
 
         // get all place when click all in tag button
         function allPlace() {
             $('#btn-tag button').addClass('btn-border')
             event.srcElement.classList.remove('btn-border')
-            getTours.loadData = "/tempat-ibadah"
+            getSouvenirs.loadData = "/souvenir"
         }
     </script>
     <script src="{{ asset('owner/js/tempat/index.js') }}"></script>

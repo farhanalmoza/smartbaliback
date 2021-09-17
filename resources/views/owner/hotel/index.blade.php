@@ -67,5 +67,5 @@
             getTours.loadData = "/hotel"
         }
     </script>
-    <script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
+    <script src="{{ asset('owner/js/tempat/index.js') }}"></script>
 @endsection

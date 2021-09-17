@@ -3,7 +3,11 @@
     <div class="container-fluid">
         @if ( request()->path() == 'admin/wisata' ||
               request()->path() == 'admin/hotel' ||
-              request()->path() == 'admin/tempat-ibadah')
+              request()->path() == 'admin/tempat-ibadah' ||
+              request()->path() == 'owner/wisata' ||
+              request()->path() == 'owner/hotel' ||
+              request()->path() == 'owner/tempat-ibadah' ||
+              request()->path() == 'owner/souvenir')
             <div class="collapse" id="search-nav">
                 <form class="navbar-left navbar-form nav-search mr-md-3">
                     <div class="input-group">

@@ -20,6 +20,7 @@ class PlaceController extends Controller
     public function tours() { return $this->place->getTours(); }
     public function hotels() { return $this->place->getHotels(); }
     public function worships() { return $this->place->getWorships(); }
+    public function souvenirs() { return $this->place->getSouvenirs(); }
 
     // get by search
     public function searchTours($search) { return $this->place->searchTours($search); }
@@ -30,6 +31,7 @@ class PlaceController extends Controller
     public function tagTours($idTag) { return $this->place->tagTours($idTag); }
     public function tagHotels($idTag) { return $this->place->tagHotels($idTag); }
     public function tagWorships($idTag) { return $this->place->tagWorships($idTag); }
+    public function tagSouvenirs($idTag) { return $this->place->tagSouvenirs($idTag); }
 
     /**
      * Show the form for creating a new resource.
