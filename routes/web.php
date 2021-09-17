@@ -31,6 +31,7 @@ Route::get('/', function () {
 // views
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admin']], function() {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
+
     // daftar tempat
     Route::get('/wisata', [AdminController::class, 'wisata']);
     Route::get('/hotel', [AdminController::class, 'hotel']);
@@ -39,6 +40,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
 
     // CRUD Tempat
     Route::get('/tempat/{slug}/{id}', [AdminController::class, 'detailTempat']);
+
+    Route::get('/verifikasi', [AdminController::class, 'verifikasi']);
 
     // list
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
@@ -74,6 +77,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
+    Route::get('/places', [PlaceController::class, 'places']); // get all places
     Route::get('/wisata', [PlaceController::class, 'tours']);
     Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);

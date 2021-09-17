@@ -5,6 +5,56 @@ $(document).ready(function () {
     updatePlace()
 })
 
+// get all places
+const getPlaces = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getPlaces, URL);
+    },
+    set successData(response) {
+        const keyword = document.getElementById('keyword')
+        const container = document.getElementById('place-cards')
+
+        const tours = response.data
+        if (container) {
+            container.innerHTML = '';
+    
+            for (i = tours.length-1; i >= 0; i--) {
+                container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + tours[i].thumbnail}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="info-post ml-2">
+                                <p class="username">${tours[i].title}</p>
+                                <p class="date text-muted">${tours[i].address}</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
 const getTours = {
     set loadData(data) {
         const URL = URL_DATA + data

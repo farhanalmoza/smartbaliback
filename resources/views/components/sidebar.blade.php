@@ -49,9 +49,9 @@
                         <p>Oleh-oleh</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'admin/tambah-tempat' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/admin/tambah-tempat') }}">
-                        <i class="fas fa-plus-square"></i>
+                <li class="nav-item {{ 'admin/verifikasi' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/admin/verifikasi') }}">
+                        <i class="fas fa-check-square"></i>
                         <p>Verifikasi</p>
                     </a>
                 </li>

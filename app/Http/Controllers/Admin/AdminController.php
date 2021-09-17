@@ -54,6 +54,11 @@ class AdminController extends Controller
         return view('admin.tempat.edit', $data);
     }
 
+    public function verifikasi()
+    {
+        return view('admin.verifikasi.index');
+    }
+
     public function daftarPengguna()
     {
         return view('admin.daftarPengguna.index');

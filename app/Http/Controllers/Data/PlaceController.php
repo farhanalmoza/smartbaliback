@@ -17,6 +17,7 @@ class PlaceController extends Controller
     }
 
     // get all
+    public function places() { return $this->place->getPlaces(); } // get all places
     public function tours() { return $this->place->getTours(); }
     public function hotels() { return $this->place->getHotels(); }
     public function worships() { return $this->place->getWorships(); }

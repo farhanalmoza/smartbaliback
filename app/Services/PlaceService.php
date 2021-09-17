@@ -11,6 +11,11 @@ use Intervention\Image\Facades\Image;
 class PlaceService
 {
     // get all
+    public function getPlaces() // get all places
+    {
+        $results = Place::where('verified_at', null)->get();
+        return datatables()->of($results)->make(true);
+    }
     public function getTours()
     {
         $results = Place::where('type', 'tour')->get();
