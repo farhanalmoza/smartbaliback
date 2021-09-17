@@ -3,6 +3,7 @@ $(document).ready(function () {
     addPlace()
     deletePlace()
     updatePlace()
+    verify()
 })
 
 // get all places
@@ -12,25 +13,24 @@ const getPlaces = {
         Functions.prototype.getRequest(getPlaces, URL);
     },
     set successData(response) {
-        const keyword = document.getElementById('keyword')
         const container = document.getElementById('place-cards')
 
-        const tours = response.data
+        const places = response.data
         if (container) {
             container.innerHTML = '';
     
-            for (i = tours.length-1; i >= 0; i--) {
+            for (i = places.length-1; i >= 0; i--) {
                 container.innerHTML += `
                 <div class="col-md-4">
                     <div class="card card-post card-round">
-                        <img class="card-img-top" src="${PICT + '/thumbnail/' + tours[i].thumbnail}" alt="Card image cap">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + places[i].thumbnail}" alt="Card image cap">
                         <div class="card-body">
                             <div class="info-post ml-2">
-                                <p class="username">${tours[i].title}</p>
-                                <p class="date text-muted">${tours[i].address}</p>
+                                <p class="username">${places[i].title}</p>
+                                <p class="date text-muted">${places[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ const getTours = {
                                 <p class="date text-muted">${tours[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@ const getHotels = {
                                 <p class="date text-muted">${hotels[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                         </div>
                     </div>
                 </div>
@@ -195,7 +195,7 @@ const getWorships = {
                                 <p class="date text-muted">${worships[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                         </div>
                     </div>
                 </div>
@@ -254,7 +254,7 @@ const search = {
                             </div>
                             <div class="separator-solid"></div>
                             <p class="card-text">${places[i].desc.slice(0,100)} ...</p>
-                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/admin/edit-tempat/${places[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
@@ -343,7 +343,7 @@ const getPlaceByTag = {
                             </div>
                             <div class="separator-solid"></div>
                             <p class="card-text">${places[i].desc.slice(0,100)} ...</p>
-                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/admin/edit-tempat/${places[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
@@ -670,6 +670,38 @@ function deletePlace() {
                 getHotels.loadData = "/hotel"
             } else if (pathname == '/admin/tempat-ibadah') {
                 getWorships.loadData = "/tempat-ibadah"
+            }
+        })
+    })
+}
+
+function verify() {
+    $('.detail').on('click', '.verify', function(e) {
+        const id = $(this).data('id')
+        const urlVerify = URL_DATA + "/verify/place/" + id
+        swal({
+            title: 'Apa Anda yakin?',
+            text: "Anda akan memverifikasi data ini!",
+            type: 'warning',
+            buttons:{
+                confirm: {
+                    text : 'Ya, verifikasi!',
+                    className : 'btn btn-success'
+                },
+                cancel: {
+                    text: 'batal',
+                    visible: true,
+                    className: 'btn btn-danger'
+                }
+            }
+        }).then((Delete) => {
+            if (Delete) {
+                const data = {
+                    verify: 'true',
+                }
+                Functions.prototype.updateData(urlVerify, data, 'put');
+            } else {
+                swal.close();
             }
         })
     })

@@ -116,6 +116,11 @@ Route::group(['prefix' => 'data'], function() {
         Route::delete('/tag/{id}', [TagController::class, 'destroy']);
     });
 
+    // verify data
+    Route::group(['prefix' => 'verify'], function() {
+        Route::put('/place/{id}', [PlaceController::class, 'verify']);
+    });
+
     // settings
     Route::group(['prefix' => 'pengaturan'], function() {
         // get detail

@@ -147,7 +147,7 @@
 				<div class="col-md-8">
 					<div class="card card-post card-round">
 						<img class="card-img-top" src="" alt="Card image cap" id="thumbnail">
-						<div class="card-body">
+						<div class="card-body detail">
 							<div class="d-flex">
 								<div class="info-post ml-2">
 									<h3 class="card-title" id="title">
@@ -158,6 +158,7 @@
 							</div>
 							<div class="separator-solid"></div>
 							<p class="card-text" id="desc"></p>
+							<button class="btn btn-success btn-rounded btn-sm mx-1 verify">Verifikasi</button>
 						</div>
 					</div>
 				</div>
@@ -199,6 +200,7 @@
 				$('#title').text(response.place.title)
 				$('#address').text(response.place.address)
 				$('#desc').append(response.place.desc)
+				$('.verify').attr('data-id', response.place.id)
 				// gallery
 				var picts = response.place.pictures
 				var pictLength = picts.length

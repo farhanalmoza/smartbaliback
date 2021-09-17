@@ -13,7 +13,7 @@ class PlaceService
     // get all
     public function getPlaces() // get all places
     {
-        $results = Place::where('verified_at', null)->get();
+        $results = Place::where('verified', null)->get();
         return datatables()->of($results)->make(true);
     }
     public function getTours()
@@ -167,6 +167,14 @@ class PlaceService
         $result->update($data);
         $result->tags()->sync($tags);
         return response(['message' => 'Tempat berhasil diubah!']);
+    }
+
+    public function verify($id)
+    {
+        $result = Place::where('id', $id);
+        if(!$result) return response(['message' => 'Opps, Terjadi kesalahan!'], 406);
+        $result->update(['verified' => 'true']);
+        return response(['message' => 'Tempat berhasil diverifikasi!']);
     }
 
     public function delete($id)
