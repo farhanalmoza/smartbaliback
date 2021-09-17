@@ -158,8 +158,6 @@
 							</div>
 							<div class="separator-solid"></div>
 							<p class="card-text" id="desc"></p>
-							<button class="btn btn-success btn-rounded btn-sm mx-1 verify">Verifikasi</button>
-							<button class="btn btn-danger btn-rounded btn-sm mx-1 unverify">Tidak lolos verifikasi</button>
 						</div>
 					</div>
 				</div>
@@ -201,8 +199,14 @@
 				$('#title').text(response.place.title)
 				$('#address').text(response.place.address)
 				$('#desc').append(response.place.desc)
-				$('.verify').attr('data-id', response.place.id)
-				$('.unverify').attr('data-id', response.place.id)
+				if (response.place.verified != 'true') {
+					$('.detail').append('<button class="btn btn-success btn-rounded btn-sm mx-1 verify">Verifikasi</button>')
+					$('.verify').attr('data-id', response.place.id)
+				}
+				if (response.place.verified != 'false') {
+					$('.detail').append('<button class="btn btn-danger btn-rounded btn-sm mx-1 unverify">Tidak lolos verifikasi</button>')
+					$('.unverify').attr('data-id', response.place.id)
+				}
 				// gallery
 				var picts = response.place.pictures
 				var pictLength = picts.length
