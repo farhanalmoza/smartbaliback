@@ -119,20 +119,58 @@ const getTours = {
             container.innerHTML = '';
     
             for (i = tours.length-1; i >= 0; i--) {
-                container.innerHTML += `
-                <div class="col-md-4">
-                    <div class="card card-post card-round">
-                        <img class="card-img-top" src="${PICT + '/thumbnail/' + tours[i].thumbnail}" alt="Card image cap">
-                        <div class="card-body">
-                            <div class="info-post ml-2">
-                                <p class="username">${tours[i].title}</p>
-                                <p class="date text-muted">${tours[i].address}</p>
+                if (tours[i].verified == 'true') {
+                    container.innerHTML += `
+                    <div class="col-md-4">
+                        <div class="card card-post card-round">
+                            <img class="card-img-top" src="${PICT + '/thumbnail/' + tours[i].thumbnail}" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="info-post ml-2">
+                                    <p class="username">${tours[i].title}</p>
+                                    <p class="date text-muted">${tours[i].address}</p>
+                                </div>
+                                <div class="separator-solid"></div>
+                                <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                             </div>
-                            <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                         </div>
                     </div>
-                </div>
+                    `;
+                }
+            }
+        }
+
+        if (container.innerHTML == '') {
+            if (tours.length == 0) {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `;
             }
         }
@@ -177,20 +215,58 @@ const getHotels = {
             container.innerHTML = '';
     
             for (i = hotels.length-1; i >= 0; i--) {
-                container.innerHTML += `
-                <div class="col-md-4">
-                    <div class="card card-post card-round">
-                        <img class="card-img-top" src="${PICT + '/thumbnail/' + hotels[i].thumbnail}" alt="Card image cap">
-                        <div class="card-body">
-                            <div class="info-post ml-2">
-                                <p class="username">${hotels[i].title}</p>
-                                <p class="date text-muted">${hotels[i].address}</p>
+                if (hotels[i].verified == 'true') {
+                    container.innerHTML += `
+                    <div class="col-md-4">
+                        <div class="card card-post card-round">
+                            <img class="card-img-top" src="${PICT + '/thumbnail/' + hotels[i].thumbnail}" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="info-post ml-2">
+                                    <p class="username">${hotels[i].title}</p>
+                                    <p class="date text-muted">${hotels[i].address}</p>
+                                </div>
+                                <div class="separator-solid"></div>
+                                <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                             </div>
-                            <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                         </div>
                     </div>
-                </div>
+                    `;
+                }
+            }
+        }
+
+        if (container.innerHTML == '') {
+            if (hotels.length == 0) {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `;
             }
         }
@@ -235,21 +311,155 @@ const getWorships = {
             container.innerHTML = '';
     
             for (i = worships.length-1; i >= 0; i--) {
-                container.innerHTML += `
-                <div class="col-md-4">
-                    <div class="card card-post card-round">
-                        <img class="card-img-top" src="${PICT + '/thumbnail/' + worships[i].thumbnail}" alt="Card image cap">
-                        <div class="card-body">
-                            <div class="info-post ml-2">
-                                <p class="username">${worships[i].title}</p>
-                                <p class="date text-muted">${worships[i].address}</p>
+                if (worships[i].verified == 'true') {
+                    container.innerHTML += `
+                    <div class="col-md-4">
+                        <div class="card card-post card-round">
+                            <img class="card-img-top" src="${PICT + '/thumbnail/' + worships[i].thumbnail}" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="info-post ml-2">
+                                    <p class="username">${worships[i].title}</p>
+                                    <p class="date text-muted">${worships[i].address}</p>
+                                </div>
+                                <div class="separator-solid"></div>
+                                <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                             </div>
-                            <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
                         </div>
                     </div>
-                </div>
+                    `;
+                }
+            }
+        }
+
+        if (container.innerHTML == '') {
+            if (worships.length == 0) {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `;
+            } else {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        keyword.addEventListener('keyup', function() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function() {
+                if ( xhr.readyState == 4 && xhr.status == 200 ) {
+                    console.log('its work')
+                }
+            }
+            xhr.open('GET', search.loadData = "/tempat-ibadah/" + keyword.value, true)
+        })
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+const getSouvenirs = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getSouvenirs, URL);
+    },
+    set successData(response) {
+        const keyword = document.getElementById('keyword')
+        const container = document.getElementById('place-cards');
+        const souvenirs = response.data;
+        if (container) {
+            container.innerHTML = '';
+    
+            for (i = souvenirs.length-1; i >= 0; i--) {
+                if (souvenirs[i].verified == 'true') {
+                    container.innerHTML += `
+                    <div class="col-md-4">
+                        <div class="card card-post card-round">
+                            <img class="card-img-top" src="${PICT + '/thumbnail/' + souvenirs[i].thumbnail}" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="info-post ml-2">
+                                    <p class="username">${souvenirs[i].title}</p>
+                                    <p class="date text-muted">${souvenirs[i].address}</p>
+                                </div>
+                                <div class="separator-solid"></div>
+                                <a href="${BASE_URL}/admin/tempat/${souvenirs[i].slug}/${souvenirs[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+            }
+
+            if (container.innerHTML == '') {
+                if (souvenirs.length == 0) {
+                    container.innerHTML += `
+                        <div class="col-md-12">
+                            <div class="card card-stats card-round">
+                                <div class="card-body">
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col col-stats ml-3 ml-sm-0">
+                                            <div class="numbers text-center">
+                                                <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML += `
+                        <div class="col-md-12">
+                            <div class="card card-stats card-round">
+                                <div class="card-body">
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col col-stats ml-3 ml-sm-0">
+                                            <div class="numbers text-center">
+                                                <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
             }
         }
 

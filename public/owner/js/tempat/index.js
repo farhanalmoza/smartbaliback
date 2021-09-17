@@ -43,6 +43,42 @@ const getTours = {
             }
         }
 
+        if (container.innerHTML == '') {
+            if (tours.length == 0) {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
         keyword.addEventListener('keyup', function() {
             var xhr = new XMLHttpRequest()
             xhr.onreadystatechange = function() {
@@ -103,6 +139,42 @@ const getHotels = {
                         </div>
                     </div>
                 </div>
+                `;
+            }
+        }
+
+        if (container.innerHTML == '') {
+            if (hotels.length == 0) {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `;
             }
         }
@@ -171,6 +243,42 @@ const getWorships = {
             }
         }
 
+        if (container.innerHTML == '') {
+            if (worships.length == 0) {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
         keyword.addEventListener('keyup', function() {
             var xhr = new XMLHttpRequest()
             xhr.onreadystatechange = function() {
@@ -231,6 +339,42 @@ const getSouvenirs = {
                         </div>
                     </div>
                 </div>
+                `;
+            }
+        }
+
+        if (container.innerHTML == '') {
+            if (souvenirs.length == 0) {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML += `
+                    <div class="col-md-12">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col col-stats ml-3 ml-sm-0">
+                                        <div class="numbers text-center">
+                                            <h4 class="card-title">Tidak ada data yang terverifikasi</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `;
             }
         }
@@ -701,12 +845,14 @@ function deletePlace() {
                 swal.close();
             }
             var pathname = window.location.pathname;
-            if (pathname == '/admin/wisata') {
+            if (pathname == '/owner/wisata') {
                 getTours.loadData = "/wisata"
-            } else if (pathname == '/admin/hotel') {
+            } else if (pathname == '/owner/hotel') {
                 getHotels.loadData = "/hotel"
-            } else if (pathname == '/admin/tempat-ibadah') {
+            } else if (pathname == '/owner/tempat-ibadah') {
                 getWorships.loadData = "/tempat-ibadah"
+            } else if (pathname == '/owner/souvenir') {
+                getSouvenirs.loadData = "/souvenir"
             }
         })
     })

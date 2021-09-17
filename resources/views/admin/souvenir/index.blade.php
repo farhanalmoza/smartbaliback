@@ -62,7 +62,7 @@
     <!-- My Script -->
     <script>
         $(document).ready(function() {
-            getTours.loadData = "/souvenir"
+            getSouvenirs.loadData = "/souvenir"
             getTags.loadData = "/tag"
         })        
 
@@ -80,7 +80,7 @@
         function allPlace() {
             $('#btn-tag button').addClass('btn-border')
             event.srcElement.classList.remove('btn-border')
-            getTours.loadData = "/souvenir"
+            getSouvenirs.loadData = "/souvenir"
         }
     </script>
     <script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
