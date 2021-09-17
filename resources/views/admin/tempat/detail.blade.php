@@ -159,6 +159,7 @@
 							<div class="separator-solid"></div>
 							<p class="card-text" id="desc"></p>
 							<button class="btn btn-success btn-rounded btn-sm mx-1 verify">Verifikasi</button>
+							<button class="btn btn-danger btn-rounded btn-sm mx-1 unverify">Tidak lolos verifikasi</button>
 						</div>
 					</div>
 				</div>
@@ -201,6 +202,7 @@
 				$('#address').text(response.place.address)
 				$('#desc').append(response.place.desc)
 				$('.verify').attr('data-id', response.place.id)
+				$('.unverify').attr('data-id', response.place.id)
 				// gallery
 				var picts = response.place.pictures
 				var pictLength = picts.length

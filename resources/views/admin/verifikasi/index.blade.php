@@ -41,6 +41,12 @@
             <div class="row place" id="place-cards">
                 
             </div>
+
+            <h4 class="page-title">Daftar tempat yang tidak lolos verifikasi</h4>
+            
+            <div class="row" id="unverified-places">
+                
+            </div>
         </div>
     </div>
     <div class="page-inner mt--5">
@@ -52,7 +58,8 @@
     <!-- My Script -->
     <script>
         $(document).ready(function() {
-            getPlaces.loadData = "/places"
+            getVerifyPlaces.loadData = "/verify-places"
+            getUnverifiedPlaces.loadData = "/unverified-places"
         })
     </script>
     <script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>

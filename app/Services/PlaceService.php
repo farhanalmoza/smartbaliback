@@ -11,9 +11,14 @@ use Intervention\Image\Facades\Image;
 class PlaceService
 {
     // get all
-    public function getPlaces() // get all places
+    public function getVerifyPlaces() // get all verify places
     {
         $results = Place::where('verified', null)->get();
+        return datatables()->of($results)->make(true);
+    }
+    public function getUnverifiedPlaces() // get all unverified places
+    {
+        $results = Place::where('verified', 'false')->get();
         return datatables()->of($results)->make(true);
     }
     public function getTours()
@@ -175,6 +180,14 @@ class PlaceService
         if(!$result) return response(['message' => 'Opps, Terjadi kesalahan!'], 406);
         $result->update(['verified' => 'true']);
         return response(['message' => 'Tempat berhasil diverifikasi!']);
+    }
+
+    public function unverify($id)
+    {
+        $result = Place::where('id', $id);
+        if(!$result) return response(['message' => 'Opps, Terjadi kesalahan!'], 406);
+        $result->update(['verified' => 'false']);
+        return response(['message' => 'Tempat ini tidak lolos verifikasi!']);
     }
 
     public function delete($id)

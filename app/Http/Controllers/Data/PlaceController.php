@@ -17,7 +17,8 @@ class PlaceController extends Controller
     }
 
     // get all
-    public function places() { return $this->place->getPlaces(); } // get all places
+    public function verifyPlaces() { return $this->place->getVerifyPlaces(); } // get all verify places
+    public function unverifiedPlaces() { return $this->place->getUnverifiedPlaces(); } // get all unverified places
     public function tours() { return $this->place->getTours(); }
     public function hotels() { return $this->place->getHotels(); }
     public function worships() { return $this->place->getWorships(); }
@@ -123,6 +124,11 @@ class PlaceController extends Controller
     public function verify($id)
     {
         return $this->place->verify($id);
+    }
+
+    public function unverify($id)
+    {
+        return $this->place->unverify($id);
     }
 
     /**

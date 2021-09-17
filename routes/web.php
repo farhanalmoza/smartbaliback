@@ -77,7 +77,8 @@ Route::group(['prefix' => 'data'], function() {
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
-    Route::get('/places', [PlaceController::class, 'places']); // get all places
+    Route::get('/verify-places', [PlaceController::class, 'verifyPlaces']); // get all verify places
+    Route::get('/unverified-places', [PlaceController::class, 'unverifiedPlaces']); // get all unverified places
     Route::get('/wisata', [PlaceController::class, 'tours']);
     Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
@@ -117,9 +118,8 @@ Route::group(['prefix' => 'data'], function() {
     });
 
     // verify data
-    Route::group(['prefix' => 'verify'], function() {
-        Route::put('/place/{id}', [PlaceController::class, 'verify']);
-    });
+    Route::put('/verify/place/{id}', [PlaceController::class, 'verify']);
+    Route::put('/unverify/place/{id}', [PlaceController::class, 'unverify']);
 
     // settings
     Route::group(['prefix' => 'pengaturan'], function() {
