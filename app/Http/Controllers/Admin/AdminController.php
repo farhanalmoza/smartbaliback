@@ -31,6 +31,11 @@ class AdminController extends Controller
         return view('admin.tempatIbadah.index');
     }
 
+    public function souvenir()
+    {
+        return view('admin.souvenir.index');
+    }
+
     public function tambahTempat()
     {
         return view('admin.tempat.tambah');

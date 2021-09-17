@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
     Route::get('/wisata', [AdminController::class, 'wisata']);
     Route::get('/hotel', [AdminController::class, 'hotel']);
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
+    Route::get('/souvenir', [AdminController::class, 'souvenir']);
 
     // CRUD Tempat
     Route::get('/tempat/{slug}/{id}', [AdminController::class, 'detailTempat']);

@@ -4,6 +4,7 @@
         @if ( request()->path() == 'admin/wisata' ||
               request()->path() == 'admin/hotel' ||
               request()->path() == 'admin/tempat-ibadah' ||
+              request()->path() == 'admin/souvenir' ||
               request()->path() == 'owner/wisata' ||
               request()->path() == 'owner/hotel' ||
               request()->path() == 'owner/tempat-ibadah' ||
