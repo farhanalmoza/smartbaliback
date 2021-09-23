@@ -56,7 +56,7 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			@include('components.topbar')
+			@include('components.owner.topbar')
 			<!-- End Navbar -->
 		</div>
 
