@@ -121,16 +121,6 @@ class PlaceController extends Controller
         return $this->place->update($data, $files, $id, $tags);
     }
 
-    public function verify($id)
-    {
-        return $this->place->verify($id);
-    }
-
-    public function unverify($id)
-    {
-        return $this->place->unverify($id);
-    }
-
     /**
      * Remove the specified resource from storage.
      *

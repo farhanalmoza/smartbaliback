@@ -5,6 +5,7 @@ use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
+use App\Http\Controllers\Data\VerifyController;
 use App\Http\Controllers\Owner\OwnerController;
 use App\Models\Gallery;
 use GuzzleHttp\Middleware;
@@ -118,8 +119,8 @@ Route::group(['prefix' => 'data'], function() {
     });
 
     // verify data
-    Route::put('/verify/place/{id}', [PlaceController::class, 'verify']);
-    Route::put('/unverify/place/{id}', [PlaceController::class, 'unverify']);
+    Route::put('/verify/place/{id}', [VerifyController::class, 'verify']);
+    Route::put('/unverify/place/{id}', [VerifyController::class, 'unverify']);
 
     // settings
     Route::group(['prefix' => 'pengaturan'], function() {
