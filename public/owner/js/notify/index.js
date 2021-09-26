@@ -10,8 +10,12 @@ const getNotifications = {
     },
     set successData(response) {
         const container = document.getElementById('notif')
-
+        
         const notif = response.data
+        if (notif.length > 0) {
+            document.getElementById('notifDropdown').innerHTML += `<span class="notification">${notif.length}</span>`
+        }
+
         if (container) {
             container.innerHTML = '';
     
