@@ -202,6 +202,7 @@
 				if (response.place.verified != 'true') {
 					$('.detail').append('<button class="btn btn-success btn-rounded btn-sm mx-1 verify">Verifikasi</button>')
 					$('.verify').attr('data-id', response.place.id)
+					// $('.verify').attr('data-user', user_id)
 				}
 				if (response.place.verified != 'false') {
 					$('.detail').append('<button class="btn btn-danger btn-rounded btn-sm mx-1 unverify">Tidak lolos verifikasi</button>')
