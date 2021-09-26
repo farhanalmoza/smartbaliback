@@ -99,6 +99,7 @@
 
     <!-- My script -->
   	<script src="{{asset('t_admin/js/functions.js')}}"></script>
+  	<script src="{{asset('owner/js/notify/index.js')}}"></script>
   	@yield('js')
 	<script>
 		const URL_DATA = '{{ url('data') }}'

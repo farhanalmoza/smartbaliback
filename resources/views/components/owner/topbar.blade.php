@@ -36,16 +36,8 @@
                     </li>
                     <li>
                         <div class="notif-scroll scrollbar-outer">
-                            <div class="notif-center">
-                                <a href="#">
-                                    <div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
-                                    <div class="notif-content">
-                                        <span class="block">
-                                            New user registered
-                                        </span>
-                                        <span class="time">5 minutes ago</span> 
-                                    </div>
-                                </a>
+                            <div class="notif-center" id="notif">
+                                
                             </div>
                         </div>
                     </li>

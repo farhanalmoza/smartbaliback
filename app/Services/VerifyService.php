@@ -6,6 +6,12 @@ use App\Models\Place;
 
 class VerifyService
 {
+    public function getAllNotif($user_id)
+    {
+        $results = Message::where('user_id', $user_id)->get();
+        return datatables()->of($results)->make(true);
+    }
+
     public function verify($id)
     {
         $result = Place::where('id', $id);

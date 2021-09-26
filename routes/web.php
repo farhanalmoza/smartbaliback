@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Data\GalleryController;
+use App\Http\Controllers\Data\NotifController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
@@ -86,6 +87,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/souvenir', [PlaceController::class, 'souvenirs']);
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
+    Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
 
     // search
     Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
