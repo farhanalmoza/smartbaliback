@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.owner.template')
 @section('title', 'Detail Tempat')
 
 @section('css')
@@ -181,7 +181,6 @@
 	<!-- My Script -->
 	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
 	<script>
-		const slug = '{{ $slug }}'
 		const id = '{{ $id }}'
 
 		$(document).ready(function () {

@@ -63,9 +63,15 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
     Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
     Route::get('/souvenir', [OwnerController::class, 'souvenir']);
 
+    // rental mobil
+    Route::get('/mobil', [OwnerController::class, 'car']);
+    Route::get('/sopir', [OwnerController::class, 'driver']);
+    Route::get('/daftar-rental', [OwnerController::class, 'rentalList']);
+
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
     Route::get('/edit-tempat/{id}', [OwnerController::class, 'editTempat']);
+    Route::get('/tempat/{id}', [OwnerController::class, 'detailTempat']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerController::class, 'editProfil']);

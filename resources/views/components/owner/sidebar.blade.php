@@ -55,6 +55,24 @@
                         <p>Tambah Tempat</p>
                     </a>
                 </li>
+                <li class="nav-item {{ 'owner/mobil' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner/mobil') }}">
+                        <i class="fas fa-car"></i>
+                        <p>Mobil</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner/sopir' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner/sopir') }}">
+                        <i class="fas fa-user-tie"></i>
+                        <p>Sopir</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner/daftar-rental' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner/daftar-rental') }}">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Daftar Rental</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

@@ -37,9 +37,30 @@ class OwnerController extends Controller
         return view('owner.souvenir.index');
     }
 
+    public function detailTempat($id)
+    {
+        $data['id'] = $id;
+        return view('owner.tempat.detail', $data);
+    }
+
     public function tambahTempat()
     {
         return view('owner.tempat.tambah');
+    }
+
+    public function car()
+    {
+        return view('owner.mobil.index');
+    }
+
+    public function driver()
+    {
+        return view('owner.sopir.index');
+    }
+
+    public function rentalList()
+    {
+        return view('owner.daftarRental.index');
     }
 
     public function editTempat($id)

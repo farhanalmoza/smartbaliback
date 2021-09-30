@@ -12,6 +12,8 @@ const getNotifications = {
         const container = document.getElementById('notif')
         
         const notif = response.data
+
+        // badge length notif
         if (notif.length > 0) {
             document.getElementById('notifDropdown').innerHTML += `<span class="notification">${notif.length}</span>`
         }
@@ -21,13 +23,12 @@ const getNotifications = {
     
             for (i = notif.length-1; i >= 0; i--) {
                 container.innerHTML += `
-                <a href="#">
+                <a href="${BASE_URL}/owner/tempat/${notif[i].place_id}">
                     <div class="notif-icon notif-success"> <i class="fa fa-check"></i> </div>
                     <div class="notif-content">
                         <span class="block">
                             ${notif[i].message}
                         </span>
-                        <span class="time">5 minutes ago</span> 
                     </div>
                 </a>
                 `;
