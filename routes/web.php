@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Data\CarController;
 use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\NotifController;
 use App\Http\Controllers\Data\PlaceController;
@@ -68,6 +69,9 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
     Route::get('/sopir', [OwnerController::class, 'driver']);
     Route::get('/daftar-rental', [OwnerController::class, 'rentalList']);
 
+    // CRUD Mobil
+    Route::get('/tambah-mobil', [OwnerController::class, 'tambahMobil']);
+
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
     Route::get('/edit-tempat/{id}', [OwnerController::class, 'editTempat']);
@@ -110,6 +114,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tag', [TagController::class, 'store']);
         Route::post('/place', [PlaceController::class, 'store']);
+        Route::post('/car', [CarController::class, 'store']);
     });
 
     // get detail

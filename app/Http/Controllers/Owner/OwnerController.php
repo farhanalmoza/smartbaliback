@@ -48,9 +48,15 @@ class OwnerController extends Controller
         return view('owner.tempat.tambah');
     }
 
+    // rental mobil
     public function car()
     {
         return view('owner.mobil.index');
+    }
+    // crud mobil
+    public function tambahMobil()
+    {
+        return view('owner.mobil.tambah');
     }
 
     public function driver()
