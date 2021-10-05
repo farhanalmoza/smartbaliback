@@ -95,5 +95,5 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('owner/js/mobil/index.js') }}"></script>
+	<script src="{{ asset('owner/js/mobil/index.js') }}"></script>
 @endsection

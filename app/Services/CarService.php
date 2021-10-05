@@ -5,6 +5,12 @@ use App\Models\Car;
 
 class CarService
 {
+    public function getCars()
+    {
+        $results = Car::get();
+        return datatables()->of($results)->make(true);
+    }
+
     public function add($data)
     {
         $create = Car::create($data);

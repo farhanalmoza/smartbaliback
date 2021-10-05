@@ -98,6 +98,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
     Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
+    Route::get('/mobil', [CarController::class, 'index']);
 
     // search
     Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);

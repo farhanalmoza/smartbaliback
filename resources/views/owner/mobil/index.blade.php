@@ -27,11 +27,9 @@
                             <div class="card-title">Daftar Mobil</div>
                             <a href="{{ url('/owner/tambah-mobil') }}" class="btn btn-primary btn-sm">Tambah mobil</a>
                         </div>
-                        <div class="card-body">
-                            <div class="card-sub">									
-                                Akan segera datang.
-                            </div>
-                        </div>
+                    </div>
+                    <div class="row" id="car-cards">
+                        
                     </div>
                 </div>
             </div>
@@ -43,5 +41,5 @@
 @endsection
 
 @section('js')
-    
+    <script src="{{ asset('owner/js/mobil/index.js') }}"></script>
 @endsection

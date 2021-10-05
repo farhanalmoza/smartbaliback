@@ -22,7 +22,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        return $this->car->getCars();
     }
 
     /**
