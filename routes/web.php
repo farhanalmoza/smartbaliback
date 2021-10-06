@@ -71,6 +71,7 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
 
     // CRUD Mobil
     Route::get('/tambah-mobil', [OwnerController::class, 'tambahMobil']);
+    Route::get('/tambah-gambar-mobil/{id}', [OwnerController::class, 'tambahGambarMobil']);
 
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
@@ -86,6 +87,7 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
 Route::group(['prefix' => 'data'], function() {
     // upload image to gallery
     Route::post('/upload-picture', [GalleryController::class, 'uploadPicture']);
+    Route::post('/upload-car-picture', [GalleryController::class, 'uploadCarPicture']);
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
@@ -120,6 +122,7 @@ Route::group(['prefix' => 'data'], function() {
 
     // get detail
     Route::get('/place/{id}', [PlaceController::class, 'show']);
+    Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
 
     // update
     Route::group(['prefix' => 'update'], function() {

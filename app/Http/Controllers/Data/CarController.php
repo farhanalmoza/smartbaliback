@@ -69,6 +69,12 @@ class CarController extends Controller
         //
     }
 
+    // get new car
+    public function newCar($id)
+    {
+        return $this->car->getNewCar($id);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

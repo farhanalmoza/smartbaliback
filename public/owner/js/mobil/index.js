@@ -26,7 +26,7 @@ const getCars = {
                 container.innerHTML += `
                 <div class="col-md-4">
                     <div class="card card-post card-round">
-                        <img class="card-img-top" src="" alt="Card image cap">
+                        <img class="card-img-top" src="${ASSET + '/img/blogpost.jpg'}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-category text-info mb-1">${cars[i].no_car}</p>
                             <h3 class="card-title">
@@ -41,25 +41,25 @@ const getCars = {
                 </div>
                 `;
             }
-        }
 
-        if (container.innerHTML == '') {
-            if (cars.length == 0) {
-                container.innerHTML += `
-                    <div class="col-md-12">
-                        <div class="card card-stats card-round">
-                            <div class="card-body">
-                                <div class="row align-items-center pb-3">
-                                    <div class="col col-stats ml-3 ml-sm-0">
-                                        <div class="numbers text-center">
-                                            <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+            if (container.innerHTML == '') {
+                if (cars.length == 0) {
+                    container.innerHTML += `
+                        <div class="col-md-12">
+                            <div class="card card-stats card-round">
+                                <div class="card-body">
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col col-stats ml-3 ml-sm-0">
+                                            <div class="numbers text-center">
+                                                <h4 class="card-title">Belum ada data yang ditambahkan</h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
             }
         }
 
@@ -72,6 +72,32 @@ const getCars = {
         //     }
         //     xhr.open('GET', search.loadData = "/wisata/" + keyword.value, true)
         // })
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+const getNewCar = {
+    set loadData(data) {
+        const URL = URL_DATA + '/mobil-baru/' + user_id
+        Functions.prototype.getRequest(getNewCar, URL);
+    },
+    set successData(response) {
+        const newCar = response
+        window.location.replace(BASE_URL + "/owner/tambah-gambar-mobil/" + newCar.id)
     },
     set errorData(err) {
         var content = {};
@@ -192,6 +218,7 @@ function addCar() {
                 $('#hargaBeli').removeClass('is-valid')
                 $('#bbm').removeClass('is-valid')
                 $('#penumpang').removeClass('is-valid')
+                getNewCar.loadData = ''
             }
         },
         set errorData(err) {

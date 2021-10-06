@@ -59,6 +59,12 @@ class OwnerController extends Controller
         return view('owner.mobil.tambah');
     }
 
+    public function tambahGambarMobil($id)
+    {
+        $data['id'] = $id;
+        return view('owner.mobil.tambahGambar', $data);
+    }
+
     public function driver()
     {
         return view('owner.sopir.index');

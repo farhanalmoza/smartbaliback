@@ -17,4 +17,11 @@ class CarService
         if(!$create) return response(['message' => 'Data mobil gagal ditambahkan!'], 500);
         return response(['message' => 'Data mobil berhasil ditambahkan!']);
     }
+
+    public function getNewCar($id)
+    {
+        $result = Car::where('user_id', $id)->latest('created_at')->first();
+        if(!$result) return response(['message' => 'Oops, terjadi kesalahan!'], 406);
+        return response($result);
+    }
 }
