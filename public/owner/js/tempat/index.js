@@ -29,7 +29,7 @@ const getTours = {
                                 <p class="date text-muted">${tours[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${tours[i].slug}/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/owner/tempat/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/owner/edit-tempat/${tours[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
@@ -129,7 +129,7 @@ const getHotels = {
                                 <p class="date text-muted">${hotels[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${hotels[i].slug}/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/owner/tempat/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/owner/edit-tempat/${hotels[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
@@ -229,7 +229,7 @@ const getWorships = {
                                 <p class="date text-muted">${worships[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${worships[i].slug}/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/owner/tempat/${worships[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/owner/edit-tempat/${worships[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
@@ -329,7 +329,7 @@ const getSouvenirs = {
                                 <p class="date text-muted">${souvenirs[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/admin/tempat/${souvenirs[i].slug}/${souvenirs[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/owner/tempat/${souvenirs[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
                                 <a href="${BASE_URL}/owner/edit-tempat/${souvenirs[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>

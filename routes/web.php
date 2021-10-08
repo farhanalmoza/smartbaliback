@@ -72,6 +72,8 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
     // CRUD Mobil
     Route::get('/tambah-mobil', [OwnerController::class, 'tambahMobil']);
     Route::get('/tambah-gambar-mobil/{id}', [OwnerController::class, 'tambahGambarMobil']);
+    Route::get('/mobil/{id}', [OwnerController::class, 'detailMobil']);
+    Route::get('/edit-mobil/{id}', [OwnerController::class, 'editMobil']);
 
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
@@ -123,10 +125,12 @@ Route::group(['prefix' => 'data'], function() {
     // get detail
     Route::get('/place/{id}', [PlaceController::class, 'show']);
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
+    Route::get('/mobil/{id}', [CarController::class, 'show']);
 
     // update
     Route::group(['prefix' => 'update'], function() {
         Route::post('/place/{id}', [PlaceController::class, 'update']);
+        Route::put('/mobil/{id}', [CarController::class, 'update']);
     });
 
     // delete data

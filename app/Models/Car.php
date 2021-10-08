@@ -17,4 +17,9 @@ class Car extends Model
     {
         return $this->belongsTo(Place::class, 'place_id', 'id');
     }
+
+    function pictures()
+    {
+        return $this->hasMany(Gallery::class, 'car_id', 'id');
+    }
 }

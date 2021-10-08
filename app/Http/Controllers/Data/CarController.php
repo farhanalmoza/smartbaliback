@@ -66,7 +66,7 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->car->get($id);
     }
 
     // get new car
@@ -95,7 +95,18 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'user_id'               => $request->input('user_id'),
+            'no_car'                => $request->input('nopol'),
+            'name'                  => $request->input('namaMobil'),
+            'status'                => 'no rent',
+            'year_production'       => $request->input('tahun'),
+            'rent_price'            => $request->input('hargaRent'),
+            'purchase_price'        => $request->input('hargaBeli'),
+            'fuel_capacity'         => $request->input('bbm'),
+            'passenger_capacity'    => $request->input('penumpang'),
+        ];
+        return $this->car->update($data, $id);
     }
 
     /**

@@ -48,6 +48,12 @@ class OwnerController extends Controller
         return view('owner.tempat.tambah');
     }
 
+    public function editTempat($id)
+    {
+        $data['id'] = $id;
+        return view('owner.tempat.edit', $data);
+    }
+
     // rental mobil
     public function car()
     {
@@ -65,6 +71,12 @@ class OwnerController extends Controller
         return view('owner.mobil.tambahGambar', $data);
     }
 
+    public function detailMobil($id)
+    {
+        $data['id'] = $id;
+        return view('owner.mobil.detail', $data);
+    }
+
     public function driver()
     {
         return view('owner.sopir.index');
@@ -75,10 +87,10 @@ class OwnerController extends Controller
         return view('owner.daftarRental.index');
     }
 
-    public function editTempat($id)
+    public function editMobil($id)
     {
         $data['id'] = $id;
-        return view('owner.tempat.edit', $data);
+        return view('owner.mobil.edit', $data);
     }
 
     // pengaturan

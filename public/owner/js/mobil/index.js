@@ -3,8 +3,8 @@ $(document).ready(function () {
 
     // CRUD
     addCar()
+    updateCar()
     // deletePlace()
-    // updatePlace()
     // verify()
     // unverify()
 })
@@ -35,7 +35,13 @@ const getCars = {
                                 </a>
                             </h3>
                             <p class="card-text">Keluaran tahun ${cars[i].year_production}<br>Harga sewa : Rp. ${cars[i].rent_price}</p>
-                            <a href="#" class="btn btn-primary btn-rounded btn-sm">Baca</a>
+                            <a href="${BASE_URL}/owner/mobil/${cars[i].id}" class="btn btn-primary btn-rounded btn-sm">Baca</a>
+                            <div class="d-flex justify-content-end">
+                                <a href="${BASE_URL}/owner/edit-mobil/${cars[i].id}">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
+                                </a>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${cars[i].id}"><i class="fa fa-trash"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -162,14 +168,14 @@ function addCar() {
             const urlPost = URL_DATA + "/add/car"
             const formData = new FormData()
             const data = {
-                user_id: user_id,
-                nopol: $('#nopol').val(),
-                namaMobil: $('#namaMobil').val(),
-                tahun: $('#tahun').val(),
-                hargaRent: $('#hargaRent').val(),
-                hargaBeli: $('#hargaBeli').val(),
-                bbm: $('#bbm').val(),
-                penumpang: $('#penumpang').val(),
+                user_id:    user_id,
+                nopol:      $('#nopol').val(),
+                namaMobil:  $('#namaMobil').val(),
+                tahun:      $('#tahun').val(),
+                hargaRent:  $('#hargaRent').val(),
+                hargaBeli:  $('#hargaBeli').val(),
+                bbm:        $('#bbm').val(),
+                penumpang:  $('#penumpang').val(),
             }
             formData.append('user_id', data.user_id)
             formData.append('nopol', data.nopol)
@@ -239,4 +245,71 @@ function addCar() {
 			});
         }
     }
+}
+
+function updateCar() {
+    $('#formEditCar').validate({
+        rules: {
+            nopol: {
+                required: true
+            },
+            namaMobil: {
+                required: true
+            },
+            tahun: {
+                required: true
+            },
+            hargaRent: {
+                required: true
+            },
+            hargaBeli: {
+                required: true
+            },
+            bbm: {
+                required: true
+            },
+            penumpang: {
+                required: true
+            },
+        },
+        errorClass: "is-invalid",
+        validClass: "is-valid",
+        errorElement: "small",
+        errorPlacement: function errorPlacement(error, element) {
+            error.addClass('invalid-feedback');
+            error.insertAfter(element);
+        },
+        // eslint-disable-next-line object-shorthand
+        highlight: function highlight(element) {
+            $(element).addClass('is-invalid').removeClass('is-valid');
+        },
+        // eslint-disable-next-line object-shorthand
+        unhighlight: function unhighlight(element) {
+            $(element).addClass('is-valid').removeClass('is-invalid');
+        },
+        submitHandler: function(form, e) {
+            e.preventDefault()
+            const urlPut = URL_DATA + "/update/mobil/" + $('#id').val()
+            const data = {
+                user_id:    user_id,
+                nopol:      $('#nopol').val(),
+                namaMobil:  $('#namaMobil').val(),
+                tahun:      $('#tahun').val(),
+                hargaRent:  $('#hargaRent').val(),
+                hargaBeli:  $('#hargaBeli').val(),
+                bbm:        $('#bbm').val(),
+                penumpang:  $('#penumpang').val(),
+            }
+
+            Functions.prototype.updateData(urlPut, data, 'put')
+
+            $('#nopol').removeClass('is-valid')
+            $('#namaMobil').removeClass('is-valid')
+            $('#tahun').removeClass('is-valid')
+            $('#hargaRent').removeClass('is-valid')
+            $('#hargaBeli').removeClass('is-valid')
+            $('#bbm').removeClass('is-valid')
+            $('#penumpang').removeClass('is-valid')
+        }
+    })
 }
