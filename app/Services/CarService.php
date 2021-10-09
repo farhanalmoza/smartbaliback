@@ -15,15 +15,12 @@ class CarService
         ->addColumn('actions', function($rows) {
             $rows = json_encode($rows);
             $rows = json_decode($rows);
+            $url = url('owner');
             $id = $rows->id;
-            $url_update = url('/owner/edit-mobil/').'/'.$id;
-            $btn = "<td> <div class='form-button-action'>";
-            $btn .= "<a type='button' href='$url_update' class='btn btn-link btn-primary update'>
-                        <i class='fa fa-edit'></i>
-                    </a>";
-            $btn .= "<button type='button' data-toggle='tooltip' title='' data-id='$id' class='btn btn-link btn-danger delete' data-original-title='Remove'>
-                        <i class='fa fa-times'></i>
-                    </button>";
+            $btn = "<td> <div class='btn-group'>";
+            $btn .= "<a href='".$url. "/edit-mobil/".$id."' class='btn btn-info btn-sm'>Ubah</a>";
+            $btn .= "<a href='".$url. "/mobil/".$id."' class='btn btn-primary btn-sm'>Ubah</a>";
+            $btn .= "<button data-id='$id' class='btn btn-sm btn-danger delete'>Hapus</button>";
             $btn .= '</div> </td>';
             return $btn;
         })
