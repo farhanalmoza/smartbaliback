@@ -7,7 +7,7 @@ class CarService
 {
     public function getCars()
     {
-        $results = Car::get();
+        $results = Car::with('pictures:id,car_id,picture')->get();
         return datatables()->of($results)->make(true);
     }
 

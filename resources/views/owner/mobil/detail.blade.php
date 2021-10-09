@@ -200,75 +200,76 @@
 				$('#address').append('Harga beli &emsp;&emsp;&emsp;&emsp; : '+response.purchase_price+'<br>')
 				$('#address').append('Kapasitas bahan bakar : '+response.fuel_capacity+'<br>')
 				$('#address').append('Kapasitas penumpang : '+response.passenger_capacity)
+
 				// gallery
-				// var picts = response.place.pictures
-				// var pictLength = picts.length
-				// if (pictLength > 0) {
-				// 	var listPict = ""
-				// 	if (pictLength == 1) {
-				// 		listPict += `
-				// 		<li class="mb-2">
-				// 			<a href="#gambar-${picts[0].id}">
-				// 				<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[0].picture}">
-				// 			</a>
-				// 			<div class="overlay" id="gambar-${picts[0].id}">
-				// 				<a href="#" class="close">&times;</a>
+				var picts = response.pictures
+				var pictLength = picts.length
+				if (pictLength > 0) {
+					var listPict = ""
+					if (pictLength == 1) {
+						listPict += `
+						<li class="mb-2">
+							<a href="#gambar-${picts[0].id}">
+								<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[0].picture}">
+							</a>
+							<div class="overlay" id="gambar-${picts[0].id}">
+								<a href="#" class="close">&times;</a>
 
-				// 				<a href="#gambar-${picts[0].id}" class="prev">&#10094;</a>
-				// 				<img class="" src="${PICT + '/galleries/' + picts[0].picture}">
-				// 				<a href="#gambar-${picts[0].id}" class="next">&#10095;</a>
-				// 			</div>
-				// 		</li>`
-				// 	} else {
-				// 		for (let i = 0; i < pictLength; i++) {
-				// 			if (i == 0) {
-				// 				listPict += `
-				// 				<li class="mb-2">
-				// 					<a href="#gambar-${picts[i].id}">
-				// 						<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
-				// 					</a>
-				// 					<div class="overlay" id="gambar-${picts[i].id}">
-				// 						<a href="#" class="close">&times;</a>
+								<a href="#gambar-${picts[0].id}" class="prev">&#10094;</a>
+								<img class="" src="${PICT + '/galleries/' + picts[0].picture}">
+								<a href="#gambar-${picts[0].id}" class="next">&#10095;</a>
+							</div>
+						</li>`
+					} else {
+						for (let i = 0; i < pictLength; i++) {
+							if (i == 0) {
+								listPict += `
+								<li class="mb-2">
+									<a href="#gambar-${picts[i].id}">
+										<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
+									</a>
+									<div class="overlay" id="gambar-${picts[i].id}">
+										<a href="#" class="close">&times;</a>
 
-				// 						<a href="#gambar-${picts[pictLength-1].id}" class="prev">&#10094;</a>
-				// 						<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
-				// 						<a href="#gambar-${picts[i+1].id}" class="next">&#10095;</a>
-				// 					</div>
-				// 				</li>`
-				// 			} else if (i+1 == pictLength) {
-				// 				listPict += `
-				// 				<li class="mb-2">
-				// 					<a href="#gambar-${picts[i].id}">
-				// 						<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
-				// 					</a>
-				// 					<div class="overlay" id="gambar-${picts[i].id}">
-				// 						<a href="#" class="close">&times;</a>
+										<a href="#gambar-${picts[pictLength-1].id}" class="prev">&#10094;</a>
+										<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
+										<a href="#gambar-${picts[i+1].id}" class="next">&#10095;</a>
+									</div>
+								</li>`
+							} else if (i+1 == pictLength) {
+								listPict += `
+								<li class="mb-2">
+									<a href="#gambar-${picts[i].id}">
+										<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
+									</a>
+									<div class="overlay" id="gambar-${picts[i].id}">
+										<a href="#" class="close">&times;</a>
 
-				// 						<a href="#gambar-${picts[i-1].id}" class="prev">&#10094;</a>
-				// 						<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
-				// 						<a href="#gambar-${picts[0].id}" class="next">&#10095;</a>
-				// 					</div>
-				// 				</li>`
-				// 			} else {
-				// 				listPict += `
-				// 				<li class="mb-2">
-				// 					<a href="#gambar-${picts[i].id}">
-				// 						<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
-				// 					</a>
-				// 					<div class="overlay" id="gambar-${picts[i].id}">
-				// 						<a href="#" class="close">&times;</a>
+										<a href="#gambar-${picts[i-1].id}" class="prev">&#10094;</a>
+										<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
+										<a href="#gambar-${picts[0].id}" class="next">&#10095;</a>
+									</div>
+								</li>`
+							} else {
+								listPict += `
+								<li class="mb-2">
+									<a href="#gambar-${picts[i].id}">
+										<img class="card-img-top pict-thumb" src="${PICT + '/galleries/' + picts[i].picture}">
+									</a>
+									<div class="overlay" id="gambar-${picts[i].id}">
+										<a href="#" class="close">&times;</a>
 
-				// 						<a href="#gambar-${picts[i-1].id}" class="prev">&#10094;</a>
-				// 						<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
-				// 						<a href="#gambar-${picts[i+1].id}" class="next">&#10095;</a>
-				// 					</div>
-				// 				</li>`
-				// 			}
-				// 		}
+										<a href="#gambar-${picts[i-1].id}" class="prev">&#10094;</a>
+										<img class="" src="${PICT + '/galleries/' + picts[i].picture}">
+										<a href="#gambar-${picts[i+1].id}" class="next">&#10095;</a>
+									</div>
+								</li>`
+							}
+						}
 
-				// 	}
-				// 	$('.gallery').append(listPict)
-				// }
+					}
+					$('.gallery').append(listPict)
+				}
 			},
 			set errorData(err) {
 				console.log(err);
