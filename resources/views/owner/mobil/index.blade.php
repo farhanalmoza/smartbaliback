@@ -27,10 +27,29 @@
                             <div class="card-title">Daftar Mobil</div>
                             <a href="{{ url('/owner/tambah-mobil') }}" class="btn btn-primary btn-sm">Tambah mobil</a>
                         </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                              <table id="dataTables" class="display table table-striped table-hover" >
+                                <thead>
+                                  <tr>
+                                    <th>Nomor Polisi</th>
+                                    <th>Nama Mobil</th>
+                                    <th>Harga Rental</th>
+                                    <th>Kapasitas Penumpang</th>
+                                    <th>Kapasitas BBM</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
                     </div>
-                    <div class="row" id="car-cards">
+                    {{-- <div class="row" id="car-cards">
                         
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -41,5 +60,56 @@
 @endsection
 
 @section('js')
+    <!-- Datatables -->
+    <script src="{{ asset('t_admin/js/plugin/datatables/datatables.min.js') }}"></script>
+    {{-- My Script --}}
     <script src="{{ asset('owner/js/mobil/index.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            getCars()
+            deleteCar()
+        })
+
+        function getCars() {
+            const urlCar = URL_DATA +  "/all/mobil/" + user_id
+            const columns = [
+                {data : 'no_car', name: 'no_car'},
+                {data : 'name', name: 'name'},
+                {data : 'rent_price', name: 'rent_price'},
+                {data : 'passenger_capacity', name: 'passenger_capacity'},
+                {data : 'fuel_capacity', name: 'fuel_capacity'},
+                {data : 'actions', name: 'actions', orderable: false, searchable: false},
+            ]
+            Functions.prototype.tableResult("#dataTables", urlCar, columns)
+        }
+
+        function deleteCar() {
+            $('#dataTables').on('click', 'tbody tr td div .delete', function(e) {
+                const id = $(this).data('id')
+                const urlDelete = URL_DATA + "/delete/car/" + id
+                swal({
+                    title: 'Apa Anda yakin?',
+                    text: "Data yang sudah dihapus tidak dapat dikembalikan!",
+                    type: 'warning',
+                    buttons:{
+                        confirm: {
+                            text : 'Yes, hapus!',
+                            className : 'btn btn-success'
+                        },
+                        cancel: {
+                            visible: true,
+                            className: 'btn btn-danger'
+                        }
+                    }
+                }).then((Delete) => {
+                    if (Delete) {
+                        Functions.prototype.deleteData(urlDelete);
+                    } else {
+                        swal.close();
+                    }
+                    getCars()
+                });
+            })
+        }
+    </script>
 @endsection

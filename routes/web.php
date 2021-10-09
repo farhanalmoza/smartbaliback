@@ -102,7 +102,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
     Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
-    Route::get('/mobil', [CarController::class, 'index']);
+    Route::get('/all/mobil/{user_id}', [CarController::class, 'index']);
 
     // search
     Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
@@ -137,6 +137,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::group(['prefix' => 'delete'], function() {
         Route::delete('/place/{id}', [PlaceController::class, 'destroy']);
         Route::delete('/tag/{id}', [TagController::class, 'destroy']);
+        Route::delete('/car/{id}', [CarController::class, 'destroy']);
     });
 
     // verify data

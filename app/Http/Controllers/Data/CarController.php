@@ -20,9 +20,9 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        return $this->car->getCars();
+        return $this->car->getCars($user_id);
     }
 
     /**
@@ -117,6 +117,6 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->car->delete($id);
     }
 }
