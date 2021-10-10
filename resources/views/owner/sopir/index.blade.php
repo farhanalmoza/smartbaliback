@@ -23,12 +23,25 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex justify-content-between">
                             <div class="card-title">Daftar Sopir</div>
+                            <a href="{{ url('/owner/tambah-sopir') }}" class="btn btn-primary btn-sm">Tambah sopir</a>
                         </div>
                         <div class="card-body">
-                            <div class="card-sub">									
-                                Akan segera datang.
+                            <div class="table-responsive">
+                                <table id="dataTables" class="display table table-striped table-hover" >
+                                    <thead>
+                                        <tr>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Nomor Telepon</th>
+                                        <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -42,5 +55,24 @@
 @endsection
 
 @section('js')
-    
+    <!-- Datatables -->
+    <script src="{{ asset('t_admin/js/plugin/datatables/datatables.min.js') }}"></script>
+    {{-- My Script --}}
+    <script>
+        $(document).ready(function() {
+            getDrivers()
+        })
+
+        function getDrivers() {
+            const urlDriver = URL_DATA +  "/all/driver/" + user_id
+            const columns = [
+                {data : 'name', name: 'name'},
+                {data : 'address', name: 'address'},
+                {data : 'phone', name: 'phone'},
+                {data : 'actions', name: 'actions', orderable: false, searchable: false},
+            ]
+            Functions.prototype.tableResult("#dataTables", urlDriver, columns)
+        }
+    </script>
+    <script src="{{ asset('/owner/js/sopir/index.js') }}"></script>
 @endsection

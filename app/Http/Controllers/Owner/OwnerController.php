@@ -59,6 +59,7 @@ class OwnerController extends Controller
     {
         return view('owner.mobil.index');
     }
+
     // crud mobil
     public function tambahMobil()
     {
@@ -92,6 +93,12 @@ class OwnerController extends Controller
         $data['id'] = $id;
         return view('owner.mobil.edit', $data);
     }
+
+     // crud sopir
+     public function tambahSopir()
+     {
+         return view('owner.sopir.tambah');
+     }
 
     // pengaturan
     public function editProfil()

@@ -45,7 +45,7 @@
                                 </tbody>
                               </table>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     {{-- <div class="row" id="car-cards">
                         

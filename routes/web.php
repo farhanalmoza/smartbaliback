@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Data\CarController;
+use App\Http\Controllers\Data\DriverController;
 use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\NotifController;
 use App\Http\Controllers\Data\PlaceController;
@@ -75,6 +76,9 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
     Route::get('/mobil/{id}', [OwnerController::class, 'detailMobil']);
     Route::get('/edit-mobil/{id}', [OwnerController::class, 'editMobil']);
 
+    // CRUD Sopir
+    Route::get('/tambah-sopir', [OwnerController::class, 'tambahSopir']);
+
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
     Route::get('/edit-tempat/{id}', [OwnerController::class, 'editTempat']);
@@ -103,6 +107,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
     Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
     Route::get('/all/mobil/{user_id}', [CarController::class, 'index']);
+    Route::get('/all/driver/{user_id}', [DriverController::class, 'index']);
 
     // search
     Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
@@ -120,6 +125,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/tag', [TagController::class, 'store']);
         Route::post('/place', [PlaceController::class, 'store']);
         Route::post('/car', [CarController::class, 'store']);
+        Route::post('/driver', [DriverController::class, 'store']);
     });
 
     // get detail

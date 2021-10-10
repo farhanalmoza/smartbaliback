@@ -19,7 +19,7 @@ class CarService
             $id = $rows->id;
             $btn = "<td> <div class='btn-group'>";
             $btn .= "<a href='".$url. "/edit-mobil/".$id."' class='btn btn-info btn-sm'>Ubah</a>";
-            $btn .= "<a href='".$url. "/mobil/".$id."' class='btn btn-primary btn-sm'>Ubah</a>";
+            $btn .= "<a href='".$url. "/mobil/".$id."' class='btn btn-primary btn-sm'>Detail</a>";
             $btn .= "<button data-id='$id' class='btn btn-sm btn-danger delete'>Hapus</button>";
             $btn .= '</div> </td>';
             return $btn;
