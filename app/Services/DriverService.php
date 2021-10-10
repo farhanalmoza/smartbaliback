@@ -17,8 +17,8 @@ class DriverService
             $url = url('owner');
             $id = $rows->id;
             $btn = "<td> <div class='btn-group'>";
-            $btn .= "<a href='".$url. "/edit-driver/".$id."' class='btn btn-info btn-sm'>Ubah</a>";
-            $btn .= "<a href='".$url. "/driver/".$id."' class='btn btn-primary btn-sm'>Detail</a>";
+            $btn .= "<a href='".$url. "/edit-sopir/".$id."' class='btn btn-info btn-sm'>Ubah</a>";
+            $btn .= "<a href='".$url. "/sopir/".$id."' class='btn btn-primary btn-sm'>Detail</a>";
             $btn .= "<button data-id='$id' class='btn btn-sm btn-danger delete'>Hapus</button>";
             $btn .= '</div> </td>';
             return $btn;
@@ -32,5 +32,13 @@ class DriverService
         $create = Driver::create($data);
         if(!$create) return response(['message' => 'Data sopir gagal ditambahkan!'], 500);
         return response(['message' => 'Data sopir berhasil ditambahkan!']);
+    }
+
+    // get detail car
+    public function get($id)
+    {
+        $result = Driver::where('id', $id)->first();
+        if(!$result) return response(['message' => 'Oops, terjadi kesalahan!'], 406);
+        return response($result);
     }
 }

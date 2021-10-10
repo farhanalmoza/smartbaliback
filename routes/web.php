@@ -78,6 +78,7 @@ Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], functi
 
     // CRUD Sopir
     Route::get('/tambah-sopir', [OwnerController::class, 'tambahSopir']);
+    Route::get('/edit-sopir/{id}', [OwnerController::class, 'editSopir']);
 
     // CRUD Tempat
     Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
@@ -132,6 +133,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/place/{id}', [PlaceController::class, 'show']);
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
     Route::get('/mobil/{id}', [CarController::class, 'show']);
+    Route::get('/driver/{id}', [DriverController::class, 'show']);
 
     // update
     Route::group(['prefix' => 'update'], function() {

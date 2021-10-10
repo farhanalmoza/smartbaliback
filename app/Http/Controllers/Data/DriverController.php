@@ -60,7 +60,7 @@ class DriverController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->driver->get($id);
     }
 
     /**

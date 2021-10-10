@@ -95,10 +95,16 @@ class OwnerController extends Controller
     }
 
      // crud sopir
-     public function tambahSopir()
-     {
-         return view('owner.sopir.tambah');
-     }
+    public function tambahSopir()
+    {
+        return view('owner.sopir.tambah');
+    }
+
+    public function editSopir($id)
+    {
+        $data['id'] = $id;
+        return view('owner.sopir.edit', $data);
+    }
 
     // pengaturan
     public function editProfil()
