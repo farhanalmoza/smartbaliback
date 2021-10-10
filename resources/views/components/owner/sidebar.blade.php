@@ -61,12 +61,13 @@
                         <p>Mobil</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'owner/sopir' == request()->path() ? 'active' : '' }}">
+                {{-- no menu driver --}}
+                {{-- <li class="nav-item {{ 'owner/sopir' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/owner/sopir') }}">
                         <i class="fas fa-user-tie"></i>
                         <p>Sopir</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item {{ 'owner/daftar-rental' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/owner/daftar-rental') }}">
                         <i class="fas fa-clipboard-list"></i>
