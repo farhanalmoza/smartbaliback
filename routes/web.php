@@ -42,10 +42,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
     Route::get('/tempat-ibadah', [AdminController::class, 'tempatIbadah']);
     Route::get('/souvenir', [AdminController::class, 'souvenir']);
 
-    // CRUD Tempat
+    // detail
     Route::get('/tempat/{slug}/{id}', [AdminController::class, 'detailTempat']);
+    Route::get('/mobil/{id}', [AdminController::class, 'detailMobil']);
 
-    Route::get('/verifikasi', [AdminController::class, 'verifikasi']);
+    // verifikasi
+    Route::get('/verifikasi/tempat', [AdminController::class, 'verifikasiTempat']);
+    Route::get('/verifikasi/mobil', [AdminController::class, 'verifikasiMobil']);
 
     // list
     Route::get('/daftar-pengguna', [AdminController::class, 'daftarPengguna']);
@@ -98,8 +101,6 @@ Route::group(['prefix' => 'data'], function() {
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
-    Route::get('/verify-places', [PlaceController::class, 'verifyPlaces']); // get all verify places
-    Route::get('/unverified-places', [PlaceController::class, 'unverifiedPlaces']); // get all unverified places
     Route::get('/wisata', [PlaceController::class, 'tours']);
     Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
@@ -109,6 +110,11 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
     Route::get('/all/mobil/{user_id}', [CarController::class, 'index']);
     Route::get('/all/driver/{user_id}', [DriverController::class, 'index']);
+    // get all verify/unverify data
+    Route::get('/verify-places', [PlaceController::class, 'verifyPlaces']); // get all verify places
+    Route::get('/unverified-places', [PlaceController::class, 'unverifiedPlaces']); // get all unverified places
+    Route::get('/verify-cars', [CarController::class, 'verifyCars']); // get all verify cars
+    Route::get('/unverified-cars', [CarController::class, 'unverifiedCars']); // get all unverified cars
 
     // search
     Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
@@ -149,8 +155,10 @@ Route::group(['prefix' => 'data'], function() {
     });
 
     // verify data
-    Route::put('/verify/place/{id}', [VerifyController::class, 'verify']);
-    Route::put('/unverify/place/{id}', [VerifyController::class, 'unverify']);
+    Route::put('/verify/place/{id}', [VerifyController::class, 'verifyPlace']);
+    Route::put('/unverify/place/{id}', [VerifyController::class, 'unverifyPlace']);
+    Route::put('/verify/car/{id}', [VerifyController::class, 'verifyCar']);
+    Route::put('/unverify/car/{id}', [VerifyController::class, 'unverifyCar']);
 
     // settings
     Route::group(['prefix' => 'pengaturan'], function() {

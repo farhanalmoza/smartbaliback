@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Detail Tempat')
+@section('title', 'Detail Mobil')
 
 @section('css')
 	<style>
@@ -128,7 +128,7 @@
 	<div class="panel-header">
 		<div class="page-inner">
 			<div class="page-header">
-				<h4 class="page-title">Detail Tempat</h4>
+				<h4 class="page-title">Detail Mobil</h4>
 				<ul class="breadcrumbs">
 					<li class="nav-home">
 						<a href="#">
@@ -139,14 +139,14 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">Detail Tempat</a>
+						<a href="#">Detail Mobil</a>
 					</li>
 				</ul>
 			</div>
 			<div class="row">
 				<div class="col-md-8">
 					<div class="card card-post card-round">
-						<img class="card-img-top" src="" alt="Card image cap" id="thumbnail">
+						<img class="card-img-top" src="{{ asset('t_admin/img/blogpost.jpg') }}" alt="Card image cap" id="thumbnail">
 						<div class="card-body detail">
 							<div class="d-flex">
 								<div class="info-post ml-2">
@@ -156,7 +156,6 @@
 									<p class="date text-muted" id="address">20 Jan 18</p>
 								</div>
 							</div>
-							<div class="separator-solid"></div>
 							<p class="card-text" id="desc"></p>
 						</div>
 					</div>
@@ -179,9 +178,8 @@
 
 @section('js')
 	<!-- My Script -->
-	<script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
+	<script src="{{ asset('t_admin/js/admin/verifikasi/mobil.js') }}"></script>
 	<script>
-		const slug = '{{ $slug }}'
 		const id = '{{ $id }}'
 
 		$(document).ready(function () {
@@ -190,26 +188,30 @@
 
 		const getDetail = {
 			set loadData(data) {
-				const urlDetail = URL_DATA + "/place/" + data
+				const urlDetail = URL_DATA + "/mobil/" + data
 				Functions.prototype.requestDetail(getDetail, urlDetail)
 			},
 			set successData(response) {
 				// for preview detail
-				$('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
-				$('#title').text(response.place.title)
-				$('#address').text(response.place.address)
-				$('#desc').append(response.place.desc)
-				if (response.place.verified != 'true') {
+				// $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
+				$('#title').text(response.name)
+				$('#address').text('Tahun produksi : '+response.year_production)
+				$('#address').append('<br>Harga rental &emsp; : '+response.rent_price+'<br>')
+				$('#address').append('Harga beli &emsp;&emsp;&emsp;&emsp; : '+response.purchase_price+'<br>')
+				$('#address').append('Kapasitas bahan bakar : '+response.fuel_capacity+'<br>')
+				$('#address').append('Kapasitas penumpang : '+response.passenger_capacity)
+                if (response.verified != 'true') {
 					$('.detail').append('<button class="btn btn-success btn-rounded btn-sm mx-1 verify">Verifikasi</button>')
-					$('.verify').attr('data-id', response.place.id)
+					$('.verify').attr('data-id', response.id)
 					// $('.verify').attr('data-user', user_id)
 				}
-				if (response.place.verified != 'false') {
+				if (response.verified != 'false') {
 					$('.detail').append('<button class="btn btn-danger btn-rounded btn-sm mx-1 unverify">Tidak lolos verifikasi</button>')
-					$('.unverify').attr('data-id', response.place.id)
+					$('.unverify').attr('data-id', response.id)
 				}
+
 				// gallery
-				var picts = response.place.pictures
+				var picts = response.pictures
 				var pictLength = picts.length
 				if (pictLength > 0) {
 					var listPict = ""

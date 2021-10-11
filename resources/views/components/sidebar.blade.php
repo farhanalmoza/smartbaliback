@@ -49,10 +49,16 @@
                         <p>Oleh-oleh</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'admin/verifikasi' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/admin/verifikasi') }}">
+                <li class="nav-item {{ 'admin/verifikasi/tempat' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/admin/verifikasi/tempat') }}">
                         <i class="fas fa-check-square"></i>
-                        <p>Verifikasi</p>
+                        <p>Verifikasi Tempat</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'admin/verifikasi/mobil' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/admin/verifikasi/mobil') }}">
+                        <i class="fas fa-check-square"></i>
+                        <p>Verifikasi Mobil</p>
                     </a>
                 </li>
                 <li class="nav-item {{ 'admin/daftar-pengguna' == request()->path() ? 'active' : '' }}">

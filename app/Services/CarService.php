@@ -28,6 +28,46 @@ class CarService
         ->make(true);
     }
 
+    // get all verify/unverify data
+    public function getVerifyCars() // get all verify cars
+    {
+        $results = Car::where('verified', null)->get();
+        return datatables()
+        ->of($results)
+        ->addIndexColumn()
+        ->addColumn('actions', function($rows) {
+            $rows = json_encode($rows);
+            $rows = json_decode($rows);
+            $url = url('admin');
+            $id = $rows->id;
+            $btn = "<td> <div class='btn-group'>";
+            $btn .= "<a href='".$url. "/mobil/".$id."' class='btn btn-primary btn-sm'>Detail</a>";
+            $btn .= '</div> </td>';
+            return $btn;
+        })
+        ->rawColumns(['actions'])
+        ->make(true);
+    }
+    public function getUnverifiedCars() // get all unverified cars
+    {
+        $results = Car::where('verified', 'false')->get();
+        return datatables()
+        ->of($results)
+        ->addIndexColumn()
+        ->addColumn('actions', function($rows) {
+            $rows = json_encode($rows);
+            $rows = json_decode($rows);
+            $url = url('admin');
+            $id = $rows->id;
+            $btn = "<td> <div class='btn-group'>";
+            $btn .= "<a href='".$url. "/mobil/".$id."' class='btn btn-primary btn-sm'>Detail</a>";
+            $btn .= '</div> </td>';
+            return $btn;
+        })
+        ->rawColumns(['actions'])
+        ->make(true);
+    }
+
     public function add($data)
     {
         $create = Car::create($data);

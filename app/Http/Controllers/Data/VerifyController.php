@@ -15,13 +15,25 @@ class VerifyController extends Controller
         $this->verify = app()->make(VerifyService::class);   
     }
 
-    public function verify($id)
+    // places
+    public function verifyPlace($id)
     {
-        return $this->verify->verify($id);
+        return $this->verify->verifyPlace($id);
     }
 
-    public function unverify($id)
+    public function unverifyPlace($id)
     {
-        return $this->verify->unverify($id);
+        return $this->verify->unverifyPlace($id);
+    }
+
+    // cars
+    public function verifyCar($id)
+    {
+        return $this->verify->verifyCar($id);
+    }
+
+    public function unverifyCar($id)
+    {
+        return $this->verify->unverifyCar($id);
     }
 }

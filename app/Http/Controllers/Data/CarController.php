@@ -15,6 +15,10 @@ class CarController extends Controller
         $this->car = app()->make(CarService::class);
     }
 
+    // get all verify/unverify data
+    public function verifyCars() { return $this->car->getVerifyCars(); } // get all verify cars
+    public function unverifiedCars() { return $this->car->getUnverifiedCars(); } // get all unverified cars
+
     /**
      * Display a listing of the resource.
      *

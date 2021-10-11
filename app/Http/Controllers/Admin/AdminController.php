@@ -41,6 +41,12 @@ class AdminController extends Controller
         return view('admin.tempat.tambah');
     }
 
+    public function editTempat($id)
+    {
+        $data['id'] = $id;
+        return view('admin.tempat.edit', $data);
+    }
+    // detail
     public function detailTempat($slug, $id)
     {
         $data['slug'] = $slug;
@@ -48,15 +54,21 @@ class AdminController extends Controller
         return view('admin.tempat.detail', $data);
     }
 
-    public function editTempat($id)
+    public function detailMobil($id)
     {
         $data['id'] = $id;
-        return view('admin.tempat.edit', $data);
+        return view('admin.mobil.detail', $data);
     }
 
-    public function verifikasi()
+    // verifikasi
+    public function verifikasiTempat()
     {
-        return view('admin.verifikasi.index');
+        return view('admin.verifikasi.tempat');
+    }
+
+    public function verifikasiMobil()
+    {
+        return view('admin.verifikasi.mobil');
     }
 
     public function daftarPengguna()

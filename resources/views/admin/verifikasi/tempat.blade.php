@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Verifikasi')
+@section('title', 'Verifikasi Tempat')
 
 @section('css')
     <style>
@@ -21,7 +21,7 @@
     <div class="panel-header">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Verifikasi</h4>
+                <h4 class="page-title">Verifikasi Tempat</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="{{ url('/admin/dashboard') }}">
@@ -32,17 +32,17 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Verifikasi</a>
+                        <a href="#">Verifikasi Tempat</a>
                     </li>
                 </ul>
             </div>
-            <h4 class="page-title">Daftar tempat yang belum terverifikasi</h4>
+            <h4 class="page-title">Data tempat yang belum terverifikasi</h4>
             
             <div class="row place" id="place-cards">
                 
             </div>
 
-            <h4 class="page-title">Daftar tempat yang tidak lolos verifikasi</h4>
+            <h4 class="page-title">Data tempat yang tidak lolos verifikasi</h4>
             
             <div class="row" id="unverified-places">
                 
@@ -62,5 +62,5 @@
             getUnverifiedPlaces.loadData = "/unverified-places"
         })
     </script>
-    <script src="{{ asset('t_admin/js/admin/tempat/index.js') }}"></script>
+    <script src="{{ asset('t_admin/js/admin/verifikasi/tempat.js') }}"></script>
 @endsection
