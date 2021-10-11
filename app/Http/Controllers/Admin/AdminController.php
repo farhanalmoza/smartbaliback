@@ -73,7 +73,7 @@ class AdminController extends Controller
 
     public function daftarPengguna()
     {
-        return view('admin.daftarPengguna.index');
+        return view('admin.pengguna.index');
     }
 
     public function daftarTag()

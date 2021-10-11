@@ -51,13 +51,13 @@
                 </li>
                 <li class="nav-item {{ 'admin/verifikasi/tempat' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/verifikasi/tempat') }}">
-                        <i class="fas fa-check-square"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <p>Verifikasi Tempat</p>
                     </a>
                 </li>
                 <li class="nav-item {{ 'admin/verifikasi/mobil' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/verifikasi/mobil') }}">
-                        <i class="fas fa-check-square"></i>
+                        <i class="fas fa-car"></i>
                         <p>Verifikasi Mobil</p>
                     </a>
                 </li>
@@ -69,7 +69,7 @@
                 </li>
                 <li class="nav-item {{ 'admin/daftar-tag' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/daftar-tag') }}">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-tags"></i>
                         <p>Daftar Tag</p>
                     </a>
                 </li>

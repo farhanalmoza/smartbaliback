@@ -8,6 +8,7 @@ use App\Http\Controllers\Data\NotifController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
+use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\Data\VerifyController;
 use App\Http\Controllers\Owner\OwnerController;
 use App\Models\Gallery;
@@ -115,6 +116,8 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/unverified-places', [PlaceController::class, 'unverifiedPlaces']); // get all unverified places
     Route::get('/verify-cars', [CarController::class, 'verifyCars']); // get all verify cars
     Route::get('/unverified-cars', [CarController::class, 'unverifiedCars']); // get all unverified cars
+    Route::get('/all/admin', [UserController::class, 'allAdmin']);
+    Route::get('/all/owner', [UserController::class, 'allOwner']);
 
     // search
     Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
