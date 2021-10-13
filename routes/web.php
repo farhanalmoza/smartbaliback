@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Data\BackpackerController;
 use App\Http\Controllers\Data\CarController;
 use App\Http\Controllers\Data\DriverController;
 use App\Http\Controllers\Data\GalleryController;
@@ -136,6 +137,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/place', [PlaceController::class, 'store']);
         Route::post('/car', [CarController::class, 'store']);
         Route::post('/driver', [DriverController::class, 'store']);
+        Route::post('/backpacker', [BackpackerController::class, 'store']);
     });
 
     // get detail
