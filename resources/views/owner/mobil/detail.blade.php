@@ -146,16 +146,47 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="card card-post card-round">
-						<img class="card-img-top" src="{{ asset('t_admin/img/blogpost.jpg') }}" alt="Card image cap" id="thumbnail">
 						<div class="card-body">
 							<div class="d-flex">
 								<div class="info-post ml-2">
-									<h3 class="card-title" id="title">
-										Best Design Resources This Week
-									</h3>
-									<p class="date text-muted" id="address">20 Jan 18</p>
+									<h3 class="card-title" id="title"></h3>
+									<p class="date text-muted" id="address"></p>
 								</div>
 							</div>
+							<table>
+								<tr>
+									<th style="width: 70%; height: 30px">Nama Mobil</th>
+									<td id="nama"></td>
+								</tr>
+								<tr>
+									<th style="width: 70%; height: 30px">Nomor Polisi</th>
+									<td id="nopol"></td>
+								</tr>
+								<tr>
+									<th style="height: 30px">Status Rental</th>
+									<td id="status"></td>
+								</tr>
+								<tr>
+									<th style="height: 30px">Tahun Pembuatan</th>
+									<td id="thn"></td>
+								</tr>
+								<tr>
+									<th style="height: 30px">Harga Rental</th>
+									<td id="hrgRent"></td>
+								</tr>
+								<tr>
+									<th style="height: 30px">Harga Beli</th>
+									<td id="hrgBeli"></td>
+								</tr>
+								<tr>
+									<th style="height: 30px">Kapasitas Bahan Bakar</th>
+									<td id="bbm"></td>
+								</tr>
+								<tr>
+									<th style="height: 30px">Kapasitas Penumpang</th>
+									<td id="penumpang"></td>
+								</tr>
+							</table>
 							<p class="card-text" id="desc"></p>
 						</div>
 					</div>
@@ -193,13 +224,14 @@
 			},
 			set successData(response) {
 				// for preview detail
-				// $('#thumbnail').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
-				$('#title').text(response.name)
-				$('#address').text('Tahun produksi : '+response.year_production)
-				$('#address').append('<br>Harga rental &emsp; : '+response.rent_price+'<br>')
-				$('#address').append('Harga beli &emsp;&emsp;&emsp;&emsp; : '+response.purchase_price+'<br>')
-				$('#address').append('Kapasitas bahan bakar : '+response.fuel_capacity+'<br>')
-				$('#address').append('Kapasitas penumpang : '+response.passenger_capacity)
+				$('#nama').text(response.name)
+				$('#nopol').text(response.no_car)
+				$('#status').text(response.status)
+				$('#thn').text(response.year_production)
+				$('#hrgRent').text(response.rent_price)
+				$('#hrgBeli').text(response.purchase_price)
+				$('#bbm').text(response.fuel_capacity)
+				$('#penumpang').text(response.passenger_capacity)
 
 				// gallery
 				var picts = response.pictures
