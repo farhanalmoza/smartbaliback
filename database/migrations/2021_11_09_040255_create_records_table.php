@@ -15,10 +15,10 @@ class CreateRecordsTable extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('place_id')->constrained('places')->onDelete('cascade');
-            $table->foreignId('backpacker_id')->constrained('backpackers')->onDelete('cascade');
-            $table->dateTime('check_in', $precision = 0);
-            $table->dateTime('check_out', $precision = 0);
+            $table->integer('backpacker_id');
+            $table->string('arrival');
+            $table->dateTime('check_in');
+            $table->dateTime('check_out');
             $table->timestamps();
         });
     }
