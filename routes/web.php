@@ -1,6 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Auth\ConfirmPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Data\BackpackerController;
 use App\Http\Controllers\Data\CarController;
 use App\Http\Controllers\Data\DriverController;
@@ -31,7 +37,7 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return view('welcome');
 });
 
 // views
@@ -179,6 +185,26 @@ Route::group(['prefix' => 'data'], function() {
     });
 });
 
-Auth::routes(['verify' => true]);
+// auth list
+// Auth::routes(['verify' => true]);
+Route::group(['prefix' => 'email'], function() {
+    Route::post('/resend', [VerificationController::class, 'resend'])->name('verification.resend')->middleware('auth');
+    Route::get('/verify', [VerificationController::class, 'show'])->name('verification.notice')->middleware('auth');
+    Route::get('/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['auth', 'signed']);
+});
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::group(['prefix' => 'password'], function() {
+    Route::get('/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm')->middleware('auth');
+    Route::post('/confirm', [ConfirmPasswordController::class, 'confirm'])->middleware('auth');
+    Route::post('/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('passsword.request');
+    Route::post('/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+    Route::get('/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+});
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register')->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
