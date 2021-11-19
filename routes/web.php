@@ -199,12 +199,13 @@ Route::group(['prefix' => 'password'], function() {
     Route::get('/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm')->middleware('auth');
     Route::post('/confirm', [ConfirmPasswordController::class, 'confirm'])->middleware('auth');
     Route::post('/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-    Route::get('/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('passsword.request');
+    Route::get('/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
     Route::post('/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
     Route::get('/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 });
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register')->middleware('guest');
-Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'showSelectType'])->name('register.select')->middleware('guest');
+Route::get('/register/{type}', [RegisterController::class, 'showRegistrationForm'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register'])->name('register')->middleware('guest');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');

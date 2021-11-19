@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\OwnerCar;
+use App\Models\OwnerHotel;
+use App\Models\OwnerSouvenir;
+use App\Models\OwnerTour;
+use App\Models\OwnerWorship;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -74,10 +78,39 @@ class RegisterController extends Controller
 
     protected function createProfile(array $data)
     {
-        $user = User::where('email', $data['email'])->first();
-        return Profile::create([
-            'name' => $data['name'],
-            'email' => $data['email']
-        ]);
+        if ($data['type'] == 'tour') {
+            return OwnerTour::create([
+                'name' => $data['name'],
+                'email' => $data['email']
+            ]);
+        }
+
+        if ($data['type'] == 'hotel') {
+            return OwnerHotel::create([
+                'name' => $data['name'],
+                'email' => $data['email']
+            ]);
+        }
+
+        if ($data['type'] == 'worship') {
+            return OwnerWorship::create([
+                'name' => $data['name'],
+                'email' => $data['email']
+            ]);
+        }
+
+        if ($data['type'] == 'car') {
+            return OwnerCar::create([
+                'name' => $data['name'],
+                'email' => $data['email']
+            ]);
+        }
+
+        if ($data['type'] == 'souvenir') {
+            return OwnerSouvenir::create([
+                'name' => $data['name'],
+                'email' => $data['email']
+            ]);
+        }
     }
 }

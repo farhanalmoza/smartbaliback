@@ -10,6 +10,7 @@
           <form action="{{ route('register') }}" method="post">
             @csrf
             <div class="form-group">
+              <input type="hidden" value="{{ $type }}" id="type" name="type">
               <div class="input-icon @error('name') has-error @enderror">
                 <span class="input-icon-addon">
                   <i class="fa fa-user"></i>

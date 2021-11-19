@@ -565,14 +565,14 @@ section {
 #services {
   background: #fff;
   background-size: cover;
-  padding: 80px 0 60px 0;
+  padding: 100px 0 60px 0;
 }
 #services .box {
   padding: 50px 20px;
   margin-bottom: 50px;
   text-align: center;
   border: 1px solid #e6e6e6;
-  height: 200px;
+  height: 100px;
   position: relative;
   background: #fafafa;
 }

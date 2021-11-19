@@ -46,10 +46,10 @@
                 @auth
                     <li><a class="nav-link scrollto" href="{{ url('/admin/dashboard') }}">Home</a></li>
                 @else
-                    <li><a class="nav-link scrollto active" href="{{ route('login') }}">Login</a></li>
+                    <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
 
                     @if (Route::has('register'))
-                        <li><a class="nav-link scrollto" href="{{ route('register') }}">Register</a></li>
+                        <li><a class="nav-link scrollto" href="{{ route('register.select') }}">Register</a></li>
                     @endif
                 @endauth
             @endif

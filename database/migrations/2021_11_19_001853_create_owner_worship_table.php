@@ -15,15 +15,15 @@ class CreateOwnerWorshipTable extends Migration
     {
         Schema::create('owner_worship', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('email');
             $table->foreign('email')->references('email')->on('users')->onDelete('cascade');
-            $table->string('picture');
-            $table->string('phone');
-            $table->text('address');
-            $table->string('acc_bank');
-            $table->string('bank');
-            $table->string('holder_name');
+            $table->string('name')->nullable();
+            $table->string('picture')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('address')->nullable();
+            $table->string('acc_bank')->nullable();
+            $table->string('bank')->nullable();
+            $table->string('holder_name')->nullable();
             $table->timestamps();
         });
     }
