@@ -1,8 +1,8 @@
 $(document).ready(function() {
-    getTours.loadData = "/wisata"
-    getHotels.loadData = "/hotel"
-    getWorships.loadData = "/tempat-ibadah"
-    getSouvenirs.loadData = "/souvenir"
+    // getTours.loadData = "/wisata"
+    // getHotels.loadData = "/hotel"
+    // getWorships.loadData = "/tempat-ibadah"
+    // getSouvenirs.loadData = "/souvenir"
 }) 
 
 const getTours = {

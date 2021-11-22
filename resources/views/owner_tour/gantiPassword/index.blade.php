@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_tour.layouts.template')
 @section('title', 'Ganti Password')
 
 @section('content')
@@ -71,5 +71,5 @@
 
 @section('js')
     <!-- My Script -->
-    <script src="{{ asset('owner/js/settings/edit-profil.js') }}"></script>
+    <script src="{{ asset('js/ownerTour/settings/edit-profil.js') }}"></script>
 @endsection

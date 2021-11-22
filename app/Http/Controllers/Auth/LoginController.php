@@ -51,10 +51,24 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
-            if (auth()->user()->level == 1) {
-                return redirect('admin/wisata');
-            }else{
-                return redirect('admin/dashboard');
+            if ( auth()->user()->type == 'tour' ) {
+                return redirect('owner-tour/dashboard');
+            }
+
+            if ( auth()->user()->type == 'hotel' ) {
+                return redirect('owner-hotel/dashboard');
+            }
+
+            if ( auth()->user()->type == 'worship' ) {
+                return redirect('owner-worship/dashboard');
+            }
+
+            if ( auth()->user()->type == 'souvenir' ) {
+                return redirect('owner-souvenir/dashboard');
+            }
+            
+            if ( auth()->user()->type == 'car' ) {
+                return redirect('owner-car/dashboard');
             }
 
             return $this->sendLoginResponse($request);

@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\Place;
+use App\Models\Tour;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
@@ -13,90 +13,89 @@ class PlaceService
     // get all
     public function getVerifyPlaces() // get all verify places
     {
-        $results = Place::where('verified', null)->get();
+        $results = Tour::where('verified', null)->get();
         return datatables()->of($results)->make(true);
     }
     public function getUnverifiedPlaces() // get all unverified places
     {
-        $results = Place::where('verified', 'false')->get();
+        $results = Tour::where('verified', 'false')->get();
         return datatables()->of($results)->make(true);
     }
     public function getTours()
     {
-        $results = Place::where('type', 'tour')->get();
+        $results = Tour::get();
         return datatables()->of($results)->make(true);
     }
-    public function getHotels()
-    {
-        $results = Place::where('type', 'hotel')->get();
-        return datatables()->of($results)->make(true);
-    }
-    public function getWorships()
-    {
-        $results = Place::where('type', 'worship')->get();
-        return datatables()->of($results)->make(true);
-    }
-    public function getSouvenirs()
-    {
-        $results = Place::where('type', 'souvenir')->get();
-        return datatables()->of($results)->make(true);
-    }
+    // public function getHotels()
+    // {
+    //     $results = Place::where('type', 'hotel')->get();
+    //     return datatables()->of($results)->make(true);
+    // }
+    // public function getWorships()
+    // {
+    //     $results = Place::where('type', 'worship')->get();
+    //     return datatables()->of($results)->make(true);
+    // }
+    // public function getSouvenirs()
+    // {
+    //     $results = Place::where('type', 'souvenir')->get();
+    //     return datatables()->of($results)->make(true);
+    // }
 
     // search
     public function searchTours($search)
     {
-        $results = Place::where([
-            ['type', '=', 'tour'],
+        $results = Tour::where([
             ['title', 'like', '%'.$search.'%']
         ])->get();
         return datatables()->of($results)->make(true);
     }
-    public function searchHotels($search)
-    {
-        $results = Place::where([
-            ['type', '=', 'hotel'],
-            ['title', 'like', '%'.$search.'%']
-        ])->get();
-        return datatables()->of($results)->make(true);
-    }
-    public function searchWorships($search)
-    {
-        $results = Place::where([
-            ['type', '=', 'worship'],
-            ['title', 'like', '%'.$search.'%']
-        ])->get();
-        return datatables()->of($results)->make(true);
-    }
+    // public function searchHotels($search)
+    // {
+    //     $results = Place::where([
+    //         ['type', '=', 'hotel'],
+    //         ['title', 'like', '%'.$search.'%']
+    //     ])->get();
+    //     return datatables()->of($results)->make(true);
+    // }
+    // public function searchWorships($search)
+    // {
+    //     $results = Place::where([
+    //         ['type', '=', 'worship'],
+    //         ['title', 'like', '%'.$search.'%']
+    //     ])->get();
+    //     return datatables()->of($results)->make(true);
+    // }
 
     // get place by tag
     public function tagTours($idTag)
     {
-        $results = Place::whereHas('tags', function($query) use($idTag) {
+        $results = Tour::whereHas('tags', function($query) use($idTag) {
             return $query->where('tag_id', $idTag);
-        })->where('type', 'tour');
+        });
         return datatables()->of($results)->make(true);
     }
-    public function tagHotels($idTag)
-    {
-        $results = Place::whereHas('tags', function($query) use($idTag) {
-            return $query->where('tag_id', $idTag);
-        })->where('type', 'hotel');
-        return datatables()->of($results)->make(true);
-    }
-    public function tagWorships($idTag)
-    {
-        $results = Place::whereHas('tags', function($query) use($idTag) {
-            return $query->where('tag_id', $idTag);
-        })->where('type', 'worship');
-        return datatables()->of($results)->make(true);
-    }
-    public function tagSouvenirs($idTag)
-    {
-        $results = Place::whereHas('tags', function($query) use($idTag) {
-            return $query->where('tag_id', $idTag);
-        })->where('type', 'souvenir');
-        return datatables()->of($results)->make(true);
-    }
+    // public function tagHotels($idTag)
+    // {
+    //     $results = Place::whereHas('tags', function($query) use($idTag) {
+    //         return $query->where('tag_id', $idTag);
+    //     })->where('type', 'hotel');
+    //     return datatables()->of($results)->make(true);
+    // }
+    // public function tagWorships($idTag)
+    // {
+    //     $results = Place::whereHas('tags', function($query) use($idTag) {
+    //         return $query->where('tag_id', $idTag);
+    //     })->where('type', 'worship');
+    //     return datatables()->of($results)->make(true);
+    // }
+    // public function tagSouvenirs($idTag)
+    // {
+    //     $results = Place::whereHas('tags', function($query) use($idTag) {
+    //         return $query->where('tag_id', $idTag);
+    //     })->where('type', 'souvenir');
+    //     return datatables()->of($results)->make(true);
+    // }
 
     public function add($data, $files, $tags)
     {
@@ -117,7 +116,7 @@ class PlaceService
             $data["thumbnail"] = $val;
         }
 
-        $create = Place::create($data);
+        $create = Tour::create($data);
         foreach ($tags as $tag) {
             $create->tags()->attach($tag);
         }
@@ -132,8 +131,8 @@ class PlaceService
     public function get($id)
     {
         $result = [
-            'place' => Place::with('pictures:id,place_id,picture')->where('id', $id)->first(),
-            'tags'  => Place::find($id)->tags
+            'tours' => Tour::with('pictures:id,place_id,picture')->where('id', $id)->first(),
+            'tags'  => Tour::find($id)->tags
         ];
         if(!$result) return response(['message' => 'Oops, terjadi kesalahan!'], 406);
         return response($result);
@@ -145,9 +144,9 @@ class PlaceService
             $path = "public/pictures/thumbnail/";
 
             // delete old picture
-            $places = Place::where('id', $id)->get();
-            foreach ($places as $place) {
-                Storage::disk('local')->delete($path.$place->thumbnail);
+            $tours = Tour::where('id', $id)->get();
+            foreach ($tours as $tour) {
+                Storage::disk('local')->delete($path.$tour->thumbnail);
             }
             
             $optimizerChain = OptimizerChainFactory::create();
@@ -167,7 +166,7 @@ class PlaceService
             }
         }
 
-        $result = Place::find($id);
+        $result = Tour::find($id);
         if(!$result) return response(['message' => 'Opps, Terjadi kesalahan!'], 406);
         $result->update($data);
         $result->tags()->sync($tags);
@@ -177,7 +176,7 @@ class PlaceService
     public function delete($id)
     {
         $pathGal = "public/pictures/galleries/";
-        $result = Place::with('pictures:id,place_id,picture')->where('id', $id)->first();
+        $result = Tour::with('pictures:id,place_id,picture')->where('id', $id)->first();
         if(!$result) return response(['message' => 'Opps!. Ada kesahalan'], 406);
         // delete pict from gallery
         foreach ($result->pictures as $picture) {
@@ -186,7 +185,7 @@ class PlaceService
         
         // delete picture
         $path = "public/pictures/thumbnail/";
-        $results = Place::where('id', $id)->get();
+        $results = Tour::where('id', $id)->get();
         foreach ($results as $res) {
             Storage::disk('local')->delete($path.$res->thumbnail);
         }

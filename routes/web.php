@@ -12,12 +12,14 @@ use App\Http\Controllers\Data\CarController;
 use App\Http\Controllers\Data\DriverController;
 use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\NotifController;
+use App\Http\Controllers\Data\OwnerTourProfileController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
 use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\Data\VerifyController;
 use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\Owner\OwnerTourController;
 use App\Models\Gallery;
 use GuzzleHttp\Middleware;
 use Illuminate\Auth\Events\Verified;
@@ -67,38 +69,38 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
     Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
 });
 
-Route::group(['prefix' => 'owner', 'middleware' => ['auth', 'verified']], function() {
-    Route::get('/dashboard', [OwnerController::class, 'dashboard']);
-
-    // daftar tempat
-    Route::get('/wisata', [OwnerController::class, 'wisata']);
-    Route::get('/hotel', [OwnerController::class, 'hotel']);
-    Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
-    Route::get('/souvenir', [OwnerController::class, 'souvenir']);
-
-    // rental mobil
-    Route::get('/mobil', [OwnerController::class, 'car']);
-    Route::get('/sopir', [OwnerController::class, 'driver']);
-    Route::get('/daftar-rental', [OwnerController::class, 'rentalList']);
-
-    // CRUD Mobil
-    Route::get('/tambah-mobil', [OwnerController::class, 'tambahMobil']);
-    Route::get('/tambah-gambar-mobil/{id}', [OwnerController::class, 'tambahGambarMobil']);
-    Route::get('/mobil/{id}', [OwnerController::class, 'detailMobil']);
-    Route::get('/edit-mobil/{id}', [OwnerController::class, 'editMobil']);
-
-    // CRUD Sopir
-    Route::get('/tambah-sopir', [OwnerController::class, 'tambahSopir']);
-    Route::get('/edit-sopir/{id}', [OwnerController::class, 'editSopir']);
+Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', [OwnerTourController::class, 'dashboard']);
 
     // CRUD Tempat
-    Route::get('/tambah-tempat', [OwnerController::class, 'tambahTempat']);
-    Route::get('/edit-tempat/{id}', [OwnerController::class, 'editTempat']);
-    Route::get('/tempat/{id}', [OwnerController::class, 'detailTempat']);
+    Route::get('/wisata', [OwnerTourController::class, 'index']);
+    Route::get('/tambah-tempat', [OwnerTourController::class, 'tambahTempat']);
+    Route::get('/edit-tempat/{id}', [OwnerTourController::class, 'editTempat']);
+    Route::get('/tempat/{id}', [OwnerTourController::class, 'detailTempat']);
+
+    // Route::get('/hotel', [OwnerController::class, 'hotel']);
+    // Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
+    // Route::get('/souvenir', [OwnerController::class, 'souvenir']);
+
+    // rental mobil
+    // Route::get('/mobil', [OwnerController::class, 'car']);
+    // Route::get('/sopir', [OwnerController::class, 'driver']);
+    // Route::get('/daftar-rental', [OwnerController::class, 'rentalList']);
+
+    // CRUD Mobil
+    // Route::get('/tambah-mobil', [OwnerController::class, 'tambahMobil']);
+    // Route::get('/tambah-gambar-mobil/{id}', [OwnerController::class, 'tambahGambarMobil']);
+    // Route::get('/mobil/{id}', [OwnerController::class, 'detailMobil']);
+    // Route::get('/edit-mobil/{id}', [OwnerController::class, 'editMobil']);
+
+    // CRUD Sopir
+    // Route::get('/tambah-sopir', [OwnerController::class, 'tambahSopir']);
+    // Route::get('/edit-sopir/{id}', [OwnerController::class, 'editSopir']);
+
 
     // pengaturan
-    Route::get('/edit-profil', [OwnerController::class, 'editProfil']);
-    Route::get('/ganti-password', [OwnerController::class, 'gantiPassword']);
+    Route::get('/edit-profil', [OwnerTourController::class, 'editProfil']);
+    Route::get('/ganti-password', [OwnerTourController::class, 'gantiPassword']);
 });
 
 // data
@@ -174,13 +176,13 @@ Route::group(['prefix' => 'data'], function() {
     // settings
     Route::group(['prefix' => 'pengaturan'], function() {
         // get detail
-        Route::get('/profile/{email}', [ProfileController::class, 'show']);
+        Route::get('/profile/{email}', [OwnerTourProfileController::class, 'show']);
 
         // update
         Route::group(['prefix' => 'update'], function() {
-            Route::put('/edit-profile/{email}', [ProfileController::class, 'update']);
-            Route::put('/ganti-password', [ProfileController::class, 'gantiPass']);
-            Route::post('/ganti-foto/{email}', [ProfileController::class, 'updateFoto']);
+            Route::put('/edit-profile/{email}', [OwnerTourProfileController::class, 'update']);
+            Route::put('/ganti-password', [OwnerTourProfileController::class, 'gantiPass']);
+            Route::post('/ganti-foto/{email}', [OwnerTourProfileController::class, 'updateFoto']);
         });
     });
 });

@@ -11,7 +11,9 @@ const getDetail = {
         Functions.prototype.requestDetail(getDetail, url)
     },
     set successData(response) {
-        $('#prevPict').attr('src', PICT + "/profile/" + response.picture)
+        if (response.picture) {
+            $('#prevPict').attr('src', PICT + "/profile/" + response.picture)
+        }
         $('.email').text(response.email)
         $('#nama').val(response.name)
         $('#phone').val(response.phone)

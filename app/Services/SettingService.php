@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\OwnerTour;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -13,15 +14,15 @@ class SettingService
 {
     public function getProfile($email)
     {
-        $profile_id = Profile::where('email', $email)->first()->id;
-        $profile = Profile::find($profile_id);
+        $profile_id = OwnerTour::where('email', $email)->first()->id;
+        $profile = OwnerTour::find($profile_id);
         if(!$profile) return response(['message' => 'Oops, something wrong!'], 406);
         return response($profile);
     }
 
     public function update($data, $email)
     {
-        $result = Profile::where('email', $email);
+        $result = OwnerTour::where('email', $email);
         if(!$result) return response(['message' => 'Profile gagal diubah!'], 406);
         $result->update($data);
         return response(['message' => 'Profile berhasil diubah!']);
@@ -37,7 +38,7 @@ class SettingService
         Storage::disk('local')->put($path . $filename, $img, 'public');
         $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix().$path.$filename;
         $optimizerChain->optimize($storagePath);
-        $profile = Profile::where('email', $email);
+        $profile = OwnerTour::where('email', $email);
         if($profile) {
             foreach ($profile->get() as $pro) {
                 Storage::disk('local')->delete($path.$pro->picture);
@@ -47,7 +48,7 @@ class SettingService
                 'picture' => $filename
             ]);
         } else {
-            $create = Profile::create([
+            $create = OwnerTour::create([
                 'picture' => $filename
             ]);
         }
