@@ -11,11 +11,11 @@ class Tour extends Model
 
     protected $fillable = ['user_id', 'title', 'slug', 'thumbnail', 'desc', 'address', 'latitude', 'longtitude', 'verified'];
 
-    protected $table = 'tour';
+    protected $table = 'tours';
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class)->withTimestamps();
+        return $this->belongsToMany(Tag::class, 'place_tag', 'place_id', 'tag_id')->withTimestamps();
     }
 
     function pictures()

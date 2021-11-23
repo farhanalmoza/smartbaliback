@@ -16,6 +16,7 @@ use App\Http\Controllers\Data\OwnerTourProfileController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
+use App\Http\Controllers\Data\TourController;
 use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\Data\VerifyController;
 use App\Http\Controllers\Owner\OwnerController;
@@ -76,7 +77,7 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     Route::get('/wisata', [OwnerTourController::class, 'index']);
     Route::get('/tambah-tempat', [OwnerTourController::class, 'tambahTempat']);
     Route::get('/edit-tempat/{id}', [OwnerTourController::class, 'editTempat']);
-    Route::get('/tempat/{id}', [OwnerTourController::class, 'detailTempat']);
+    Route::get('/wisata/{id}', [OwnerTourController::class, 'detail']);
 
     // Route::get('/hotel', [OwnerController::class, 'hotel']);
     // Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
@@ -111,7 +112,8 @@ Route::group(['prefix' => 'data'], function() {
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
-    Route::get('/wisata', [PlaceController::class, 'tours']);
+    Route::get('/wisata', [TourController::class, 'index']);
+
     Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
     Route::get('/souvenir', [PlaceController::class, 'souvenirs']);
@@ -129,7 +131,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/all/owner', [UserController::class, 'allOwner']);
 
     // search
-    Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
+    // Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
     Route::get('/hotel/{search}', [PlaceController::class, 'searchHotels']);
     Route::get('/tempat-ibadah/{search}', [PlaceController::class, 'searchWorships']);
 
@@ -149,7 +151,7 @@ Route::group(['prefix' => 'data'], function() {
     });
 
     // get detail
-    Route::get('/place/{id}', [PlaceController::class, 'show']);
+    Route::get('/wisata/{id}', [TourController::class, 'show']);
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
     Route::get('/mobil/{id}', [CarController::class, 'show']);
     Route::get('/driver/{id}', [DriverController::class, 'show']);

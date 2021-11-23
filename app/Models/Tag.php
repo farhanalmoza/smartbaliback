@@ -18,8 +18,8 @@ class Tag extends Model
         return $query->where('name', 'LIKE', "%{$name}%");
     }
 
-    public function places()
+    public function tour()
     {
-        return $this->belongsToMany(Place::class);
+        return $this->belongsToMany(Tour::class, 'place_tag');
     }
 }

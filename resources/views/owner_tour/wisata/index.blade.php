@@ -83,5 +83,5 @@
             getTours.loadData = "/wisata"
         }
     </script>
-    <script src="{{ asset('js/ownerTour/tempat/index.js') }}"></script>
+    <script src="{{ asset('js/ownerTour/wisata/index.js') }}"></script>
 @endsection

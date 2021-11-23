@@ -22,7 +22,7 @@ class OwnerTourController extends Controller
         return view('owner_tour.wisata.index');
     }
 
-    public function detailTempat($id)
+    public function detail($id)
     {
         $data['id'] = $id;
         return view('owner_tour.wisata.detail', $data);

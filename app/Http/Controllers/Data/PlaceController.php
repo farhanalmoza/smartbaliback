@@ -13,7 +13,7 @@ class PlaceController extends Controller
 
     public function __construct()
     {
-        $this->place = app()->make(PlaceService::class);   
+        $this->place = app()->make(PlaceService::class);
     }
 
     // get all
