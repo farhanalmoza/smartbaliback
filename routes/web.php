@@ -76,7 +76,7 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     // CRUD Tempat
     Route::get('/wisata', [OwnerTourController::class, 'index']);
     Route::get('/tambah-tempat', [OwnerTourController::class, 'tambahTempat']);
-    Route::get('/edit-tempat/{id}', [OwnerTourController::class, 'editTempat']);
+    Route::get('/edit-wisata/{id}', [OwnerTourController::class, 'editTempat']);
     Route::get('/wisata/{id}', [OwnerTourController::class, 'detail']);
 
     // Route::get('/hotel', [OwnerController::class, 'hotel']);
@@ -144,7 +144,7 @@ Route::group(['prefix' => 'data'], function() {
     // add data
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tag', [TagController::class, 'store']);
-        Route::post('/place', [PlaceController::class, 'store']);
+        Route::post('/tour', [TourController::class, 'store']);
         Route::post('/car', [CarController::class, 'store']);
         Route::post('/driver', [DriverController::class, 'store']);
         Route::post('/backpacker', [BackpackerController::class, 'store']);
@@ -158,13 +158,13 @@ Route::group(['prefix' => 'data'], function() {
 
     // update
     Route::group(['prefix' => 'update'], function() {
-        Route::post('/place/{id}', [PlaceController::class, 'update']);
+        Route::post('/tour/{id}', [TourController::class, 'update']);
         Route::put('/mobil/{id}', [CarController::class, 'update']);
     });
 
     // delete data
     Route::group(['prefix' => 'delete'], function() {
-        Route::delete('/place/{id}', [PlaceController::class, 'destroy']);
+        Route::delete('/tour/{id}', [TourController::class, 'destroy']);
         Route::delete('/tag/{id}', [TagController::class, 'destroy']);
         Route::delete('/car/{id}', [CarController::class, 'destroy']);
     });

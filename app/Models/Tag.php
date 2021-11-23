@@ -20,6 +20,6 @@ class Tag extends Model
 
     public function tour()
     {
-        return $this->belongsToMany(Tour::class, 'place_tag');
+        return $this->belongsToMany(Tour::class, 'place_tag', 'place_id', 'tag_id');
     }
 }

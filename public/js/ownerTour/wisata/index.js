@@ -1,8 +1,8 @@
 $(document).ready(function () {
     // CRUD
     addPlace()
-    deletePlace()
-    updatePlace()
+    deleteTour()
+    updateTour()
 })
 
 const getTours = {
@@ -31,7 +31,7 @@ const getTours = {
                             <div class="separator-solid"></div>
                             <a href="${BASE_URL}/owner-tour/wisata/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/owner/edit-tempat/${tours[i].id}">
+                                <a href="${BASE_URL}/owner-tour/edit-wisata/${tours[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
                                 </a>
                                 <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
@@ -322,12 +322,11 @@ function addPlace() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPost = URL_DATA + "/add/place"
+            const urlPost = URL_DATA + "/add/tour"
             const formData = new FormData()
             const data = {
                 user_id: user_id,
                 title: $('#title').val(),
-                tipe: $('#tipe').val(),
                 alamat: $('#alamat').val(),
                 latitude: $('#latitude').val(),
                 longtitude: $('#longtitude').val(),
@@ -338,7 +337,6 @@ function addPlace() {
             const tags = $('#select_place_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
-            formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
             formData.append('latitude', data.latitude)
             formData.append('latitude', data.latitude)
@@ -373,7 +371,6 @@ function addPlace() {
                 $('#title').removeClass('is-valid')
                 $('#gambar').removeClass('is-valid')
                 $('#prevThumb').attr('hidden', true)
-                $('#tipe').removeClass('is-valid')
                 $('#alamat').removeClass('is-valid')
                 $('#latitude').removeClass('is-valid')
                 $('#longtitude').removeClass('is-valid')
@@ -400,7 +397,7 @@ function addPlace() {
     }
 }
 
-function updatePlace() {
+function updateTour() {
     $("#gambar_update").on("change", function (e) {
         e.preventDefault();
 
@@ -466,12 +463,11 @@ function updatePlace() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPut = URL_DATA + "/update/place/" + $('#id').val()
+            const urlPut = URL_DATA + "/update/tour/" + $('#id').val()
             const formData = new FormData()
             const data = {
                 user_id:    user_id,
                 title:      $('#title').val(),
-                tipe:       $('#tipe').val(),
                 alamat:     $('#alamat').val(),
                 latitude:   $('#latitude').val(),
                 longtitude: $('#longtitude').val(),
@@ -483,7 +479,6 @@ function updatePlace() {
             const tags = $('#select_place_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
-            formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
             formData.append('latitude', data.latitude)
             formData.append('latitude', data.latitude)
@@ -510,7 +505,6 @@ function updatePlace() {
         set successData(response) {
             $('#title').removeClass('is-valid')
             $('#gambar').removeClass('is-valid')
-            $('#tipe').removeClass('is-valid')
             $('#alamat').removeClass('is-valid')
             $('#latitude').removeClass('is-valid')
             $('#longtitude').removeClass('is-valid')
@@ -519,10 +513,10 @@ function updatePlace() {
     }
 }
 
-function deletePlace() {
+function deleteTour() {
     $('.place').on('click', 'div div div div .delete', function(e) {
         const id = $(this).data('id')
-        const urlDelete = URL_DATA + "/delete/place/" + id
+        const urlDelete = URL_DATA + "/delete/tour/" + id
         swal({
             title: 'Apa kamu yakin?',
             text: "Data yang sudah dihapus tidak dapat dikembalikan!",
@@ -545,15 +539,7 @@ function deletePlace() {
                 swal.close();
             }
             var pathname = window.location.pathname;
-            if (pathname == '/owner/wisata') {
-                getTours.loadData = "/wisata"
-            } else if (pathname == '/owner/hotel') {
-                getHotels.loadData = "/hotel"
-            } else if (pathname == '/owner/tempat-ibadah') {
-                getWorships.loadData = "/tempat-ibadah"
-            } else if (pathname == '/owner/souvenir') {
-                getSouvenirs.loadData = "/souvenir"
-            }
+            getTours.loadData = "/wisata"
         })
     })
 }

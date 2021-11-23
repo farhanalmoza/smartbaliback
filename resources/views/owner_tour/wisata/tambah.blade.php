@@ -50,17 +50,6 @@
 											</div>
 										</div>
 										<div class="form-group form-inline">
-											<label for="tipe" class="col-md-2 form-label justify-content-start">Tipe Tempat</label>
-											<div class="col-md-10 p-0">
-												<select class="form-control input-full" id="tipe" name="tipe">
-													<option value="tour">Tempat Wisata</option>
-													<option value="hotel">Hotel</option>
-													<option value="worship">Tempat Ibadah</option>
-													<option value="souvenir">Oleh-oleh</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group form-inline">
 											<label for="alamat" class="col-md-2 form-label justify-content-start">Alamat</label>
 											<div class="col-md-10 p-0">
 												<input id="alamat" name="alamat" type="text" class="form-control input-full" placeholder="masukkan alamat">
@@ -141,7 +130,7 @@
 @section('js')
 	<!-- My Script -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="{{ asset('owner/js/tempat/index.js') }}"></script>
+	<script src="{{ asset('js/ownerTour/wisata/index.js') }}"></script>
 	{{-- Select2 --}}
 	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
 	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>

@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_tour.layouts.template')
 @section('title', 'Edit Tempat')
 
 @section('css')
@@ -219,31 +219,30 @@
 		// detail for update
 		const getDetailForUpdate = {
 			set loadData(data) {
-				const urlDetail = URL_DATA + "/place/" + data
+				const urlDetail = URL_DATA + "/wisata/" + data
 				Functions.prototype.requestDetail(getDetailForUpdate, urlDetail)
 			},
 			set successData(response) {
-				$('#id').val(response.place.id)
-				$('#title').val(response.place.title)
-				$('#prevThumb').attr('src', PICT + '/thumbnail/' + response.place.thumbnail)
-				$('#old_thumb').val(response.place.thumbnail)
-				$('#tipe option[value=' + response.place.type + ']').prop('selected', true)
-				$('#alamat').val(response.place.address)
-				$('#latitude').val(response.place.latitude)
-				$('#longtitude').val(response.place.longtitude)
+				$('#id').val(response.tour.id)
+				$('#title').val(response.tour.title)
+				$('#prevThumb').attr('src', PICT + '/thumbnail/' + response.tour.thumbnail)
+				$('#old_thumb').val(response.tour.thumbnail)
+				$('#alamat').val(response.tour.address)
+				$('#latitude').val(response.tour.latitude)
+				$('#longtitude').val(response.tour.longtitude)
 				setTimeout(function() {
-					tinyMCE.get("desc").setContent(response.place.desc);
+					tinyMCE.get("desc").setContent(response.tour.desc);
 				}, 5000);
 				// selected tags
 				var tagSelect = $('#select_place_tag');
 				$.ajax({
 					type: 'GET',
-					url: URL_DATA + "/place/" + id
+					url: URL_DATA + "/wisata/" + id
 				}).then(function (data) {
 					// create the option and append to Select2
 					const selected = []
-					for (let i = 0; i < data.tags.length; i++) {
-						selected[i] = new Option(data.tags[i].name, data.tags[i].id, true, true)
+					for (let i = 0; i < data.tag.length; i++) {
+						selected[i] = new Option(data.tag[i].name, data.tag[i].id, true, true)
 					}
 					tagSelect.append(selected).trigger('change');
 
@@ -257,7 +256,7 @@
 				});
 
 				// pictures form gallery
-				var picts = response.place.pictures
+				var picts = response.tour.pictures
 				if(picts.length > 0) {
 					var listImage = ""
 					picts.map(picture => {
@@ -278,8 +277,8 @@
 		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="{{ asset('owner/js/tempat/index.js') }}"></script>
-	<script src="{{ asset('t_admin/js/admin/tempat/image.js') }}"></script>
+	<script src="{{ asset('js/ownerTour/wisata/index.js') }}"></script>
+	<script src="{{ asset('js/ownerTour/wisata/image.js') }}"></script>
 	{{-- Select2 --}}
 	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
 	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>
