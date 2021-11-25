@@ -33,63 +33,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="fas fa-hotel text-danger"></i>
-                                </div>
-                            </div>
-                            <div class="col-7 col-stats">
-                                <div class="hotels">
-                                    <h4 class="card-title" id="total-hotels"></h4>
-                                    <p class="card-category">Hotel</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="fas fa-church text-success"></i>
-                                </div>
-                            </div>
-                            <div class="col-7 col-stats">
-                                <div class="worships">
-                                    <h4 class="card-title" id="total-worships"></h4>
-                                    <p class="card-category">Tempat Ibadah</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="fas fa-gift text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-7 col-stats">
-                                <div class="souvenirs">
-                                    <h4 class="card-title" id="total-souvenirs"></h4>
-                                    <p class="card-category">Oleh-oleh</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection

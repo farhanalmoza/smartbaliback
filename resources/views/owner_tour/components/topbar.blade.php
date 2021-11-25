@@ -1,22 +1,6 @@
 <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
 				
     <div class="container-fluid">
-        @if ( request()->path() == 'owner-tour/wisata')
-            <div class="collapse" id="search-nav">
-                <form class="navbar-left navbar-form nav-search mr-md-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button type="submit" class="btn btn-search pr-1">
-                                <i class="fa fa-search search-icon"></i>
-                            </button>
-                        </div>
-                        <input type="text" placeholder="Search ..." class="form-control" id="keyword">
-                    </div>
-                </form>
-            </div>
-        @else
-            
-        @endif
         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
             <li class="nav-item dropdown hidden-caret">
                 <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
