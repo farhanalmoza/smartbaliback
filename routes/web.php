@@ -194,9 +194,17 @@ Route::group(['prefix' => 'data'], function() {
 
         // update
         Route::group(['prefix' => 'update'], function() {
-            Route::put('/edit-profile/{email}', [OwnerTourProfileController::class, 'update']);
-            Route::put('/ganti-password', [OwnerTourProfileController::class, 'gantiPass']);
-            Route::post('/ganti-foto/{email}', [OwnerTourProfileController::class, 'updateFoto']);
+            Route::group(['prefix' => 'owner-tour'], function() {
+                Route::put('/edit-profile/{email}', [OwnerTourProfileController::class, 'update']);
+                Route::put('/ganti-password', [OwnerTourProfileController::class, 'gantiPass']);
+                Route::post('/ganti-foto/{email}', [OwnerTourProfileController::class, 'updateFoto']);
+            });
+
+            Route::group(['prefix' => 'owner-hotel'], function() {
+                Route::put('/edit-profile/{email}', [OwnerHotelProfileController::class, 'update']);
+                Route::put('/ganti-password', [OwnerHotelProfileController::class, 'gantiPass']);
+                Route::post('/ganti-foto/{email}', [OwnerHotelProfileController::class, 'updateFoto']);
+            });
         });
     });
 });

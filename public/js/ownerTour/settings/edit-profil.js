@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 const getDetail = {
     set loadData(data) {
-        const url = URL_DATA + "/pengaturan/profile/" + data
+        const url = URL_DATA + "/pengaturan/owner-tour/" + data
         Functions.prototype.requestDetail(getDetail, url)
     },
     set successData(response) {
@@ -63,7 +63,7 @@ function updatePicture() {
                     confirmButtonText: 'Ya'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        const url = URL_DATA + "/pengaturan/update/ganti-foto/" + email
+                        const url = URL_DATA + "/pengaturan/update/owner-tour/ganti-foto/" + email
                         Functions.prototype.uploadFile(url, data, 'post')
                     } else {
                         $('#prevPict').attr('src', "https://demo.getstisla.com/assets/img/avatar/avatar-1.png")
@@ -109,7 +109,7 @@ function updateProfile() {
             $(element).addClass('is-valid').removeClass('is-invalid');
         },
         submitHandler: function(form, e) {
-            const url = URL_DATA + "/pengaturan/update/edit-profile/" + email
+            const url = URL_DATA + "/pengaturan/update/owner-tour/edit-profile/" + email
             const data = $('#updateProfile').serialize()
             Functions.prototype.httpRequest(url, data, 'put')
             getDetail.loadData = email
@@ -160,7 +160,7 @@ function gantiPass() {
             $(element).addClass('is-valid').removeClass('is-invalid');
         },
         submitHandler: function(form, e) {
-            const url = URL_DATA + "/pengaturan/update/ganti-password"
+            const url = URL_DATA + "/pengaturan/update/owner-tour/ganti-password"
             const data = {
                 old_pass: $('#password_lama').val(),
                 new_pass: $('#password_baru').val(),
