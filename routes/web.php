@@ -246,4 +246,4 @@ Route::get('/register/{type}', [RegisterController::class, 'showRegistrationForm
 Route::post('/register', [RegisterController::class, 'register'])->name('register')->middleware('guest');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');

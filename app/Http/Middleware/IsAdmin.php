@@ -20,6 +20,6 @@ class IsAdmin
             return $next($request);
         }
 
-        return redirect('owner/dashboard')->with("You don't have admin access");
+        return redirect('/')->with("You don't have admin access");
     }
 }
