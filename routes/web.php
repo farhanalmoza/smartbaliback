@@ -14,23 +14,18 @@ use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\NotifController;
 use App\Http\Controllers\Data\OwnerCarProfileController;
 use App\Http\Controllers\Data\OwnerHotelProfileController;
+use App\Http\Controllers\Data\OwnerSouvenirProfileController;
 use App\Http\Controllers\Data\OwnerTourProfileController;
 use App\Http\Controllers\Data\PlaceController;
-use App\Http\Controllers\Data\ProfileController;
 use App\Http\Controllers\Data\TagController;
 use App\Http\Controllers\Data\TourController;
 use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\Data\VerifyController;
 use App\Http\Controllers\Owner\OwnerCarController;
-use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Owner\OwnerHotelController;
+use App\Http\Controllers\Owner\OwnerSouvenirController;
 use App\Http\Controllers\Owner\OwnerTourController;
-use App\Models\Gallery;
-use GuzzleHttp\Middleware;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,6 +122,15 @@ Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], fu
     Route::get('/ganti-password', [OwnerCarController::class, 'gantiPassword']);
 });
 
+// view owner souvenir
+Route::group(['prefix' => 'owner-souvenir', 'middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', [OwnerSouvenirController::class, 'dashboard']);
+
+    // pengaturan
+    Route::get('/edit-profil', [OwnerSouvenirController::class, 'editProfil']);
+    Route::get('/ganti-password', [OwnerSouvenirController::class, 'gantiPassword']);
+});
+
 
 // data
 Route::group(['prefix' => 'data'], function() {
@@ -205,6 +209,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::get('/owner-tour/{email}', [OwnerTourProfileController::class, 'show']);
         Route::get('/owner-hotel/{email}', [OwnerHotelProfileController::class, 'show']);
         Route::get('/owner-car/{email}', [OwnerCarProfileController::class, 'show']);
+        Route::get('/owner-souvenir/{email}', [OwnerSouvenirProfileController::class, 'show']);
 
         // update
         Route::group(['prefix' => 'update'], function() {
@@ -218,6 +223,12 @@ Route::group(['prefix' => 'data'], function() {
                 Route::put('/edit-profile/{email}', [OwnerHotelProfileController::class, 'update']);
                 Route::put('/ganti-password', [OwnerHotelProfileController::class, 'gantiPass']);
                 Route::post('/ganti-foto/{email}', [OwnerHotelProfileController::class, 'updateFoto']);
+            });
+
+            Route::group(['prefix' => 'owner-souvenir'], function() {
+                Route::put('/edit-profile/{email}', [OwnerSouvenirProfileController::class, 'update']);
+                Route::put('/ganti-password', [OwnerSouvenirProfileController::class, 'gantiPass']);
+                Route::post('/ganti-foto/{email}', [OwnerSouvenirProfileController::class, 'updateFoto']);
             });
         });
     });
