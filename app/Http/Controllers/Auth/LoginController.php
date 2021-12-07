@@ -53,21 +53,13 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
             if ( auth()->user()->type == 'tour' ) {
                 return redirect('owner-tour/dashboard');
-            }
-
-            if ( auth()->user()->type == 'hotel' ) {
+            } else if ( auth()->user()->type == 'hotel' ) {
                 return redirect('owner-hotel/dashboard');
-            }
-
-            if ( auth()->user()->type == 'worship' ) {
+            } else if ( auth()->user()->type == 'worship' ) {
                 return redirect('owner-worship/dashboard');
-            }
-
-            if ( auth()->user()->type == 'souvenir' ) {
+            } else if ( auth()->user()->type == 'souvenir' ) {
                 return redirect('owner-souvenir/dashboard');
-            }
-            
-            if ( auth()->user()->type == 'car' ) {
+            } else {
                 return redirect('owner-car/dashboard');
             }
 

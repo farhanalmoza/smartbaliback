@@ -64,7 +64,12 @@
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
       <h1>Welcome to S-babac</h1>
       <h2>Smart Bali Backpacker</h2>
-      <a href="{{ route('login') }}" class="btn-get-started">Login</a>
+      @if (Route::has('login'))
+        @auth
+        @else
+          <a href="{{ route('login') }}" class="btn-get-started">Login</a>  
+        @endauth
+      @endif
     </div>
   </section><!-- End Hero Section -->
 

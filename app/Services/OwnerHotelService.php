@@ -1,8 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\OwnerTour;
-use App\Models\Profile;
+use App\Models\OwnerHotel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -10,19 +9,19 @@ use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
-class SettingService
+class OwnerHotelService
 {
     public function getProfile($email)
     {
-        $profile_id = OwnerTour::where('email', $email)->first()->id;
-        $profile = OwnerTour::find($profile_id);
+        $profile_id = OwnerHotel::where('email', $email)->first()->id;
+        $profile = OwnerHotel::find($profile_id);
         if(!$profile) return response(['message' => 'Oops, something wrong!'], 406);
         return response($profile);
     }
 
     public function update($data, $email)
     {
-        $result = OwnerTour::where('email', $email);
+        $result = OwnerHotel::where('email', $email);
         if(!$result) return response(['message' => 'Profile gagal diubah!'], 406);
         $result->update($data);
         return response(['message' => 'Profile berhasil diubah!']);
@@ -38,7 +37,7 @@ class SettingService
         Storage::disk('local')->put($path . $filename, $img, 'public');
         $storagePath = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix().$path.$filename;
         $optimizerChain->optimize($storagePath);
-        $profile = OwnerTour::where('email', $email);
+        $profile = OwnerHotel::where('email', $email);
         if($profile) {
             foreach ($profile->get() as $pro) {
                 Storage::disk('local')->delete($path.$pro->picture);
@@ -48,7 +47,7 @@ class SettingService
                 'picture' => $filename
             ]);
         } else {
-            $create = OwnerTour::create([
+            $create = OwnerHotel::create([
                 'picture' => $filename
             ]);
         }

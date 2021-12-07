@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Data;
 
 use App\Http\Controllers\Controller;
-use App\Services\OwnerTourService;
-use App\Services\SettingService;
+use App\Services\OwnerHotelService;
 use Illuminate\Http\Request;
 
-class OwnerTourProfileController extends Controller
+class OwnerHotelProfileController extends Controller
 {
     protected $setting;
 
     public function __construct()
     {
-        $this->setting = app()->make(OwnerTourService::class);
+        $this->setting = app()->make(OwnerHotelService::class);
     }
 
     public function show($email)

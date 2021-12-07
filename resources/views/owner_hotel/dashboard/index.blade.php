@@ -1,4 +1,4 @@
-@extends('owner_tour.layouts.template')
+@extends('owner_hotel.layouts.template')
 @section('title', 'Dashboard')
 
 @section('content')
@@ -27,7 +27,6 @@
                                 <div class="tours">
                                     <h4 class="card-title" id="total-tours"></h4>
                                     <p class="card-category">Tempat Wisata</p>
-                                    <p></p>
                                 </div>
                             </div>
                         </div>
@@ -39,5 +38,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/ownerTour/dashboard/index.js') }}"></script>
+    <script src="{{ asset('js/ownerHotel/dashboard/index.js') }}"></script>
 @endsection

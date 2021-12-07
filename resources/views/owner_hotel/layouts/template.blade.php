@@ -56,12 +56,12 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			@include('owner_tour.components.topbar')
+			@include('owner_hotel.components.topbar')
 			<!-- End Navbar -->
 		</div>
 
 		<!-- Sidebar -->
-		@include('owner_tour.components.sidebar')
+		@include('owner_hotel.components.sidebar')
 		<!-- End Sidebar -->
 
 		<div class="main-panel">
@@ -115,7 +115,7 @@
 
 		const getPict = {
 			set loadData(data) {
-				const URL = URL_DATA + "/pengaturan/owner-tour/" + data
+				const URL = URL_DATA + "/pengaturan/owner-hotel/" + data
 				Functions.prototype.requestDetail(getPict, URL)
 			},
 			set successData(response) {

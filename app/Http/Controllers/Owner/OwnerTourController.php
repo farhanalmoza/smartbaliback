@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
-use App\Services\SettingService;
 
 class OwnerTourController extends Controller
 {

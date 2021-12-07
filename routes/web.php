@@ -12,6 +12,7 @@ use App\Http\Controllers\Data\CarController;
 use App\Http\Controllers\Data\DriverController;
 use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\NotifController;
+use App\Http\Controllers\Data\OwnerHotelProfileController;
 use App\Http\Controllers\Data\OwnerTourProfileController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\ProfileController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Data\TourController;
 use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\Data\VerifyController;
 use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\Owner\OwnerHotelController;
 use App\Http\Controllers\Owner\OwnerTourController;
 use App\Models\Gallery;
 use GuzzleHttp\Middleware;
@@ -104,6 +106,15 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     Route::get('/ganti-password', [OwnerTourController::class, 'gantiPassword']);
 });
 
+Route::group(['prefix' => 'owner-hotel', 'middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', [OwnerHotelController::class, 'dashboard']);
+
+    // pengaturan
+    Route::get('/edit-profil', [OwnerHotelController::class, 'editProfil']);
+    Route::get('/ganti-password', [OwnerHotelController::class, 'gantiPassword']);
+});
+
+
 // data
 Route::group(['prefix' => 'data'], function() {
     // upload image to gallery
@@ -178,7 +189,8 @@ Route::group(['prefix' => 'data'], function() {
     // settings
     Route::group(['prefix' => 'pengaturan'], function() {
         // get detail
-        Route::get('/profile/{email}', [OwnerTourProfileController::class, 'show']);
+        Route::get('/owner-tour/{email}', [OwnerTourProfileController::class, 'show']);
+        Route::get('/owner-hotel/{email}', [OwnerHotelProfileController::class, 'show']);
 
         // update
         Route::group(['prefix' => 'update'], function() {
