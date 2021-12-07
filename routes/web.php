@@ -12,6 +12,7 @@ use App\Http\Controllers\Data\CarController;
 use App\Http\Controllers\Data\DriverController;
 use App\Http\Controllers\Data\GalleryController;
 use App\Http\Controllers\Data\NotifController;
+use App\Http\Controllers\Data\OwnerCarProfileController;
 use App\Http\Controllers\Data\OwnerHotelProfileController;
 use App\Http\Controllers\Data\OwnerTourProfileController;
 use App\Http\Controllers\Data\PlaceController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Data\TagController;
 use App\Http\Controllers\Data\TourController;
 use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\Data\VerifyController;
+use App\Http\Controllers\Owner\OwnerCarController;
 use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Owner\OwnerHotelController;
 use App\Http\Controllers\Owner\OwnerTourController;
@@ -72,6 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified', 'is_admi
     Route::get('/ganti-password', [AdminController::class, 'gantiPassword']);
 });
 
+// view owner tour
 Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerTourController::class, 'dashboard']);
 
@@ -106,12 +109,22 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     Route::get('/ganti-password', [OwnerTourController::class, 'gantiPassword']);
 });
 
+// view owner hotel
 Route::group(['prefix' => 'owner-hotel', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerHotelController::class, 'dashboard']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerHotelController::class, 'editProfil']);
     Route::get('/ganti-password', [OwnerHotelController::class, 'gantiPassword']);
+});
+
+// view owner hotel
+Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', [OwnerCarController::class, 'dashboard']);
+
+    // pengaturan
+    Route::get('/edit-profil', [OwnerCarController::class, 'editProfil']);
+    Route::get('/ganti-password', [OwnerCarController::class, 'gantiPassword']);
 });
 
 
@@ -191,6 +204,7 @@ Route::group(['prefix' => 'data'], function() {
         // get detail
         Route::get('/owner-tour/{email}', [OwnerTourProfileController::class, 'show']);
         Route::get('/owner-hotel/{email}', [OwnerHotelProfileController::class, 'show']);
+        Route::get('/owner-car/{email}', [OwnerCarProfileController::class, 'show']);
 
         // update
         Route::group(['prefix' => 'update'], function() {

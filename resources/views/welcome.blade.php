@@ -44,7 +44,25 @@
         <ul>
             @if (Route::has('login'))
                 @auth
-                    <li><a class="nav-link scrollto" href="{{ url('/owner-tour/dashboard') }}">Home</a></li>
+                  @if (auth()->user()->type == 'tour')
+                    <li><a class="nav-link scrollto" href="{{ url('/owner-tour/dashboard') }}">Home</a></li>  
+                  @endif
+
+                  @if (auth()->user()->type == 'hotel')
+                    <li><a class="nav-link scrollto" href="{{ url('/owner-hotel/dashboard') }}">Home</a></li>  
+                  @endif
+
+                  @if (auth()->user()->type == 'car')
+                    <li><a class="nav-link scrollto" href="{{ url('/owner-car/dashboard') }}">Home</a></li>  
+                  @endif
+
+                  @if (auth()->user()->type == 'worship')
+                    <li><a class="nav-link scrollto" href="{{ url('/owner-worship/dashboard') }}">Home</a></li>  
+                  @endif
+
+                  @if (auth()->user()->type == 'souvenir')
+                    <li><a class="nav-link scrollto" href="{{ url('/owner-souvenir/dashboard') }}">Home</a></li>  
+                  @endif
                 @else
                     <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
 
