@@ -16,15 +16,7 @@ class OwnerController extends Controller
         return view('owner.dashboard.index');
     }
 
-    public function wisata()
-    {
-        return view('owner.wisata.index');
-    }
-
-    public function hotel()
-    {
-        return view('owner.hotel.index');
-    }
+    
 
     public function tempatIbadah()
     {

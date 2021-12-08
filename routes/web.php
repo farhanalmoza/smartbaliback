@@ -11,6 +11,7 @@ use App\Http\Controllers\Data\BackpackerController;
 use App\Http\Controllers\Data\CarController;
 use App\Http\Controllers\Data\DriverController;
 use App\Http\Controllers\Data\GalleryController;
+use App\Http\Controllers\Data\HotelController;
 use App\Http\Controllers\Data\NotifController;
 use App\Http\Controllers\Data\OwnerCarProfileController;
 use App\Http\Controllers\Data\OwnerHotelProfileController;
@@ -81,7 +82,7 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     Route::get('/edit-wisata/{id}', [OwnerTourController::class, 'editTempat']);
     Route::get('/wisata/{id}', [OwnerTourController::class, 'detail']);
 
-    // Route::get('/hotel', [OwnerController::class, 'hotel']);
+    
     // Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
     // Route::get('/souvenir', [OwnerController::class, 'souvenir']);
 
@@ -109,6 +110,9 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
 // view owner hotel
 Route::group(['prefix' => 'owner-hotel', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerHotelController::class, 'dashboard']);
+
+    // CRUD Hotel
+    Route::get('/hotel', [OwnerHotelController::class, 'hotel']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerHotelController::class, 'editProfil']);
@@ -152,8 +156,8 @@ Route::group(['prefix' => 'data'], function() {
 
     // get all
     Route::get('/wisata', [TourController::class, 'index']);
+    Route::get('/hotel', [HotelController::class, 'index']);
 
-    Route::get('/hotel', [PlaceController::class, 'hotels']);
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
     Route::get('/souvenir', [PlaceController::class, 'souvenirs']);
     Route::get('/tag', [TagController::class, 'index']);

@@ -25,10 +25,10 @@
                     </span>
                     <h4 class="text-section">Main</h4>
                 </li>
-                <li class="nav-item {{ 'owner-hotel/wisata' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/owner-hotel/wisata') }}">
-                        <i class="fas fa-plane"></i>
-                        <p>Wisata</p>
+                <li class="nav-item {{ 'owner-hotel/hotel' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-hotel/hotel') }}">
+                        <i class="fas fa-hotel"></i>
+                        <p>Hotel</p>
                     </a>
                 </li>
                 <li class="nav-item {{ 'owner-hotel/tambah-tempat' == request()->path() ? 'active' : '' }}">

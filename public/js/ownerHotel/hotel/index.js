@@ -1,39 +1,39 @@
 $(document).ready(function () {
     // CRUD
-    addTour()
-    deleteTour()
-    updateTour()
+    addHotel()
+    deleteHotel()
+    updateHotel()
 })
 
-const getTours = {
+const getHotels = {
     set loadData(data) {
         const URL = URL_DATA + data
-        Functions.prototype.getRequest(getTours, URL);
+        Functions.prototype.getRequest(getHotels, URL);
     },
     set successData(response) {
-        const container = document.getElementById('place-cards')
-
-        const tours = response.data
+        const keyword = document.getElementById('keyword')
+        const container = document.getElementById('place-cards');
+        const hotels = response.data;
         if (container) {
             container.innerHTML = '';
     
-            for (i = tours.length-1; i >= 0; i--) {
+            for (i = hotels.length-1; i >= 0; i--) {
                 container.innerHTML += `
                 <div class="col-md-4">
                     <div class="card card-post card-round">
-                        <img class="card-img-top" src="${PICT + '/thumbnail/' + tours[i].thumbnail}" alt="Card image cap">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + hotels[i].thumbnail}" alt="Card image cap">
                         <div class="card-body">
                             <div class="info-post ml-2">
-                                <p class="username">${tours[i].title}</p>
-                                <p class="date text-muted">${tours[i].address}</p>
+                                <p class="username">${hotels[i].title}</p>
+                                <p class="date text-muted">${hotels[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/owner-tour/wisata/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/owner/tempat/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/owner-tour/edit-wisata/${tours[i].id}">
+                                <a href="${BASE_URL}/owner/edit-tempat/${hotels[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
                                 </a>
-                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${hotels[i].id}"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ const getTours = {
         }
 
         if (container.innerHTML == '') {
-            if (tours.length == 0) {
+            if (hotels.length == 0) {
                 container.innerHTML += `
                     <div class="col-md-12">
                         <div class="card card-stats card-round">
@@ -77,6 +77,16 @@ const getTours = {
                 `;
             }
         }
+
+        keyword.addEventListener('keyup', function() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function() {
+                if ( xhr.readyState == 4 && xhr.status == 200 ) {
+                    console.log('its work')
+                }
+            }
+            xhr.open('GET', search.loadData = "/hotel/" + keyword.value, true)
+        })
     },
     set errorData(err) {
         var content = {};
@@ -95,8 +105,9 @@ const getTours = {
     },
 }
 
+
 // CRUD
-function addTour() {
+function addHotel() {
     $("#gambar").on("change", function (e) {
         e.preventDefault();
 
@@ -166,11 +177,12 @@ function addTour() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPost = URL_DATA + "/add/tour"
+            const urlPost = URL_DATA + "/add/place"
             const formData = new FormData()
             const data = {
                 user_id: user_id,
                 title: $('#title').val(),
+                tipe: $('#tipe').val(),
                 alamat: $('#alamat').val(),
                 latitude: $('#latitude').val(),
                 longtitude: $('#longtitude').val(),
@@ -181,6 +193,7 @@ function addTour() {
             const tags = $('#select_place_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
+            formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
             formData.append('latitude', data.latitude)
             formData.append('latitude', data.latitude)
@@ -215,6 +228,7 @@ function addTour() {
                 $('#title').removeClass('is-valid')
                 $('#gambar').removeClass('is-valid')
                 $('#prevThumb').attr('hidden', true)
+                $('#tipe').removeClass('is-valid')
                 $('#alamat').removeClass('is-valid')
                 $('#latitude').removeClass('is-valid')
                 $('#longtitude').removeClass('is-valid')
@@ -241,7 +255,7 @@ function addTour() {
     }
 }
 
-function updateTour() {
+function updateHotel() {
     $("#gambar_update").on("change", function (e) {
         e.preventDefault();
 
@@ -307,11 +321,12 @@ function updateTour() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPut = URL_DATA + "/update/tour/" + $('#id').val()
+            const urlPut = URL_DATA + "/update/place/" + $('#id').val()
             const formData = new FormData()
             const data = {
                 user_id:    user_id,
                 title:      $('#title').val(),
+                tipe:       $('#tipe').val(),
                 alamat:     $('#alamat').val(),
                 latitude:   $('#latitude').val(),
                 longtitude: $('#longtitude').val(),
@@ -323,6 +338,7 @@ function updateTour() {
             const tags = $('#select_place_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
+            formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
             formData.append('latitude', data.latitude)
             formData.append('latitude', data.latitude)
@@ -349,6 +365,7 @@ function updateTour() {
         set successData(response) {
             $('#title').removeClass('is-valid')
             $('#gambar').removeClass('is-valid')
+            $('#tipe').removeClass('is-valid')
             $('#alamat').removeClass('is-valid')
             $('#latitude').removeClass('is-valid')
             $('#longtitude').removeClass('is-valid')
@@ -357,10 +374,10 @@ function updateTour() {
     }
 }
 
-function deleteTour() {
+function deleteHotel() {
     $('.place').on('click', 'div div div div .delete', function(e) {
         const id = $(this).data('id')
-        const urlDelete = URL_DATA + "/delete/tour/" + id
+        const urlDelete = URL_DATA + "/delete/place/" + id
         swal({
             title: 'Apa kamu yakin?',
             text: "Data yang sudah dihapus tidak dapat dikembalikan!",
@@ -383,7 +400,15 @@ function deleteTour() {
                 swal.close();
             }
             var pathname = window.location.pathname;
-            getTours.loadData = "/wisata"
+            if (pathname == '/owner/wisata') {
+                getTours.loadData = "/wisata"
+            } else if (pathname == '/owner/hotel') {
+                getHotels.loadData = "/hotel"
+            } else if (pathname == '/owner/tempat-ibadah') {
+                getWorships.loadData = "/tempat-ibadah"
+            } else if (pathname == '/owner/souvenir') {
+                getSouvenirs.loadData = "/souvenir"
+            }
         })
     })
 }

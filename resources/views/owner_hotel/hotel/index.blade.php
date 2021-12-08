@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_hotel.layouts.template')
 @section('title', 'Hotel')
 
 @section('content')
@@ -47,25 +47,7 @@
     <script>
         $(document).ready(function() {
             getHotels.loadData = "/hotel"
-            getTags.loadData = "/tag"
         })
-
-        function getDataPlaceByTag(id) {
-            // toggle class tag button
-            $('#btn-tag button').addClass('btn-border')
-            event.srcElement.classList.remove('btn-border')
-            // buat objek ajax
-            var xhr = new XMLHttpRequest();
-            // eksekusi ajax
-            xhr.open('GET', getPlaceByTag.loadData = "/hotel-tag/" + id, true)
-        }
-
-        // get all place when click all in tag button
-        function allPlace() {
-            $('#btn-tag button').addClass('btn-border')
-            event.srcElement.classList.remove('btn-border')
-            getTours.loadData = "/hotel"
-        }
     </script>
-    <script src="{{ asset('owner/js/tempat/index.js') }}"></script>
+    <script src="{{ asset('js/ownerHotel/hotel/index.js') }}"></script>
 @endsection

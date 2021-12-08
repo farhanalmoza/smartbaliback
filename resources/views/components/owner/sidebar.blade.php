@@ -31,12 +31,7 @@
                         <p>Wisata</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'owner/hotel' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/owner/hotel') }}">
-                        <i class="fas fa-hotel"></i>
-                        <p>Hotel</p>
-                    </a>
-                </li>
+                
                 <li class="nav-item {{ 'owner/tempat-ibadah' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/owner/tempat-ibadah') }}">
                         <i class="fas fa-church"></i>
