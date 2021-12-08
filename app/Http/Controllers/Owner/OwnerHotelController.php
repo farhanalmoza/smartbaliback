@@ -32,9 +32,10 @@ class OwnerHotelController extends Controller
         return view('owner_hotel.hotel.detail', $data);
     }
 
-    public function tambahTempat()
+    public function editHotel($id)
     {
-        return view('owner_hotel.hotel.tambah');
+        $data['id'] = $id;
+        return view('owner_hotel.hotel.edit', $data);
     }
 
     // pengaturan

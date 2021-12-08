@@ -194,12 +194,12 @@
 			},
 			set successData(response) {
 				// for preview detail
-				$('#thumbnail').attr('src', PICT + '/thumbnail/' + response.tour.thumbnail)
-				$('#title').text(response.tour.title)
-				$('#address').text(response.tour.address)
-				$('#desc').append(response.tour.desc)
+				$('#thumbnail').attr('src', PICT + '/thumbnail/' + response.hotel.thumbnail)
+				$('#title').text(response.hotel.title)
+				$('#address').text(response.hotel.address)
+				$('#desc').append(response.hotel.desc)
 				// gallery
-				var picts = response.tour.pictures
+				var picts = response.hotel.pictures
 				var pictLength = picts.length
 				if (pictLength > 0) {
 					var listPict = ""

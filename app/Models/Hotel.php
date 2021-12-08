@@ -20,6 +20,6 @@ class Hotel extends Model
 
     function pictures()
     {
-        return $this->hasMany(Gallery::class, 'place_id', 'id');
+        return $this->hasMany(Gallery::class, 'hotel_id', 'id');
     }
 }

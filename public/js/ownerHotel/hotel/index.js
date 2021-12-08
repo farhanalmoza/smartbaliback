@@ -276,7 +276,7 @@ function updateHotel() {
             }, 100);
         }
     });
-    $('#formEditPlace').validate({
+    $('#formEditHotel').validate({
         rules: {
             title: {
                 required: true

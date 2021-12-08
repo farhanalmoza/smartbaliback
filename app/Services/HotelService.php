@@ -79,7 +79,7 @@ class HotelService
     public function get($id)
     {
         $result = [
-            'tour' => Hotel::with('pictures:id,place_id,picture')->where('id', $id)->first(),
+            'hotel' => Hotel::with('pictures:id,place_id,picture')->where('id', $id)->first(),
             'tag'  => Hotel::find($id)->tags
         ];
         if(!$result) return response(['message' => 'Oops, terjadi kesalahan!'], 406);

@@ -92,7 +92,22 @@ class HotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // variabel
+        $files = $request->file('files');
+        $tags = $request->input('tags');
+        $data = [
+            'user_id'     => $request->input('user_id'),
+            'title'       => $request->input('title'),
+            'slug'        => Str::slug($request->input('title'), '-'),
+            'desc'        => $request->input('desc'),
+            'address'     => $request->input('alamat'),
+            'latitude'    => $request->input('latitude'),
+            'longtitude'  => $request->input('longtitude'),
+        ];
+        if (!$files) {
+            $data['thumbnail'] = $request->input('files');
+        }
+        return $this->hotel->update($data, $files, $id, $tags);
     }
 
     /**

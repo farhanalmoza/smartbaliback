@@ -22,6 +22,13 @@ class GalleryController extends Controller
     	return $this->gallery->uploadPicture($file, $id, 'public/pictures/galleries/');
     }
 
+    public function uploadHotelPicture(Request $request)
+    {
+    	$file = $request->file('file');
+    	$id = $request->input('id');
+    	return $this->gallery->uploadHotelPicture($file, $id, 'public/pictures/galleries/');
+    }
+
     public function uploadCarPicture(Request $request)
     {
     	$file = $request->file('file');

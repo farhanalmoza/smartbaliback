@@ -154,6 +154,7 @@ Route::group(['prefix' => 'owner-worship', 'middleware' => ['auth', 'verified']]
 Route::group(['prefix' => 'data'], function() {
     // upload image to gallery
     Route::post('/upload-picture', [GalleryController::class, 'uploadPicture']);
+    Route::post('/upload-hotel-picture', [GalleryController::class, 'uploadHotelPicture']);
     Route::post('/upload-car-picture', [GalleryController::class, 'uploadCarPicture']);
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
@@ -209,6 +210,8 @@ Route::group(['prefix' => 'data'], function() {
     // update
     Route::group(['prefix' => 'update'], function() {
         Route::post('/tour/{id}', [TourController::class, 'update']);
+        Route::post('/hotel/{id}', [HotelController::class, 'update']);
+
         Route::put('/mobil/{id}', [CarController::class, 'update']);
     });
 
