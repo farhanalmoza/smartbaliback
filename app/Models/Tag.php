@@ -22,4 +22,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(Tour::class, 'place_tag', 'place_id', 'tag_id');
     }
+
+    public function hotel()
+    {
+        return $this->belongsToMany(hotel::class, 'hotel_tag', 'hotel_id', 'tag_id');
+    }
 }

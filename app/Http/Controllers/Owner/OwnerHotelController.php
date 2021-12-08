@@ -21,6 +21,11 @@ class OwnerHotelController extends Controller
         return view('owner_hotel.hotel.index');
     }
 
+    public function tambahHotel()
+    {
+        return view('owner_hotel.hotel.tambah');
+    }
+
     // pengaturan
     public function editProfil()
     {

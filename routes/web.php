@@ -113,6 +113,7 @@ Route::group(['prefix' => 'owner-hotel', 'middleware' => ['auth', 'verified']], 
 
     // CRUD Hotel
     Route::get('/hotel', [OwnerHotelController::class, 'hotel']);
+    Route::get('/tambah-hotel', [OwnerHotelController::class, 'tambahHotel']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerHotelController::class, 'editProfil']);
@@ -186,8 +187,10 @@ Route::group(['prefix' => 'data'], function() {
 
     // add data
     Route::group(['prefix' => 'add'], function() {
-        Route::post('/tag', [TagController::class, 'store']);
         Route::post('/tour', [TourController::class, 'store']);
+        Route::post('/hotel', [HotelController::class, 'store']);
+
+        Route::post('/tag', [TagController::class, 'store']);
         Route::post('/car', [CarController::class, 'store']);
         Route::post('/driver', [DriverController::class, 'store']);
         Route::post('/backpacker', [BackpackerController::class, 'store']);

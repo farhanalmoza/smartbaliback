@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Data;
 use App\Http\Controllers\Controller;
 use App\Services\HotelService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HotelController extends Controller
 {
@@ -43,7 +44,21 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // variabel
+        $files = $request->file('files');
+        $tags = $request->input('tags');
+
+        $data = [
+            'user_id'     => $request->input('user_id'),
+            'title'       => $request->input('title'),
+            'slug'        => Str::slug($request->input('title'), '-'),
+            'desc'        => $request->input('desc'),
+            'address'     => $request->input('alamat'),
+            'latitude'    => $request->input('latitude'),
+            'longtitude'  => $request->input('longtitude'),
+        ];
+        
+        return $this->hotel->add($data, $files, $tags);
     }
 
     /**

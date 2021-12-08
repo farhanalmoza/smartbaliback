@@ -31,10 +31,10 @@
                         <p>Hotel</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'owner-hotel/tambah-tempat' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/owner-hotel/tambah-tempat') }}">
+                <li class="nav-item {{ 'owner-hotel/tambah-hotel' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-hotel/tambah-hotel') }}">
                         <i class="fas fa-plus-square"></i>
-                        <p>Tambah Tempat Wisata</p>
+                        <p>Tambah Hotel</p>
                     </a>
                 </li>
                 <li class="nav-section">

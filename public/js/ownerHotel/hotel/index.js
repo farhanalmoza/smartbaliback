@@ -77,16 +77,6 @@ const getHotels = {
                 `;
             }
         }
-
-        keyword.addEventListener('keyup', function() {
-            var xhr = new XMLHttpRequest()
-            xhr.onreadystatechange = function() {
-                if ( xhr.readyState == 4 && xhr.status == 200 ) {
-                    console.log('its work')
-                }
-            }
-            xhr.open('GET', search.loadData = "/hotel/" + keyword.value, true)
-        })
     },
     set errorData(err) {
         var content = {};
@@ -139,7 +129,7 @@ function addHotel() {
         }
     })
 
-    $('#formAddPlace').validate({
+    $('#formAddHotel').validate({
         rules: {
             title: {
                 required: true
@@ -177,7 +167,7 @@ function addHotel() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPost = URL_DATA + "/add/place"
+            const urlPost = URL_DATA + "/add/hotel"
             const formData = new FormData()
             const data = {
                 user_id: user_id,
@@ -190,7 +180,7 @@ function addHotel() {
                 tag: $('#select_place_tag').val(),
             }
             const files = $("#gambar")[0].files
-            const tags = $('#select_place_tag').val()
+            const tags = $('#select_hotel_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
             formData.append('tipe', data.tipe)
@@ -208,11 +198,11 @@ function addHotel() {
                 const element = files[i];
                 formData.append('files[]', element)
             }
-            Functions.prototype.uploadFile(urlPost, formData, 'post', postPlace)
+            Functions.prototype.uploadFile(urlPost, formData, 'post', postHotel)
         }
     })
 
-    const postPlace = {
+    const postHotel = {
         set successData(response) {
             
             if(window.location.search != "") {
@@ -223,8 +213,8 @@ function addHotel() {
                     }, 1500);
                 }
             } else {
-                $('#formAddPlace')[0].reset()
-                $('#select_place_tag').val(null).trigger('change');
+                $('#formAddHotel')[0].reset()
+                $('#select_hotel_tag').val(null).trigger('change');
                 $('#title').removeClass('is-valid')
                 $('#gambar').removeClass('is-valid')
                 $('#prevThumb').attr('hidden', true)

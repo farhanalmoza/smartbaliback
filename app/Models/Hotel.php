@@ -15,7 +15,7 @@ class Hotel extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'place_tag', 'place_id', 'tag_id')->withTimestamps();
+        return $this->belongsToMany(Tag::class, 'hotel_tag', 'hotel_id', 'tag_id')->withTimestamps();
     }
 
     function pictures()
