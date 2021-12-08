@@ -311,7 +311,7 @@ function updateHotel() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPut = URL_DATA + "/update/place/" + $('#id').val()
+            const urlPut = URL_DATA + "/update/hotel/" + $('#id').val()
             const formData = new FormData()
             const data = {
                 user_id:    user_id,
@@ -322,10 +322,10 @@ function updateHotel() {
                 longtitude: $('#longtitude').val(),
                 desc:       $('#desc').val(),
                 gambar:     $('#old_thumb').val(),
-                tag:        $('#select_place_tag').val(),
+                tag:        $('#select_hotel_tag').val(),
             }
             const files = $("#gambar_update")[0].files
-            const tags = $('#select_place_tag').val()
+            const tags = $('#select_hotel_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
             formData.append('tipe', data.tipe)
