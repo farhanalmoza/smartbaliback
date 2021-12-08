@@ -124,7 +124,7 @@ class HotelService
     public function delete($id)
     {
         $pathGal = "public/pictures/galleries/";
-        $result = Hotel::with('pictures:id,place_id,picture')->where('id', $id)->first();
+        $result = Hotel::with('pictures:id,hotel_id,picture')->where('id', $id)->first();
         if(!$result) return response(['message' => 'Opps!. Ada kesahalan'], 406);
         // delete pict from gallery
         foreach ($result->pictures as $picture) {

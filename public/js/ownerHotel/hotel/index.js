@@ -367,7 +367,7 @@ function updateHotel() {
 function deleteHotel() {
     $('.place').on('click', 'div div div div .delete', function(e) {
         const id = $(this).data('id')
-        const urlDelete = URL_DATA + "/delete/place/" + id
+        const urlDelete = URL_DATA + "/delete/hotel/" + id
         swal({
             title: 'Apa kamu yakin?',
             text: "Data yang sudah dihapus tidak dapat dikembalikan!",
@@ -390,15 +390,7 @@ function deleteHotel() {
                 swal.close();
             }
             var pathname = window.location.pathname;
-            if (pathname == '/owner/wisata') {
-                getTours.loadData = "/wisata"
-            } else if (pathname == '/owner/hotel') {
-                getHotels.loadData = "/hotel"
-            } else if (pathname == '/owner/tempat-ibadah') {
-                getWorships.loadData = "/tempat-ibadah"
-            } else if (pathname == '/owner/souvenir') {
-                getSouvenirs.loadData = "/souvenir"
-            }
+            getHotels.loadData = "/hotel"
         })
     })
 }

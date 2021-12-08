@@ -218,6 +218,7 @@ Route::group(['prefix' => 'data'], function() {
     // delete data
     Route::group(['prefix' => 'delete'], function() {
         Route::delete('/tour/{id}', [TourController::class, 'destroy']);
+        Route::delete('/hotel/{id}', [HotelController::class, 'destroy']);
         Route::delete('/tag/{id}', [TagController::class, 'destroy']);
         Route::delete('/car/{id}', [CarController::class, 'destroy']);
     });

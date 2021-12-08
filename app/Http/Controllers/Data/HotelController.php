@@ -118,6 +118,6 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->hotel->delete($id);
     }
 }
