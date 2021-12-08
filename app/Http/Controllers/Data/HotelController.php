@@ -69,7 +69,7 @@ class HotelController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->hotel->get($id);
     }
 
     /**

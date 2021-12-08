@@ -28,9 +28,9 @@ const getHotels = {
                                 <p class="date text-muted">${hotels[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/owner/tempat/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/owner-hotel/hotel/${hotels[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/owner/edit-tempat/${hotels[i].id}">
+                                <a href="${BASE_URL}/owner-hotel/edit-hotel/${hotels[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
                                 </a>
                                 <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${hotels[i].id}"><i class="fa fa-trash"></i></button>

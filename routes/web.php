@@ -114,6 +114,8 @@ Route::group(['prefix' => 'owner-hotel', 'middleware' => ['auth', 'verified']], 
     // CRUD Hotel
     Route::get('/hotel', [OwnerHotelController::class, 'hotel']);
     Route::get('/tambah-hotel', [OwnerHotelController::class, 'tambahHotel']);
+    Route::get('/edit-hotel/{id}', [OwnerHotelController::class, 'editHotel']);
+    Route::get('/hotel/{id}', [OwnerHotelController::class, 'detail']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerHotelController::class, 'editProfil']);
@@ -176,7 +178,7 @@ Route::group(['prefix' => 'data'], function() {
 
     // search
     // Route::get('/wisata/{search}', [PlaceController::class, 'searchTours']);
-    Route::get('/hotel/{search}', [PlaceController::class, 'searchHotels']);
+    // Route::get('/hotel/{search}', [PlaceController::class, 'searchHotels']);
     Route::get('/tempat-ibadah/{search}', [PlaceController::class, 'searchWorships']);
 
     // get place by tag
@@ -198,6 +200,8 @@ Route::group(['prefix' => 'data'], function() {
 
     // get detail
     Route::get('/wisata/{id}', [TourController::class, 'show']);
+    Route::get('/hotel/{id}', [HotelController::class, 'show']);
+
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
     Route::get('/mobil/{id}', [CarController::class, 'show']);
     Route::get('/driver/{id}', [DriverController::class, 'show']);

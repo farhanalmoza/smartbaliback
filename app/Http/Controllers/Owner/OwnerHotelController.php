@@ -26,6 +26,17 @@ class OwnerHotelController extends Controller
         return view('owner_hotel.hotel.tambah');
     }
 
+    public function detail($id)
+    {
+        $data['id'] = $id;
+        return view('owner_hotel.hotel.detail', $data);
+    }
+
+    public function tambahTempat()
+    {
+        return view('owner_hotel.hotel.tambah');
+    }
+
     // pengaturan
     public function editProfil()
     {
