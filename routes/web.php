@@ -16,6 +16,7 @@ use App\Http\Controllers\Data\OwnerCarProfileController;
 use App\Http\Controllers\Data\OwnerHotelProfileController;
 use App\Http\Controllers\Data\OwnerSouvenirProfileController;
 use App\Http\Controllers\Data\OwnerTourProfileController;
+use App\Http\Controllers\Data\OwnerWorshipProfileController;
 use App\Http\Controllers\Data\PlaceController;
 use App\Http\Controllers\Data\TagController;
 use App\Http\Controllers\Data\TourController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\Owner\OwnerCarController;
 use App\Http\Controllers\Owner\OwnerHotelController;
 use App\Http\Controllers\Owner\OwnerSouvenirController;
 use App\Http\Controllers\Owner\OwnerTourController;
+use App\Http\Controllers\Owner\OwnerWorshipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -131,6 +133,15 @@ Route::group(['prefix' => 'owner-souvenir', 'middleware' => ['auth', 'verified']
     Route::get('/ganti-password', [OwnerSouvenirController::class, 'gantiPassword']);
 });
 
+// view owner worship
+Route::group(['prefix' => 'owner-worship', 'middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', [OwnerWorshipController::class, 'dashboard']);
+
+    // pengaturan
+    Route::get('/edit-profil', [OwnerWorshipController::class, 'editProfil']);
+    Route::get('/ganti-password', [OwnerWorshipController::class, 'gantiPassword']);
+});
+
 
 // data
 Route::group(['prefix' => 'data'], function() {
@@ -210,6 +221,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::get('/owner-hotel/{email}', [OwnerHotelProfileController::class, 'show']);
         Route::get('/owner-car/{email}', [OwnerCarProfileController::class, 'show']);
         Route::get('/owner-souvenir/{email}', [OwnerSouvenirProfileController::class, 'show']);
+        Route::get('/owner-worship/{email}', [OwnerWorshipProfileController::class, 'show']);
 
         // update
         Route::group(['prefix' => 'update'], function() {
@@ -229,6 +241,12 @@ Route::group(['prefix' => 'data'], function() {
                 Route::put('/edit-profile/{email}', [OwnerSouvenirProfileController::class, 'update']);
                 Route::put('/ganti-password', [OwnerSouvenirProfileController::class, 'gantiPass']);
                 Route::post('/ganti-foto/{email}', [OwnerSouvenirProfileController::class, 'updateFoto']);
+            });
+
+            Route::group(['prefix' => 'owner-worship'], function() {
+                Route::put('/edit-profile/{email}', [OwnerWorshipProfileController::class, 'update']);
+                Route::put('/ganti-password', [OwnerWorshipProfileController::class, 'gantiPass']);
+                Route::post('/ganti-foto/{email}', [OwnerWorshipProfileController::class, 'updateFoto']);
             });
         });
     });
