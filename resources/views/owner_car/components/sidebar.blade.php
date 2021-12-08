@@ -13,8 +13,8 @@
                 </div>
             </div>
             <ul class="nav nav-primary">
-                <li class="nav-item {{ 'owner-hotel/dashboard' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/owner-hotel/dashboard') }}">
+                <li class="nav-item {{ 'owner-car/dashboard' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-car/dashboard') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -31,14 +31,14 @@
                     </span>
                     <h4 class="text-section">Pengaturan</h4>
                 </li>
-                <li class="nav-item {{ 'owner-hotel/edit-profil' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/owner-hotel/edit-profil') }}">
+                <li class="nav-item {{ 'owner-car/edit-profil' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-car/edit-profil') }}">
                         <i class="fas fa-user-cog"></i>
                         <p>Edit Profil</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'owner-hotel/ganti-password' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/owner-hotel/ganti-password') }}">
+                <li class="nav-item {{ 'owner-car/ganti-password' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-car/ganti-password') }}">
                         <i class="fas fa-user-lock"></i>
                         <p>Ganti Password</p>
                     </a>

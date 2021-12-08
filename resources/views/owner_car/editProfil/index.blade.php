@@ -1,4 +1,4 @@
-@extends('owner_hotel.layouts.template')
+@extends('owner_car.layouts.template')
 @section('title', 'Edit Profil')
 
 @section('content')
@@ -124,5 +124,5 @@
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="{{ asset('js/ownerHotel/settings/edit-profil.js') }}"></script>
+    <script src="{{ asset('js/ownerCar/settings/edit-profil.js') }}"></script>
 @endsection

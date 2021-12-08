@@ -115,7 +115,7 @@ Route::group(['prefix' => 'owner-hotel', 'middleware' => ['auth', 'verified']], 
     Route::get('/ganti-password', [OwnerHotelController::class, 'gantiPassword']);
 });
 
-// view owner hotel
+// view owner car
 Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerCarController::class, 'dashboard']);
 
@@ -235,6 +235,12 @@ Route::group(['prefix' => 'data'], function() {
                 Route::put('/edit-profile/{email}', [OwnerHotelProfileController::class, 'update']);
                 Route::put('/ganti-password', [OwnerHotelProfileController::class, 'gantiPass']);
                 Route::post('/ganti-foto/{email}', [OwnerHotelProfileController::class, 'updateFoto']);
+            });
+
+            Route::group(['prefix' => 'owner-car'], function() {
+                Route::put('/edit-profile/{email}', [OwnerCarProfileController::class, 'update']);
+                Route::put('/ganti-password', [OwnerCarProfileController::class, 'gantiPass']);
+                Route::post('/ganti-foto/{email}', [OwnerCarProfileController::class, 'updateFoto']);
             });
 
             Route::group(['prefix' => 'owner-souvenir'], function() {
