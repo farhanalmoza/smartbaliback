@@ -43,12 +43,6 @@
                         <p>Tempat Ibadah</p>
                     </a>
                 </li>
-                <li class="nav-item {{ 'admin/souvenir' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/admin/souvenir') }}">
-                        <i class="fas fa-gift"></i>
-                        <p>Oleh-oleh</p>
-                    </a>
-                </li>
                 <li class="nav-item {{ 'admin/verifikasi/tempat' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/verifikasi/tempat') }}">
                         <i class="fas fa-map-marker-alt"></i>

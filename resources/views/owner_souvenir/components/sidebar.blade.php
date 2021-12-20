@@ -25,6 +25,18 @@
                     </span>
                     <h4 class="text-section">Main</h4>
                 </li>
+                <li class="nav-item {{ 'owner-souvenir/souvenir' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-souvenir/souvenir') }}">
+                        <i class="fas fa-gift"></i>
+                        <p>Oleh-oleh</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner-souvenir/tambah-souvenir' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-souvenir/tambah-souvenir') }}">
+                        <i class="fas fa-plus-square"></i>
+                        <p>Tambah Toko Oleh-oleh</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

@@ -23,10 +23,7 @@ class OwnerController extends Controller
         return view('owner.tempatIbadah.index');
     }
 
-    public function souvenir()
-    {
-        return view('owner.souvenir.index');
-    }
+    
 
     public function detailTempat($id)
     {

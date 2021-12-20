@@ -29,4 +29,9 @@ class Gallery extends Model
     {
         return $this->belongsTo(Car::class, 'car_id', 'id');
     }
+
+    function souvenir()
+    {
+        return $this->belongsTo(Souvenir::class, 'souvenir_id', 'id');
+    }
 }

@@ -1,39 +1,39 @@
 $(document).ready(function () {
     // CRUD
-    addTour()
-    deleteTour()
-    updateTour()
+    addPlace()
+    deletePlace()
+    updatePlace()
 })
 
-const getTours = {
+const getSouvenirs = {
     set loadData(data) {
         const URL = URL_DATA + data
-        Functions.prototype.getRequest(getTours, URL);
+        Functions.prototype.getRequest(getSouvenirs, URL);
     },
     set successData(response) {
-        const container = document.getElementById('place-cards')
-
-        const tours = response.data
+        const keyword = document.getElementById('keyword')
+        const container = document.getElementById('place-cards');
+        const souvenirs = response.data;
         if (container) {
             container.innerHTML = '';
     
-            for (i = tours.length-1; i >= 0; i--) {
+            for (i = souvenirs.length-1; i >= 0; i--) {
                 container.innerHTML += `
                 <div class="col-md-4">
                     <div class="card card-post card-round">
-                        <img class="card-img-top" src="${PICT + '/thumbnail/' + tours[i].thumbnail}" alt="Card image cap">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + souvenirs[i].thumbnail}" alt="Card image cap">
                         <div class="card-body">
                             <div class="info-post ml-2">
-                                <p class="username">${tours[i].title}</p>
-                                <p class="date text-muted">${tours[i].address}</p>
+                                <p class="username">${souvenirs[i].title}</p>
+                                <p class="date text-muted">${souvenirs[i].address}</p>
                             </div>
                             <div class="separator-solid"></div>
-                            <a href="${BASE_URL}/owner-tour/wisata/${tours[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <a href="${BASE_URL}/owner-souvenir/souvenir/${souvenirs[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
                             <div class="d-flex justify-content-end">
-                                <a href="${BASE_URL}/owner-tour/edit-wisata/${tours[i].id}">
+                                <a href="${BASE_URL}/owner-souvenir/edit-souvenir/${souvenirs[i].id}">
                                     <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
                                 </a>
-                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${tours[i].id}"><i class="fa fa-trash"></i></button>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${souvenirs[i].id}"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ const getTours = {
         }
 
         if (container.innerHTML == '') {
-            if (tours.length == 0) {
+            if (souvenirs.length == 0) {
                 container.innerHTML += `
                     <div class="col-md-12">
                         <div class="card card-stats card-round">
@@ -95,8 +95,153 @@ const getTours = {
     },
 }
 
+// search place
+const search = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(search, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('place-cards')
+        const places = response.data
+        if (container) {
+            container.innerHTML = '';
+    
+            for (i = places.length-1; i >= 0; i--) {
+                container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + places[i].thumbnail}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="info-post ml-2">
+                                <p class="username">${places[i].title}</p>
+                                <p class="date text-muted">${places[i].address}</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <p class="card-text">${places[i].desc.slice(0,100)} ...</p>
+                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <div class="d-flex justify-content-end">
+                                <a href="${BASE_URL}/admin/edit-tempat/${places[i].id}">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
+                                </a>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${places[i].id}"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+// get tag for tag button
+const getTags = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(getTags, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('btn-tag');
+        const tags = response.data;
+
+        for (i = tags.length-1; i >= 0; i--) {
+            container.innerHTML += `
+            <button class="btn btn-primary btn-border btn-round btn-sm ml-2 tag-item" onclick="getDataPlaceByTag(${tags[i].id})">${tags[i].name}</button>
+            `;
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+// get place by tag
+const getPlaceByTag = {
+    set loadData(data) {
+        const URL = URL_DATA + data
+        Functions.prototype.getRequest(search, URL);
+    },
+    set successData(response) {
+        const container = document.getElementById('place-cards')
+        const places = response.data
+        
+        if (container) {
+            container.innerHTML = '';
+            
+            for (i = places.length-1; i >= 0; i--) {
+                container.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card card-post card-round">
+                        <img class="card-img-top" src="${PICT + '/thumbnail/' + places[i].thumbnail}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="info-post ml-2">
+                                <p class="username">${places[i].title}</p>
+                                <p class="date text-muted">${places[i].address}</p>
+                            </div>
+                            <div class="separator-solid"></div>
+                            <p class="card-text">${places[i].desc.slice(0,100)} ...</p>
+                            <a href="${BASE_URL}/admin/tempat/${places[i].slug}/${places[i].id}" class="btn btn-primary btn-rounded btn-sm">Read More</a>
+                            <div class="d-flex justify-content-end">
+                                <a href="${BASE_URL}/admin/edit-tempat/${places[i].id}">
+                                    <button type="button" class="btn btn-icon btn-link btn-primary"><i class="fa fa-edit"></i></button>
+                                </a>
+                                <button type="button" class="btn btn-icon btn-link btn-danger delete" data-id="${places[i].id}"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    },
+    set errorData(err) {
+        var content = {};
+        content.title = "Error";
+        content.message = err.responseJSON.message;
+        content.icon = "fa fa-times";
+        $.notify(content, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+            delay: 10000,
+        });
+    },
+}
+
+
 // CRUD
-function addTour() {
+function addPlace() {
     $("#gambar").on("change", function (e) {
         e.preventDefault();
 
@@ -166,7 +311,7 @@ function addTour() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPost = URL_DATA + "/add/tour"
+            const urlPost = URL_DATA + "/add/souvenir"
             const formData = new FormData()
             const data = {
                 user_id: user_id,
@@ -241,7 +386,7 @@ function addTour() {
     }
 }
 
-function updateTour() {
+function updatePlace() {
     $("#gambar_update").on("change", function (e) {
         e.preventDefault();
 
@@ -307,7 +452,7 @@ function updateTour() {
         },
         submitHandler: function(form, e) {
             e.preventDefault()
-            const urlPut = URL_DATA + "/update/tour/" + $('#id').val()
+            const urlPut = URL_DATA + "/update/souvenir/" + $('#id').val()
             const formData = new FormData()
             const data = {
                 user_id:    user_id,
@@ -323,6 +468,7 @@ function updateTour() {
             const tags = $('#select_place_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
+            formData.append('tipe', data.tipe)
             formData.append('alamat', data.alamat)
             formData.append('latitude', data.latitude)
             formData.append('latitude', data.latitude)
@@ -349,6 +495,7 @@ function updateTour() {
         set successData(response) {
             $('#title').removeClass('is-valid')
             $('#gambar').removeClass('is-valid')
+            $('#tipe').removeClass('is-valid')
             $('#alamat').removeClass('is-valid')
             $('#latitude').removeClass('is-valid')
             $('#longtitude').removeClass('is-valid')
@@ -357,10 +504,10 @@ function updateTour() {
     }
 }
 
-function deleteTour() {
+function deletePlace() {
     $('.place').on('click', 'div div div div .delete', function(e) {
         const id = $(this).data('id')
-        const urlDelete = URL_DATA + "/delete/tour/" + id
+        const urlDelete = URL_DATA + "/delete/souvenir/" + id
         swal({
             title: 'Apa kamu yakin?',
             text: "Data yang sudah dihapus tidak dapat dikembalikan!",
@@ -382,8 +529,7 @@ function deleteTour() {
             } else {
                 swal.close();
             }
-            var pathname = window.location.pathname;
-            getTours.loadData = "/wisata"
+            getSouvenirs.loadData = "/souvenir"
         })
     })
 }

@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_souvenir.layouts.template')
 @section('title', 'Wisata')
 
 @section('css')
@@ -83,5 +83,5 @@
             getSouvenirs.loadData = "/souvenir"
         }
     </script>
-    <script src="{{ asset('owner/js/tempat/index.js') }}"></script>
+    <script src="{{ asset('js/ownerSouvenir/souvenir/index.js') }}"></script>
 @endsection

@@ -19,6 +19,7 @@ use App\Http\Controllers\Data\OwnerSouvenirProfileController;
 use App\Http\Controllers\Data\OwnerTourProfileController;
 use App\Http\Controllers\Data\OwnerWorshipProfileController;
 use App\Http\Controllers\Data\PlaceController;
+use App\Http\Controllers\Data\SouvenirController;
 use App\Http\Controllers\Data\TagController;
 use App\Http\Controllers\Data\TourController;
 use App\Http\Controllers\Data\UserController;
@@ -84,7 +85,7 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
 
     
     // Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
-    // Route::get('/souvenir', [OwnerController::class, 'souvenir']);
+    
 
     // rental mobil
     // Route::get('/mobil', [OwnerController::class, 'car']);
@@ -142,6 +143,12 @@ Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], fu
 Route::group(['prefix' => 'owner-souvenir', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerSouvenirController::class, 'dashboard']);
 
+    // CRUD Souvenir
+    Route::get('/souvenir', [OwnerSouvenirController::class, 'souvenir']);
+    Route::get('/souvenir/{id}', [OwnerSouvenirController::class, 'detailSouvenir']);
+    Route::get('/tambah-souvenir', [OwnerSouvenirController::class, 'tambahSouvenir']);
+    Route::get('/edit-souvenir/{id}', [OwnerSouvenirController::class, 'editSouvenir']);
+
     // pengaturan
     Route::get('/edit-profil', [OwnerSouvenirController::class, 'editProfil']);
     Route::get('/ganti-password', [OwnerSouvenirController::class, 'gantiPassword']);
@@ -163,14 +170,15 @@ Route::group(['prefix' => 'data'], function() {
     Route::post('/upload-picture', [GalleryController::class, 'uploadPicture']);
     Route::post('/upload-hotel-picture', [GalleryController::class, 'uploadHotelPicture']);
     Route::post('/upload-car-picture', [GalleryController::class, 'uploadCarPicture']);
+    Route::post('/upload-souvenir-picture', [GalleryController::class, 'uploadSouvenirPicture']);
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
     Route::get('/wisata', [TourController::class, 'index']);
     Route::get('/hotel', [HotelController::class, 'index']);
+    Route::get('/souvenir', [SouvenirController::class, 'index']);
 
     Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
-    Route::get('/souvenir', [PlaceController::class, 'souvenirs']);
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
     Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
@@ -200,6 +208,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/tour', [TourController::class, 'store']);
         Route::post('/hotel', [HotelController::class, 'store']);
         Route::post('/car', [CarController::class, 'store']);
+        Route::post('/souvenir', [SouvenirController::class, 'store']);
 
         Route::post('/tag', [TagController::class, 'store']);
         Route::post('/driver', [DriverController::class, 'store']);
@@ -209,6 +218,7 @@ Route::group(['prefix' => 'data'], function() {
     // get detail
     Route::get('/wisata/{id}', [TourController::class, 'show']);
     Route::get('/hotel/{id}', [HotelController::class, 'show']);
+    Route::get('/souvenir/{id}', [SouvenirController::class, 'show']);
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
     Route::get('/mobil/{id}', [CarController::class, 'show']);
 
@@ -218,6 +228,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::group(['prefix' => 'update'], function() {
         Route::post('/tour/{id}', [TourController::class, 'update']);
         Route::post('/hotel/{id}', [HotelController::class, 'update']);
+        Route::post('/souvenir/{id}', [SouvenirController::class, 'update']);
         Route::put('/mobil/{id}', [CarController::class, 'update']);
     });
 
@@ -227,6 +238,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::delete('/hotel/{id}', [HotelController::class, 'destroy']);
         Route::delete('/tag/{id}', [TagController::class, 'destroy']);
         Route::delete('/car/{id}', [CarController::class, 'destroy']);
+        Route::delete('/souvenir/{id}', [SouvenirController::class, 'destroy']);
     });
 
     // verify data

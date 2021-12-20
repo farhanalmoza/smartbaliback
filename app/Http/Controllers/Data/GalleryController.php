@@ -36,6 +36,13 @@ class GalleryController extends Controller
     	return $this->gallery->uploadCarPicture($file, $id, 'public/pictures/galleries/');
     }
 
+    public function uploadSouvenirPicture(Request $request)
+    {
+    	$file = $request->file('file');
+    	$id = $request->input('id');
+    	return $this->gallery->uploadSouvenirPicture($file, $id, 'public/pictures/galleries/');
+    }
+
     public function delPicture($id)
     {
     	return $this->gallery->delPicture($id);
