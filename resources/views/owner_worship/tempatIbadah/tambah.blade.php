@@ -1,4 +1,4 @@
-@extends('owner_tour.layouts.template')
+@extends('owner_worship.layouts.template')
 @section('title', 'Tambah Tempat')
 
 @section('css')
@@ -130,7 +130,7 @@
 @section('js')
 	<!-- My Script -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="{{ asset('js/ownerTour/wisata/index.js') }}"></script>
+	<script src="{{ asset('js/ownerWorship/worship/index.js') }}"></script>
 	{{-- Select2 --}}
 	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
 	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>

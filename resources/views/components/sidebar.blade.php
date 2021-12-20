@@ -25,24 +25,6 @@
                     </span>
                     <h4 class="text-section">Main</h4>
                 </li>
-                <li class="nav-item {{ 'admin/wisata' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/admin/wisata') }}">
-                        <i class="fas fa-plane"></i>
-                        <p>Wisata</p>
-                    </a>
-                </li>
-                <li class="nav-item {{ 'admin/hotel' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/admin/hotel') }}">
-                        <i class="fas fa-hotel"></i>
-                        <p>Hotel</p>
-                    </a>
-                </li>
-                <li class="nav-item {{ 'admin/tempat-ibadah' == request()->path() ? 'active' : '' }}">
-                    <a href="{{ url('/admin/tempat-ibadah') }}">
-                        <i class="fas fa-church"></i>
-                        <p>Tempat Ibadah</p>
-                    </a>
-                </li>
                 <li class="nav-item {{ 'admin/verifikasi/tempat' == request()->path() ? 'active' : '' }}">
                     <a href="{{ url('/admin/verifikasi/tempat') }}">
                         <i class="fas fa-map-marker-alt"></i>

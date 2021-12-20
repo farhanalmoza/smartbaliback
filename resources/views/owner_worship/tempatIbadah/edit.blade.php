@@ -1,5 +1,5 @@
-@extends('owner_tour.layouts.template')
-@section('title', 'Edit Tempat')
+@extends('owner_worship.layouts.template')
+@section('title', 'Edit Tempat Ibadah')
 
 @section('css')
 	<!-- Select2 -->
@@ -11,7 +11,7 @@
 	<div class="panel-header">
 		<div class="page-inner">
 			<div class="page-header">
-				<h4 class="page-title">Edit Tempat</h4>
+				<h4 class="page-title">Edit Tempat Ibadah</h4>
 				<ul class="breadcrumbs">
 					<li class="nav-home">
 						<a href="#">
@@ -22,7 +22,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">Edit Tempat</a>
+						<a href="#">Edit Tempat Ibadah</a>
 					</li>
 				</ul>
 			</div>
@@ -57,17 +57,6 @@
 															<input id="gambar_update" name="gambar_update" type="file" class="form-control input-full">
 															<input type="hidden" name="old_thumb" id="old_thumb">
 															<img src="https://demo.getstisla.com/assets/img/avatar/avatar-1.png" alt="avatar" class="img-fluid img-thumbnail mt-2" id="prevThumb" style="max-width: 300px">
-														</div>
-													</div>
-													<div class="form-group form-inline">
-														<label for="tipe" class="col-md-2 form-label justify-content-start">Tipe Tempat</label>
-														<div class="col-md-10 p-0">
-															<select class="form-control input-full" id="tipe" name="tipe">
-																<option value="tour">Tempat Wisata</option>
-																<option value="hotel">Hotel</option>
-																<option value="worship">Tempat Ibadah</option>
-																<option value="souvenir">Oleh-oleh</option>
-															</select>
 														</div>
 													</div>
 													<div class="form-group form-inline">
@@ -219,25 +208,25 @@
 		// detail for update
 		const getDetailForUpdate = {
 			set loadData(data) {
-				const urlDetail = URL_DATA + "/wisata/" + data
+				const urlDetail = URL_DATA + "/worship/" + data
 				Functions.prototype.requestDetail(getDetailForUpdate, urlDetail)
 			},
 			set successData(response) {
-				$('#id').val(response.tour.id)
-				$('#title').val(response.tour.title)
-				$('#prevThumb').attr('src', PICT + '/thumbnail/' + response.tour.thumbnail)
-				$('#old_thumb').val(response.tour.thumbnail)
-				$('#alamat').val(response.tour.address)
-				$('#latitude').val(response.tour.latitude)
-				$('#longtitude').val(response.tour.longtitude)
+				$('#id').val(response.worship.id)
+				$('#title').val(response.worship.title)
+				$('#prevThumb').attr('src', PICT + '/thumbnail/' + response.worship.thumbnail)
+				$('#old_thumb').val(response.worship.thumbnail)
+				$('#alamat').val(response.worship.address)
+				$('#latitude').val(response.worship.latitude)
+				$('#longtitude').val(response.worship.longtitude)
 				setTimeout(function() {
-					tinyMCE.get("desc").setContent(response.tour.desc);
+					tinyMCE.get("desc").setContent(response.worship.desc);
 				}, 5000);
 				// selected tags
 				var tagSelect = $('#select_place_tag');
 				$.ajax({
 					type: 'GET',
-					url: URL_DATA + "/wisata/" + id
+					url: URL_DATA + "/worship/" + id
 				}).then(function (data) {
 					// create the option and append to Select2
 					const selected = []
@@ -256,7 +245,7 @@
 				});
 
 				// pictures form gallery
-				var picts = response.tour.pictures
+				var picts = response.worship.pictures
 				if(picts.length > 0) {
 					var listImage = ""
 					picts.map(picture => {
@@ -277,8 +266,8 @@
 		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="{{ asset('js/ownerTour/wisata/index.js') }}"></script>
-	<script src="{{ asset('js/ownerTour/wisata/image.js') }}"></script>
+	<script src="{{ asset('js/ownerWorship/worship/index.js') }}"></script>
+	<script src="{{ asset('js/ownerWorship/worship/image.js') }}"></script>
 	{{-- Select2 --}}
 	<script src="{{ asset('t_admin') }}/js/select2/select2.min.js"></script>
 	<script src="{{ asset('t_admin/js/select2/i18n/' . app()->getLocale() . '.js') }}"></script>

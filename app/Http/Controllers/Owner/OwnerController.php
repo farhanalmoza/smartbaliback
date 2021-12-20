@@ -18,10 +18,7 @@ class OwnerController extends Controller
 
     
 
-    public function tempatIbadah()
-    {
-        return view('owner.tempatIbadah.index');
-    }
+    
 
     
 

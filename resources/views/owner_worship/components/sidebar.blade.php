@@ -25,6 +25,18 @@
                     </span>
                     <h4 class="text-section">Main</h4>
                 </li>
+                <li class="nav-item {{ 'owner-worship/tempat-ibadah' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-worship/tempat-ibadah') }}">
+                        <i class="fas fa-church"></i>
+                        <p>Tempat Ibadah</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner-worship/tambah-tempat-ibadah' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-worship/tambah-tempat-ibadah') }}">
+                        <i class="fas fa-plus-square"></i>
+                        <p>Tambah Tempat Ibadah</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

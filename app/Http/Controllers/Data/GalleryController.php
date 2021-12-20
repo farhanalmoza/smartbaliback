@@ -43,6 +43,13 @@ class GalleryController extends Controller
     	return $this->gallery->uploadSouvenirPicture($file, $id, 'public/pictures/galleries/');
     }
 
+    public function uploadWorshipPicture(Request $request)
+    {
+    	$file = $request->file('file');
+    	$id = $request->input('id');
+    	return $this->gallery->uploadWorshipPicture($file, $id, 'public/pictures/galleries/');
+    }
+
     public function delPicture($id)
     {
     	return $this->gallery->delPicture($id);

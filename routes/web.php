@@ -24,11 +24,13 @@ use App\Http\Controllers\Data\TagController;
 use App\Http\Controllers\Data\TourController;
 use App\Http\Controllers\Data\UserController;
 use App\Http\Controllers\Data\VerifyController;
+use App\Http\Controllers\Data\WorshipController;
 use App\Http\Controllers\Owner\OwnerCarController;
 use App\Http\Controllers\Owner\OwnerHotelController;
 use App\Http\Controllers\Owner\OwnerSouvenirController;
 use App\Http\Controllers\Owner\OwnerTourController;
 use App\Http\Controllers\Owner\OwnerWorshipController;
+use App\Services\WorshipService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,7 +86,7 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     Route::get('/wisata/{id}', [OwnerTourController::class, 'detail']);
 
     
-    // Route::get('/tempat-ibadah', [OwnerController::class, 'tempatIbadah']);
+    
     
 
     // rental mobil
@@ -158,6 +160,12 @@ Route::group(['prefix' => 'owner-souvenir', 'middleware' => ['auth', 'verified']
 Route::group(['prefix' => 'owner-worship', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerWorshipController::class, 'dashboard']);
 
+    // CRUD worship
+    Route::get('/tempat-ibadah', [OwnerWorshipController::class, 'tempatIbadah']);
+    Route::get('/tambah-tempat-ibadah', [OwnerWorshipController::class, 'tambahTempat']);
+    Route::get('/tempat-ibadah/{id}', [OwnerWorshipController::class, 'detail']);
+    Route::get('/edit-tempat-ibadah/{id}', [OwnerWorshipController::class, 'editTempat']);
+
     // pengaturan
     Route::get('/edit-profil', [OwnerWorshipController::class, 'editProfil']);
     Route::get('/ganti-password', [OwnerWorshipController::class, 'gantiPassword']);
@@ -171,14 +179,15 @@ Route::group(['prefix' => 'data'], function() {
     Route::post('/upload-hotel-picture', [GalleryController::class, 'uploadHotelPicture']);
     Route::post('/upload-car-picture', [GalleryController::class, 'uploadCarPicture']);
     Route::post('/upload-souvenir-picture', [GalleryController::class, 'uploadSouvenirPicture']);
+    Route::post('/upload-worship-picture', [GalleryController::class, 'uploadWorshipPicture']);
     Route::delete('/delete-picture/{id}', [GalleryController::class, 'delPicture']);
 
     // get all
     Route::get('/wisata', [TourController::class, 'index']);
     Route::get('/hotel', [HotelController::class, 'index']);
     Route::get('/souvenir', [SouvenirController::class, 'index']);
+    Route::get('/tempat-ibadah', [WorshipController::class, 'index']);
 
-    Route::get('/tempat-ibadah', [PlaceController::class, 'worships']);
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
     Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
@@ -209,6 +218,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/hotel', [HotelController::class, 'store']);
         Route::post('/car', [CarController::class, 'store']);
         Route::post('/souvenir', [SouvenirController::class, 'store']);
+        Route::post('/worship', [WorshipController::class, 'store']);
 
         Route::post('/tag', [TagController::class, 'store']);
         Route::post('/driver', [DriverController::class, 'store']);
@@ -221,6 +231,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/souvenir/{id}', [SouvenirController::class, 'show']);
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
     Route::get('/mobil/{id}', [CarController::class, 'show']);
+    Route::get('/worship/{id}', [WorshipController::class, 'show']);
 
     Route::get('/driver/{id}', [DriverController::class, 'show']);
 
@@ -229,6 +240,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/tour/{id}', [TourController::class, 'update']);
         Route::post('/hotel/{id}', [HotelController::class, 'update']);
         Route::post('/souvenir/{id}', [SouvenirController::class, 'update']);
+        Route::post('/worship/{id}', [WorshipController::class, 'update']);
         Route::put('/mobil/{id}', [CarController::class, 'update']);
     });
 
@@ -239,6 +251,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::delete('/tag/{id}', [TagController::class, 'destroy']);
         Route::delete('/car/{id}', [CarController::class, 'destroy']);
         Route::delete('/souvenir/{id}', [SouvenirController::class, 'destroy']);
+        Route::delete('/worship/{id}', [WorshipController::class, 'destroy']);
     });
 
     // verify data

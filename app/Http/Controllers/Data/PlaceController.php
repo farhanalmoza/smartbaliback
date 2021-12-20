@@ -21,7 +21,7 @@ class PlaceController extends Controller
     public function unverifiedPlaces() { return $this->place->getUnverifiedPlaces(); } // get all unverified places
     
     
-    public function worships() { return $this->place->getWorships(); }
+    
     
 
     // get by search

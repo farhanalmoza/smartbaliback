@@ -1,4 +1,4 @@
-@extends('owner_tour.layouts.template')
+@extends('owner_worship.layouts.template')
 @section('title', 'Detail Tempat')
 
 @section('css')
@@ -179,7 +179,7 @@
 
 @section('js')
 	<!-- My Script -->
-	<script src="{{ asset('js/ownerTour/wisata/index.js') }}"></script>
+	<script src="{{ asset('js/ownerWorship/worship/index.js') }}"></script>
 	<script>
 		const id = '{{ $id }}'
 
@@ -189,18 +189,17 @@
 
 		const getDetail = {
 			set loadData(data) {
-				const urlDetail = URL_DATA + "/wisata/" + data	
+				const urlDetail = URL_DATA + "/worship/" + data	
 				Functions.prototype.requestDetail(getDetail, urlDetail)
 			},
 			set successData(response) {
 				// for preview detail
-				console.log(response)
-				$('#thumbnail').attr('src', PICT + '/thumbnail/' + response.tour.thumbnail)
-				$('#title').text(response.tour.title)
-				$('#address').text(response.tour.address)
-				$('#desc').append(response.tour.desc)
+				$('#thumbnail').attr('src', PICT + '/thumbnail/' + response.worship.thumbnail)
+				$('#title').text(response.worship.title)
+				$('#address').text(response.worship.address)
+				$('#desc').append(response.worship.desc)
 				// gallery
-				var picts = response.tour.pictures
+				var picts = response.worship.pictures
 				var pictLength = picts.length
 				if (pictLength > 0) {
 					var listPict = ""
