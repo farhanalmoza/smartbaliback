@@ -25,6 +25,24 @@
                     </span>
                     <h4 class="text-section">Main</h4>
                 </li>
+                <li class="nav-item {{ 'owner-car/mobil' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-car/mobil') }}">
+                        <i class="fas fa-car"></i>
+                        <p>Mobil</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner-car/sopir' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-car/sopir') }}">
+                        <i class="fas fa-user-tie"></i>
+                        <p>Sopir</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ 'owner-car/daftar-rental' == request()->path() ? 'active' : '' }}">
+                    <a href="{{ url('/owner-car/daftar-rental') }}">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Daftar Rental</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>

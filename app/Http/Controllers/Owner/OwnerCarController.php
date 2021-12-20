@@ -16,6 +16,22 @@ class OwnerCarController extends Controller
         return view('owner_car.dashboard.index');
     }
 
+    public function index()
+    {
+        return view('owner_car.mobil.index');
+    }
+
+    public function tambahMobil()
+    {
+        return view('owner_car.mobil.tambah');
+    }
+
+    public function tambahGambarMobil($id)
+    {
+        $data['id'] = $id;
+        return view('owner_car.mobil.tambahGambar', $data);
+    }
+
     // pengaturan
     public function editProfil()
     {

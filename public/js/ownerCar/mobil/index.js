@@ -103,7 +103,7 @@ const getNewCar = {
     },
     set successData(response) {
         const newCar = response
-        window.location.replace(BASE_URL + "/owner/tambah-gambar-mobil/" + newCar.id)
+        window.location.replace(BASE_URL + "/owner-car/tambah-gambar-mobil/" + newCar.id)
     },
     set errorData(err) {
         var content = {};

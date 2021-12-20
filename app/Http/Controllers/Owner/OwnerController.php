@@ -52,16 +52,9 @@ class OwnerController extends Controller
     }
 
     // crud mobil
-    public function tambahMobil()
-    {
-        return view('owner.mobil.tambah');
-    }
+    
 
-    public function tambahGambarMobil($id)
-    {
-        $data['id'] = $id;
-        return view('owner.mobil.tambahGambar', $data);
-    }
+    
 
     public function detailMobil($id)
     {

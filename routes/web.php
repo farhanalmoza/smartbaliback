@@ -92,8 +92,8 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     // Route::get('/daftar-rental', [OwnerController::class, 'rentalList']);
 
     // CRUD Mobil
-    // Route::get('/tambah-mobil', [OwnerController::class, 'tambahMobil']);
-    // Route::get('/tambah-gambar-mobil/{id}', [OwnerController::class, 'tambahGambarMobil']);
+    
+    
     // Route::get('/mobil/{id}', [OwnerController::class, 'detailMobil']);
     // Route::get('/edit-mobil/{id}', [OwnerController::class, 'editMobil']);
 
@@ -125,6 +125,11 @@ Route::group(['prefix' => 'owner-hotel', 'middleware' => ['auth', 'verified']], 
 // view owner car
 Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [OwnerCarController::class, 'dashboard']);
+
+    // CRUD car
+    Route::get('/mobil', [OwnerCarController::class, 'index']);
+    Route::get('/tambah-mobil', [OwnerCarController::class, 'tambahMobil']);
+    Route::get('/tambah-gambar-mobil/{id}', [OwnerCarController::class, 'tambahGambarMobil']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerCarController::class, 'editProfil']);
@@ -192,9 +197,9 @@ Route::group(['prefix' => 'data'], function() {
     Route::group(['prefix' => 'add'], function() {
         Route::post('/tour', [TourController::class, 'store']);
         Route::post('/hotel', [HotelController::class, 'store']);
+        Route::post('/car', [CarController::class, 'store']);
 
         Route::post('/tag', [TagController::class, 'store']);
-        Route::post('/car', [CarController::class, 'store']);
         Route::post('/driver', [DriverController::class, 'store']);
         Route::post('/backpacker', [BackpackerController::class, 'store']);
     });

@@ -123,7 +123,7 @@
 				response.picture ? $('.ava-top').attr('src', PICT + '/profile/' + response.picture) : $('.ava-top').attr('src', 'https://demo.getstisla.com/assets/img/avatar/avatar-1.png')
 
 				// template
-				$('#name-sidebar').text(response.name).append('<span class="user-level">Pengelola</span>')
+				$('#name-sidebar').text(response.name).append('<span class="user-level">Pengelola Mobil</span>')
 				$('#name-topbar').text(response.name)
 				$('#email-topbar').text(response.email)
 			},
