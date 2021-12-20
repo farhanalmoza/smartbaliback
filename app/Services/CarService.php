@@ -15,7 +15,7 @@ class CarService
         ->addColumn('actions', function($rows) {
             $rows = json_encode($rows);
             $rows = json_decode($rows);
-            $url = url('owner');
+            $url = url('owner-car');
             $id = $rows->id;
             $btn = "<td> <div class='btn-group'>";
             $btn .= "<a href='".$url. "/edit-mobil/".$id."' class='btn btn-info btn-sm'>Ubah</a>";

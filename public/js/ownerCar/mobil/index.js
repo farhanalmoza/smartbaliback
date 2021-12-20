@@ -1,12 +1,8 @@
 $(document).ready(function () {
-    // getCars.loadData = '/mobil'
 
     // CRUD
     addCar()
     updateCar()
-    // deletePlace()
-    // verify()
-    // unverify()
 })
 
 // const getCars = {

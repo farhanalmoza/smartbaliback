@@ -56,11 +56,7 @@ class OwnerController extends Controller
 
     
 
-    public function detailMobil($id)
-    {
-        $data['id'] = $id;
-        return view('owner.mobil.detail', $data);
-    }
+    
 
     public function driver()
     {
@@ -72,11 +68,7 @@ class OwnerController extends Controller
         return view('owner.daftarRental.index');
     }
 
-    public function editMobil($id)
-    {
-        $data['id'] = $id;
-        return view('owner.mobil.edit', $data);
-    }
+    
 
      // crud sopir
     public function tambahSopir()

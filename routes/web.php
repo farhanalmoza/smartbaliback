@@ -94,8 +94,8 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     // CRUD Mobil
     
     
-    // Route::get('/mobil/{id}', [OwnerController::class, 'detailMobil']);
-    // Route::get('/edit-mobil/{id}', [OwnerController::class, 'editMobil']);
+    
+    
 
     // CRUD Sopir
     // Route::get('/tambah-sopir', [OwnerController::class, 'tambahSopir']);
@@ -130,6 +130,8 @@ Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], fu
     Route::get('/mobil', [OwnerCarController::class, 'index']);
     Route::get('/tambah-mobil', [OwnerCarController::class, 'tambahMobil']);
     Route::get('/tambah-gambar-mobil/{id}', [OwnerCarController::class, 'tambahGambarMobil']);
+    Route::get('/mobil/{id}', [OwnerCarController::class, 'detailMobil']);
+    Route::get('/edit-mobil/{id}', [OwnerCarController::class, 'editMobil']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerCarController::class, 'editProfil']);
@@ -207,16 +209,15 @@ Route::group(['prefix' => 'data'], function() {
     // get detail
     Route::get('/wisata/{id}', [TourController::class, 'show']);
     Route::get('/hotel/{id}', [HotelController::class, 'show']);
-
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
     Route::get('/mobil/{id}', [CarController::class, 'show']);
+
     Route::get('/driver/{id}', [DriverController::class, 'show']);
 
     // update
     Route::group(['prefix' => 'update'], function() {
         Route::post('/tour/{id}', [TourController::class, 'update']);
         Route::post('/hotel/{id}', [HotelController::class, 'update']);
-
         Route::put('/mobil/{id}', [CarController::class, 'update']);
     });
 

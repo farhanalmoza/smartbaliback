@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_car.layouts.template')
 @section('title', 'Edit Data Mobil')
 
 @section('css')
@@ -173,6 +173,6 @@
 		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="{{ asset('owner/js/mobil/index.js') }}"></script>
-	<script src="{{ asset('owner/js/mobil/image.js') }}"></script>
+	<script src="{{ asset('js/ownerCar/mobil/index.js') }}"></script>
+	<script src="{{ asset('js/ownerCar/mobil/image.js') }}"></script>
 @endsection
