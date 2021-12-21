@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_car.layouts.template')
 @section('title', 'Tambah Sopir')
 
 @section('content')
@@ -71,5 +71,5 @@
 @endsection
 
 @section('js')
-	<script src="{{ asset('owner/js/sopir/index.js') }}"></script>
+	<script src="{{ asset('js/ownerCar/sopir/index.js') }}"></script>
 @endsection

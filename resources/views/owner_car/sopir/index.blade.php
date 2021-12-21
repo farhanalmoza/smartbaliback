@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_car.layouts.template')
 @section('title', 'Daftar Sopir')
 
 @section('content')
@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <div class="card-title">Daftar Sopir</div>
-                            <a href="{{ url('/owner/tambah-sopir') }}" class="btn btn-primary btn-sm">Tambah sopir</a>
+                            <a href="{{ url('/owner-car/tambah-sopir') }}" class="btn btn-primary btn-sm">Tambah sopir</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -74,5 +74,5 @@
             Functions.prototype.tableResult("#dataTables", urlDriver, columns)
         }
     </script>
-    <script src="{{ asset('/owner/js/sopir/index.js') }}"></script>
+    <script src="{{ asset('/js/ownerCar/sopir/index.js') }}"></script>
 @endsection

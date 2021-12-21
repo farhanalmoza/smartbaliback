@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_car.layouts.template')
 @section('title', 'Edit Data Sopir')
 
 @section('css')
@@ -116,6 +116,6 @@
 		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="{{ asset('owner/js/sopir/index.js') }}"></script>
-	<script src="{{ asset('owner/js/sopir/image.js') }}"></script>
+	<script src="{{ asset('js/ownerCar/sopir/index.js') }}"></script>
+	<script src="{{ asset('js/ownerCar/sopir/image.js') }}"></script>
 @endsection

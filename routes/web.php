@@ -91,7 +91,7 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
 
     // rental mobil
     // Route::get('/mobil', [OwnerController::class, 'car']);
-    // Route::get('/sopir', [OwnerController::class, 'driver']);
+    
     // Route::get('/daftar-rental', [OwnerController::class, 'rentalList']);
 
     // CRUD Mobil
@@ -101,8 +101,8 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     
 
     // CRUD Sopir
-    // Route::get('/tambah-sopir', [OwnerController::class, 'tambahSopir']);
-    // Route::get('/edit-sopir/{id}', [OwnerController::class, 'editSopir']);
+    
+    
 
 
     // pengaturan
@@ -135,6 +135,11 @@ Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], fu
     Route::get('/tambah-gambar-mobil/{id}', [OwnerCarController::class, 'tambahGambarMobil']);
     Route::get('/mobil/{id}', [OwnerCarController::class, 'detailMobil']);
     Route::get('/edit-mobil/{id}', [OwnerCarController::class, 'editMobil']);
+
+    // CRUD Driver
+    Route::get('/sopir', [OwnerCarController::class, 'driver']);
+    Route::get('/tambah-sopir', [OwnerCarController::class, 'tambahSopir']);
+    Route::get('/edit-sopir/{id}', [OwnerCarController::class, 'editSopir']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerCarController::class, 'editProfil']);
@@ -219,9 +224,9 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/car', [CarController::class, 'store']);
         Route::post('/souvenir', [SouvenirController::class, 'store']);
         Route::post('/worship', [WorshipController::class, 'store']);
+        Route::post('/driver', [DriverController::class, 'store']);
 
         Route::post('/tag', [TagController::class, 'store']);
-        Route::post('/driver', [DriverController::class, 'store']);
         Route::post('/backpacker', [BackpackerController::class, 'store']);
     });
 

@@ -16,6 +16,7 @@ class OwnerCarController extends Controller
         return view('owner_car.dashboard.index');
     }
 
+    // mobil
     public function index()
     {
         return view('owner_car.mobil.index');
@@ -42,6 +43,23 @@ class OwnerCarController extends Controller
     {
         $data['id'] = $id;
         return view('owner_car.mobil.edit', $data);
+    }
+
+    // sopir
+    public function driver()
+    {
+        return view('owner_car.sopir.index');
+    }
+
+    public function tambahSopir()
+    {
+        return view('owner_car.sopir.tambah');
+    }
+
+    public function editSopir($id)
+    {
+        $data['id'] = $id;
+        return view('owner_car.sopir.edit', $data);
     }
 
     // pengaturan
