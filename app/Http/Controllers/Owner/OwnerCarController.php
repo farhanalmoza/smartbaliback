@@ -62,6 +62,12 @@ class OwnerCarController extends Controller
         return view('owner_car.sopir.edit', $data);
     }
 
+    // rental
+    public function rentalList()
+    {
+        return view('owner_car.daftarRental.index');
+    }
+
     // pengaturan
     public function editProfil()
     {

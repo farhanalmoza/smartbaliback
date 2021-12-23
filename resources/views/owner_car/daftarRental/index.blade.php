@@ -1,4 +1,4 @@
-@extends('layouts.owner.template')
+@extends('owner_car.layouts.template')
 @section('title', 'Daftar Rental')
 
 @section('content')

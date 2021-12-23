@@ -85,26 +85,6 @@ Route::group(['prefix' => 'owner-tour', 'middleware' => ['auth', 'verified']], f
     Route::get('/edit-wisata/{id}', [OwnerTourController::class, 'editTempat']);
     Route::get('/wisata/{id}', [OwnerTourController::class, 'detail']);
 
-    
-    
-    
-
-    // rental mobil
-    // Route::get('/mobil', [OwnerController::class, 'car']);
-    
-    // Route::get('/daftar-rental', [OwnerController::class, 'rentalList']);
-
-    // CRUD Mobil
-    
-    
-    
-    
-
-    // CRUD Sopir
-    
-    
-
-
     // pengaturan
     Route::get('/edit-profil', [OwnerTourController::class, 'editProfil']);
     Route::get('/ganti-password', [OwnerTourController::class, 'gantiPassword']);
@@ -140,6 +120,9 @@ Route::group(['prefix' => 'owner-car', 'middleware' => ['auth', 'verified']], fu
     Route::get('/sopir', [OwnerCarController::class, 'driver']);
     Route::get('/tambah-sopir', [OwnerCarController::class, 'tambahSopir']);
     Route::get('/edit-sopir/{id}', [OwnerCarController::class, 'editSopir']);
+
+    // rental
+    Route::get('/daftar-rental', [OwnerCarController::class, 'rentalList']);
 
     // pengaturan
     Route::get('/edit-profil', [OwnerCarController::class, 'editProfil']);
@@ -192,12 +175,12 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/hotel', [HotelController::class, 'index']);
     Route::get('/souvenir', [SouvenirController::class, 'index']);
     Route::get('/tempat-ibadah', [WorshipController::class, 'index']);
+    Route::get('/all/mobil/{user_id}', [CarController::class, 'index']);
+    Route::get('/all/driver/{user_id}', [DriverController::class, 'index']);
 
     Route::get('/tag', [TagController::class, 'index']);
     Route::get('/tags/select', [TagController::class, 'select'])->name('tags.select');
     Route::get('/notifications/{user_id}', [NotifController::class, 'index']);
-    Route::get('/all/mobil/{user_id}', [CarController::class, 'index']);
-    Route::get('/all/driver/{user_id}', [DriverController::class, 'index']);
     // get all verify/unverify data
     Route::get('/verify-places', [PlaceController::class, 'verifyPlaces']); // get all verify places
     Route::get('/unverified-places', [PlaceController::class, 'unverifiedPlaces']); // get all unverified places
