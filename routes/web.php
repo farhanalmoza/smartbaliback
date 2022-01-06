@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Auth\Admin\AdminLoginController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -314,5 +315,10 @@ Route::get('/register', [RegisterController::class, 'showSelectType'])->name('re
 Route::get('/register/{type}', [RegisterController::class, 'showRegistrationForm'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'register'])->name('register')->middleware('guest');
 
+// Admin Auth
+// Route::group(['prefix' => 'admin'], function() {
+//     Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
+//     Route::post('/login', [AdminLoginController::class, 'login'])->middleware('guest');
+// });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');

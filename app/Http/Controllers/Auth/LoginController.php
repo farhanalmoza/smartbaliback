@@ -51,16 +51,20 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
-            if ( auth()->user()->type == 'tour' ) {
-                return redirect('owner-tour/dashboard');
-            } else if ( auth()->user()->type == 'hotel' ) {
-                return redirect('owner-hotel/dashboard');
-            } else if ( auth()->user()->type == 'worship' ) {
-                return redirect('owner-worship/dashboard');
-            } else if ( auth()->user()->type == 'souvenir' ) {
+            if ( auth()->user()->is_admin == 1 ) {
                 return redirect('owner-souvenir/dashboard');
             } else {
-                return redirect('owner-car/dashboard');
+                if ( auth()->user()->type == 'tour' ) {
+                    return redirect('owner-tour/dashboard');
+                } else if ( auth()->user()->type == 'hotel' ) {
+                    return redirect('owner-hotel/dashboard');
+                } else if ( auth()->user()->type == 'worship' ) {
+                    return redirect('owner-worship/dashboard');
+                } else if ( auth()->user()->type == 'souvenir' ) {
+                    return redirect('owner-souvenir/dashboard');
+                } else {
+                    return redirect('owner-car/dashboard');
+                }
             }
 
             return $this->sendLoginResponse($request);
