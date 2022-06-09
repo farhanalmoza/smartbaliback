@@ -52,7 +52,7 @@ class LoginController extends Controller
 
         if ($this->attemptLogin($request)) {
             if ( auth()->user()->is_admin == 1 ) {
-                return redirect('owner-souvenir/dashboard');
+                return redirect('admin/dashboard');
             } else {
                 if ( auth()->user()->type == 'tour' ) {
                     return redirect('owner-tour/dashboard');

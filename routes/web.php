@@ -176,6 +176,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/hotel', [HotelController::class, 'index']);
     Route::get('/souvenir', [SouvenirController::class, 'index']);
     Route::get('/tempat-ibadah', [WorshipController::class, 'index']);
+    Route::get('/all/mobil/', [CarController::class, 'getAll']);
     Route::get('/all/mobil/{user_id}', [CarController::class, 'index']);
     Route::get('/all/driver/{user_id}', [DriverController::class, 'index']);
 

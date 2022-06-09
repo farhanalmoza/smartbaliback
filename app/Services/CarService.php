@@ -28,6 +28,28 @@ class CarService
         ->make(true);
     }
 
+    public function getAllCars()
+    {
+        $results = Car::with('pictures:id,car_id,picture')->get();
+        return datatables()
+        ->of($results)
+        ->addIndexColumn()
+        ->addColumn('actions', function($rows) {
+            $rows = json_encode($rows);
+            $rows = json_decode($rows);
+            $url = url('owner-car');
+            $id = $rows->id;
+            $btn = "<td> <div class='btn-group'>";
+            $btn .= "<a href='".$url. "/edit-mobil/".$id."' class='btn btn-info btn-sm'>Ubah</a>";
+            $btn .= "<a href='".$url. "/mobil/".$id."' class='btn btn-primary btn-sm'>Detail</a>";
+            $btn .= "<button data-id='$id' class='btn btn-sm btn-danger delete'>Hapus</button>";
+            $btn .= '</div> </td>';
+            return $btn;
+        })
+        ->rawColumns(['actions'])
+        ->make(true);
+    }
+
     // get all verify/unverify data
     public function getVerifyCars() // get all verify cars
     {

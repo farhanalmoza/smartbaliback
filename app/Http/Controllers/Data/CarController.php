@@ -29,6 +29,11 @@ class CarController extends Controller
         return $this->car->getCars($user_id);
     }
 
+    public function getAll()
+    {
+        return $this->car->getAllCars();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
