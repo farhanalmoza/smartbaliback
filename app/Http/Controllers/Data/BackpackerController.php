@@ -4,10 +4,18 @@ namespace App\Http\Controllers\Data;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backpacker;
+use App\Services\BackpackerService;
 use Illuminate\Http\Request;
 
 class BackpackerController extends Controller
 {
+    protected $backpacker;
+
+    public function __construct()
+    {
+        $this->backpacker = app()->make(BackpackerService::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +67,7 @@ class BackpackerController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->backpacker->get($id);
     }
 
     /**

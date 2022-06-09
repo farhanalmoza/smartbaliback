@@ -222,6 +222,7 @@ Route::group(['prefix' => 'data'], function() {
     Route::get('/mobil-baru/{user_id}', [CarController::class, 'newCar']);
     Route::get('/mobil/{id}', [CarController::class, 'show']);
     Route::get('/worship/{id}', [WorshipController::class, 'show']);
+    Route::get('/backpacker/{id}', [BackpackerController::class, 'show']);
 
     Route::get('/driver/{id}', [DriverController::class, 'show']);
 
