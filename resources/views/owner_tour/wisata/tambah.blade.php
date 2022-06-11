@@ -42,6 +42,12 @@
 												<input id="title" name="title" type="text" class="form-control input-full" placeholder="masukkan nama tempat">
 											</div>
 										</div>
+										<div class="form-group form-inline">
+											<label for="harga" class="col-md-2 form-label justify-content-start">Harga</label>
+											<div class="col-md-10 p-0">
+												<input id="harga" name="harga" type="text" class="form-control input-full" placeholder="masukkan harga">
+											</div>
+										</div>
 										<div class="form-group form-inline align-items-start">
 											<label for="gambar" class="col-md-2 form-label justify-content-start">Gambar</label>
 											<div class="col-md-10 p-0">

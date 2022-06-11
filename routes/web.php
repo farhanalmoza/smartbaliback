@@ -212,7 +212,6 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/driver', [DriverController::class, 'store']);
 
         Route::post('/tag', [TagController::class, 'store']);
-        Route::post('/backpacker', [BackpackerController::class, 'store']);
     });
 
     // get detail

@@ -133,6 +133,9 @@ function addTour() {
             title: {
                 required: true
             },
+            harga: {
+                required: true
+            },
             gambar: {
                 required: true
             },
@@ -174,6 +177,7 @@ function addTour() {
                 alamat: $('#alamat').val(),
                 latitude: $('#latitude').val(),
                 longtitude: $('#longtitude').val(),
+                harga: $('#harga').val(),
                 desc: $('#desc').val(),
                 tag: $('#select_place_tag').val(),
             }
@@ -185,6 +189,7 @@ function addTour() {
             formData.append('latitude', data.latitude)
             formData.append('latitude', data.latitude)
             formData.append('longtitude', data.longtitude)
+            formData.append('harga', data.harga)
             formData.append('desc', data.desc)
             
             for (let i = 0; i < tags.length; i++) {

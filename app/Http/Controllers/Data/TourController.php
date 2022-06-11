@@ -56,6 +56,7 @@ class TourController extends Controller
             'address'     => $request->input('alamat'),
             'latitude'    => $request->input('latitude'),
             'longtitude'  => $request->input('longtitude'),
+            'price'       => $request->input('harga'),
         ];
         
         return $this->tour->add($data, $files, $tags);
