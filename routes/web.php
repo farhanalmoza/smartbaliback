@@ -20,6 +20,7 @@ use App\Http\Controllers\Data\OwnerSouvenirProfileController;
 use App\Http\Controllers\Data\OwnerTourProfileController;
 use App\Http\Controllers\Data\OwnerWorshipProfileController;
 use App\Http\Controllers\Data\PlaceController;
+use App\Http\Controllers\Data\RecordController;
 use App\Http\Controllers\Data\SouvenirController;
 use App\Http\Controllers\Data\TagController;
 use App\Http\Controllers\Data\TourController;
@@ -210,6 +211,7 @@ Route::group(['prefix' => 'data'], function() {
         Route::post('/souvenir', [SouvenirController::class, 'store']);
         Route::post('/worship', [WorshipController::class, 'store']);
         Route::post('/driver', [DriverController::class, 'store']);
+        Route::post('/record', [RecordController::class, 'store']);
 
         Route::post('/tag', [TagController::class, 'store']);
     });
