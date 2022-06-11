@@ -65,7 +65,7 @@ class RecordController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->record->get($id);
     }
 
     /**
