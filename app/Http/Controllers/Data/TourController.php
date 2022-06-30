@@ -99,6 +99,7 @@ class TourController extends Controller
         $data = [
             'user_id'     => $request->input('user_id'),
             'title'       => $request->input('title'),
+            'price'       => $request->input('harga'),
             'slug'        => Str::slug($request->input('title'), '-'),
             'desc'        => $request->input('desc'),
             'address'     => $request->input('alamat'),

@@ -282,6 +282,9 @@ function updateTour() {
             title: {
                 required: true
             },
+            harga: {
+                required: true
+            },
             alamat: {
                 required: true
             },
@@ -317,6 +320,7 @@ function updateTour() {
             const data = {
                 user_id:    user_id,
                 title:      $('#title').val(),
+                harga:      $('#harga').val(),
                 alamat:     $('#alamat').val(),
                 latitude:   $('#latitude').val(),
                 longtitude: $('#longtitude').val(),
@@ -328,6 +332,7 @@ function updateTour() {
             const tags = $('#select_place_tag').val()
             formData.append('user_id', data.user_id)
             formData.append('title', data.title)
+            formData.append('harga', data.harga)
             formData.append('alamat', data.alamat)
             formData.append('latitude', data.latitude)
             formData.append('latitude', data.latitude)
@@ -353,6 +358,7 @@ function updateTour() {
     const putDataPlace = {
         set successData(response) {
             $('#title').removeClass('is-valid')
+            $('#harga').removeClass('is-valid')
             $('#gambar').removeClass('is-valid')
             $('#alamat').removeClass('is-valid')
             $('#latitude').removeClass('is-valid')

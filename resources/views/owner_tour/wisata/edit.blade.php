@@ -51,6 +51,12 @@
 															<input id="title" name="title" type="text" class="form-control input-full">
 														</div>
 													</div>
+													<div class="form-group form-inline">
+														<label for="harga" class="col-md-2 form-label justify-content-start">Harga</label>
+														<div class="col-md-10 p-0">
+															<input id="harga" name="harga" type="text" class="form-control input-full">
+														</div>
+													</div>
 													<div class="form-group form-inline align-items-start">
 														<label for="gambar_update" class="col-md-2 form-label justify-content-start">Gambar</label>
 														<div class="col-md-10 p-0">
@@ -225,6 +231,7 @@
 			set successData(response) {
 				$('#id').val(response.tour.id)
 				$('#title').val(response.tour.title)
+				$('#harga').val(response.tour.price)
 				$('#prevThumb').attr('src', PICT + '/thumbnail/' + response.tour.thumbnail)
 				$('#old_thumb').val(response.tour.thumbnail)
 				$('#alamat').val(response.tour.address)
