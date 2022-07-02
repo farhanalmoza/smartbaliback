@@ -8,7 +8,7 @@ class Record extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['backpacker_id', 'arrival', 'check_in', 'check_out'];
+    protected $fillable = ['backpacker_id', 'no_hp', 'arrival', 'check_in', 'check_out'];
 
     protected $table = 'records';
 }

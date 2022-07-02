@@ -49,6 +49,7 @@ class RecordController extends Controller
 
         $data = [
             'backpacker_id' => $request->input('backpacker_id'),
+            'no_hp'         => $request->input('no_hp'),
             'arrival'       => $request->input('tmpDatang'),
             'check_in'      => $request->input('tglDatang'),
             'check_out'     => $request->input('tglPergi'),

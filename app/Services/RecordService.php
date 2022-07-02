@@ -54,9 +54,11 @@ class RecordService {
     public function get($id)
     {
         $records = Record::where('backpacker_id', $id)->get();
+        $no_hp = Record::where('backpacker_id', $id)->value('no_hp');
 
         $result = [
             'id_backpacker' => $id,
+            'no_hp' => $no_hp,
             'jumlah_perjalanan' => count($records),
         ];
 
